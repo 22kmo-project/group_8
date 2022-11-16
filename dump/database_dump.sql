@@ -29,7 +29,7 @@ CREATE TABLE `account` (
   `account_type` varchar(10) NOT NULL,
   `balance` double NOT NULL,
   PRIMARY KEY (`id_account`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,7 +38,6 @@ CREATE TABLE `account` (
 
 LOCK TABLES `account` WRITE;
 /*!40000 ALTER TABLE `account` DISABLE KEYS */;
-INSERT INTO `account` VALUES (1,'Debit',-1000),(2,'Debit',1500);
 /*!40000 ALTER TABLE `account` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -53,15 +52,12 @@ CREATE TABLE `card` (
   `id_card` int unsigned NOT NULL AUTO_INCREMENT,
   `card_number` varchar(45) NOT NULL,
   `pin` varchar(255) NOT NULL,
-  `id_account` int unsigned NOT NULL,
   `id_user` int unsigned NOT NULL,
   PRIMARY KEY (`id_card`),
   UNIQUE KEY `card_number_UNIQUE` (`card_number`),
-  KEY `id_account_idx` (`id_account`),
   KEY `id_user_idx` (`id_user`),
-  CONSTRAINT `card_card_account` FOREIGN KEY (`id_account`) REFERENCES `card_account` (`id_account`) ON DELETE RESTRICT ON UPDATE CASCADE,
   CONSTRAINT `card_user` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`) ON DELETE RESTRICT ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -109,7 +105,7 @@ DROP TABLE IF EXISTS `transaction`;
 CREATE TABLE `transaction` (
   `id_transaction` int unsigned NOT NULL AUTO_INCREMENT,
   `transaction_date` timestamp NULL DEFAULT NULL,
-  `activity` varchar(45) DEFAULT NULL,
+  `activity` varchar(45) NOT NULL,
   `amount` double NOT NULL,
   `id_account` int unsigned NOT NULL,
   `id_user` int unsigned NOT NULL,
@@ -118,7 +114,7 @@ CREATE TABLE `transaction` (
   KEY `id_user_idx` (`id_user`),
   CONSTRAINT `transaction_account` FOREIGN KEY (`id_account`) REFERENCES `account` (`id_account`) ON DELETE RESTRICT ON UPDATE CASCADE,
   CONSTRAINT `transaction_user` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`) ON DELETE RESTRICT ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -127,7 +123,6 @@ CREATE TABLE `transaction` (
 
 LOCK TABLES `transaction` WRITE;
 /*!40000 ALTER TABLE `transaction` DISABLE KEYS */;
-INSERT INTO `transaction` VALUES (1,'2022-11-14 22:00:00','withdrawal',500,1,1),(2,'2022-11-14 22:00:00','withdrawal',500,1,1),(3,'2022-11-14 22:00:00','withdrawal',500,1,1),(4,'2022-11-15 15:11:57','withdrawal',500,1,1),(5,'2022-11-15 15:20:11','withdrawal',500,2,1);
 /*!40000 ALTER TABLE `transaction` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -145,7 +140,7 @@ CREATE TABLE `user` (
   `address` varchar(45) NOT NULL,
   `phone` varchar(45) NOT NULL,
   PRIMARY KEY (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -154,7 +149,6 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'Michael','knight','Kurkitie 16 A6','040 5554433');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -168,7 +162,7 @@ DROP TABLE IF EXISTS `user_account`;
 CREATE TABLE `user_account` (
   `id_user` int unsigned NOT NULL,
   `id_account` int unsigned NOT NULL,
-  `owner` varchar(45) NOT NULL,
+  `account_owner` varchar(45) NOT NULL,
   PRIMARY KEY (`id_user`,`id_account`),
   KEY `id_account_idx` (`id_account`),
   CONSTRAINT `user_account_account` FOREIGN KEY (`id_account`) REFERENCES `account` (`id_account`) ON DELETE RESTRICT ON UPDATE CASCADE,
@@ -182,7 +176,6 @@ CREATE TABLE `user_account` (
 
 LOCK TABLES `user_account` WRITE;
 /*!40000 ALTER TABLE `user_account` DISABLE KEYS */;
-INSERT INTO `user_account` VALUES (1,1,'Michael Knight');
 /*!40000 ALTER TABLE `user_account` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -195,4 +188,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-11-15 18:52:48
+-- Dump completed on 2022-11-16  9:15:00
