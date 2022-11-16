@@ -1,0 +1,3 @@
+CREATE USER 'group_8'@'localhost' 
+IDENTIFIED WITH mysql_native_password BY 'netpass';
+GRANT ALL on banksimul.* to 'group_8'@'localhost';
