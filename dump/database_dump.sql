@@ -52,10 +52,20 @@ CREATE TABLE `card` (
   `id_card` int unsigned NOT NULL AUTO_INCREMENT,
   `card_number` varchar(45) NOT NULL,
   `pin` varchar(255) NOT NULL,
+tommi
   `id_user` int unsigned NOT NULL,
   PRIMARY KEY (`id_card`),
   UNIQUE KEY `card_number_UNIQUE` (`card_number`),
   KEY `id_user_idx` (`id_user`),
+
+  `id_account` int unsigned NOT NULL,
+  `id_user` int unsigned NOT NULL,
+  PRIMARY KEY (`id_card`),
+  UNIQUE KEY `card_number_UNIQUE` (`card_number`),
+  KEY `id_account_idx` (`id_account`),
+  KEY `id_user_idx` (`id_user`),
+  CONSTRAINT `card_card_account` FOREIGN KEY (`id_account`) REFERENCES `card_account` (`id_account`) ON DELETE RESTRICT ON UPDATE CASCADE,
+ main
   CONSTRAINT `card_user` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`) ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -104,8 +114,13 @@ DROP TABLE IF EXISTS `transaction`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `transaction` (
   `id_transaction` int unsigned NOT NULL AUTO_INCREMENT,
+ tommi
   `transaction_date` timestamp NULL DEFAULT NULL,
   `activity` varchar(45) NOT NULL,
+
+  `transaction_date` date NOT NULL,
+  `event` varchar(45) NOT NULL,
+ main
   `amount` double NOT NULL,
   `id_account` int unsigned NOT NULL,
   `id_user` int unsigned NOT NULL,
@@ -162,7 +177,11 @@ DROP TABLE IF EXISTS `user_account`;
 CREATE TABLE `user_account` (
   `id_user` int unsigned NOT NULL,
   `id_account` int unsigned NOT NULL,
+ tommi
   `account_owner` varchar(45) NOT NULL,
+
+  `owner` varchar(45) NOT NULL,
+ main
   PRIMARY KEY (`id_user`,`id_account`),
   KEY `id_account_idx` (`id_account`),
   CONSTRAINT `user_account_account` FOREIGN KEY (`id_account`) REFERENCES `account` (`id_account`) ON DELETE RESTRICT ON UPDATE CASCADE,
@@ -188,4 +207,8 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
+tommi
 -- Dump completed on 2022-11-16  9:15:00
+
+-- Dump completed on 2022-11-15 11:15:46
+ main
