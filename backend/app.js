@@ -23,9 +23,12 @@ function authenticateToken(req, res, next)  {
 }
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 var userRouter = require('./routes/user');
+
+var accountRouter = require('./routes/account');
+
 var loginRouter = require('./routes/login');
+
 
 var app = express();
 
@@ -41,6 +44,7 @@ app.use('/login', loginRouter); //login not protected
 //protected
 app.use('/', indexRouter);
 app.use('/user', userRouter);
+app.use('/account', accountRouter);
 
 
 
