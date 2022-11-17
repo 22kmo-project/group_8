@@ -1,10 +1,8 @@
-CREATE DATABASE  IF NOT EXISTS `banksimul` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `banksimul`;
--- MySQL dump 10.13  Distrib 8.0.21, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.31, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: banksimul
 -- ------------------------------------------------------
--- Server version	8.0.29
+-- Server version	8.0.30
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -52,20 +50,11 @@ CREATE TABLE `card` (
   `id_card` int unsigned NOT NULL AUTO_INCREMENT,
   `card_number` varchar(45) NOT NULL,
   `pin` varchar(255) NOT NULL,
-tommi
-  `id_user` int unsigned NOT NULL,
-  PRIMARY KEY (`id_card`),
-  UNIQUE KEY `card_number_UNIQUE` (`card_number`),
-  KEY `id_user_idx` (`id_user`),
-
   `id_account` int unsigned NOT NULL,
   `id_user` int unsigned NOT NULL,
   PRIMARY KEY (`id_card`),
   UNIQUE KEY `card_number_UNIQUE` (`card_number`),
-  KEY `id_account_idx` (`id_account`),
   KEY `id_user_idx` (`id_user`),
-  CONSTRAINT `card_card_account` FOREIGN KEY (`id_account`) REFERENCES `card_account` (`id_account`) ON DELETE RESTRICT ON UPDATE CASCADE,
- main
   CONSTRAINT `card_user` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`) ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -114,13 +103,8 @@ DROP TABLE IF EXISTS `transaction`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `transaction` (
   `id_transaction` int unsigned NOT NULL AUTO_INCREMENT,
- tommi
-  `transaction_date` timestamp NULL DEFAULT NULL,
+  `transaction_date` timestamp NOT NULL,
   `activity` varchar(45) NOT NULL,
-
-  `transaction_date` date NOT NULL,
-  `event` varchar(45) NOT NULL,
- main
   `amount` double NOT NULL,
   `id_account` int unsigned NOT NULL,
   `id_user` int unsigned NOT NULL,
@@ -177,11 +161,7 @@ DROP TABLE IF EXISTS `user_account`;
 CREATE TABLE `user_account` (
   `id_user` int unsigned NOT NULL,
   `id_account` int unsigned NOT NULL,
- tommi
   `account_owner` varchar(45) NOT NULL,
-
-  `owner` varchar(45) NOT NULL,
- main
   PRIMARY KEY (`id_user`,`id_account`),
   KEY `id_account_idx` (`id_account`),
   CONSTRAINT `user_account_account` FOREIGN KEY (`id_account`) REFERENCES `account` (`id_account`) ON DELETE RESTRICT ON UPDATE CASCADE,
@@ -197,6 +177,38 @@ LOCK TABLES `user_account` WRITE;
 /*!40000 ALTER TABLE `user_account` DISABLE KEYS */;
 /*!40000 ALTER TABLE `user_account` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Dumping routines for database 'banksimul'
+--
+/*!50003 DROP PROCEDURE IF EXISTS `debit_transfer` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb3_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `debit_transfer`(IN debit_account_id INT, IN user_id INT, IN amount DOUBLE )
+BEGIN
+  DECLARE u_account INT DEFAULT 0;
+  START TRANSACTION;
+  UPDATE account SET balance=balance-amount WHERE id_account=debit_account_id and balance-amount >= 0;
+  SET u_account=ROW_COUNT();
+    IF (u_account > 0) THEN
+      COMMIT;
+      INSERT INTO transaction(id_account,id_user,activity,amount,transaction_date) VALUES(debit_account_id,user_id,'withdrawal',amount,now());
+    ELSE
+      ROLLBACK;
+  END IF;
+  END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -207,8 +219,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
-tommi
--- Dump completed on 2022-11-16  9:15:00
-
--- Dump completed on 2022-11-15 11:15:46
- main
+-- Dump completed on 2022-11-16 20:11:56
