@@ -23,9 +23,10 @@ function authenticateToken(req, res, next)  {
 }
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var userRouter = require('./routes/user');
 var loginRouter = require('./routes/login');
+var userRouter = require('./routes/user');
+var cardRouter = require('./routes/card');
+
 
 var app = express();
 
@@ -37,11 +38,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.use('/login', loginRouter); //login not protected
-//app.use(authenticateToken);
+
 //protected
 app.use('/', indexRouter);
 app.use('/user', userRouter);
+app.use('/card',cardRouter);
 
-
+app.use(authenticateToken);
 
 module.exports = app;
