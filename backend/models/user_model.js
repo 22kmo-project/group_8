@@ -9,8 +9,8 @@ const user = {
   },
   add: function(add_data, callback) {
     return db.query(
-      'insert into user (id_user,fname,lname,address,phone) values(?,?,?,?,?)',
-      [add_data.id_user, add_data.fname, add_data.lname, add_data.address, add_data.phone],
+      'insert into user (fname,lname,address,phone) values(?,?,?,?,?)',
+      [add_data.fname, add_data.lname, add_data.address, add_data.phone],
       callback
     );
   },
