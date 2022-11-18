@@ -50,13 +50,13 @@ CREATE TABLE `card` (
   `id_card` int unsigned NOT NULL AUTO_INCREMENT,
   `card_number` varchar(45) NOT NULL,
   `pin` varchar(255) NOT NULL,
-  `id_account` int unsigned NOT NULL,
+  `id_account` varchar(10) NOT NULL,
   `id_user` int unsigned NOT NULL,
   PRIMARY KEY (`id_card`),
   UNIQUE KEY `card_number_UNIQUE` (`card_number`),
   KEY `id_user_idx` (`id_user`),
   CONSTRAINT `card_user` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`) ON DELETE RESTRICT ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -65,6 +65,7 @@ CREATE TABLE `card` (
 
 LOCK TABLES `card` WRITE;
 /*!40000 ALTER TABLE `card` DISABLE KEYS */;
+INSERT INTO `card` VALUES (4,'123456','$2a$10$ui2tXccyqSexTaI1Xpe8Ju3VykNmOAC96SHR.mTfXcbS6SNpfnYg6','1',1),(5,'654321','$2a$10$5jrEsXOgN5Hc4MEdKMgggO2CFjqVGMqWdYX19wHIhrdnRsUJWZt6q','2',1),(6,'112233','$2a$10$PdKbozHfnrmMd9XHo1QkW.HmSQhhBaaRzH4KdxZCuWIUTicnmwS66','3',2);
 /*!40000 ALTER TABLE `card` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -139,7 +140,7 @@ CREATE TABLE `user` (
   `address` varchar(45) NOT NULL,
   `phone` varchar(45) NOT NULL,
   PRIMARY KEY (`id_user`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -148,6 +149,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES (1,'Timo','Heikkilä','Uusikatu 4','+358400123456'),(2,'Aino','Virtanen','Pakkahuoneenkatu 7','+358 44558812'),(3,'Aino','Virtanen','Pakkahuoneenkatu 7','+35844558812');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -219,4 +221,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-11-16 20:11:56
+-- Dump completed on 2022-11-18 10:30:04
