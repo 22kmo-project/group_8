@@ -9,7 +9,7 @@ const user = {
   },
   add: function(add_data, callback) {
     return db.query(
-      'insert into user (fname,lname,address,phone) values(?,?,?,?,?)',
+      'insert into user (fname,lname,address,phone) values(?,?,?,?)',
       [add_data.fname, add_data.lname, add_data.address, add_data.phone],
       callback
     );

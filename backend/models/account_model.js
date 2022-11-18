@@ -9,8 +9,8 @@ const account = {
   },
   add: function(add_data, callback) {
     return db.query(
-      'insert into account (id_account,account_type,balance) values(?,?,?)',
-      [add_data.id_account, add_data.account_type, add_data.balance],
+      'insert into account (account_type,balance) values(?,?)',
+      [add_data.account_type, add_data.balance],
       callback
     );
   },
