@@ -3,14 +3,12 @@ const bcrypt = require("bcryptjs");
 
 const saltRounds = 10;
 
-const card={
+
+const card = {
   checkPin: function(card_number, callback) {
-      return db.query('SELECT pin FROM card WHERE card_number = ?',[card_number], callback); 
-    }
-};
+    return db.query('SELECT pin FROM card WHERE card_number = ?',[card_number], callback); 
+  },
 
-
-const user = {
   getById: function(id, callback) {
     return db.query('select * from card where id_card=?', [id], callback);
   },
@@ -29,15 +27,15 @@ const user = {
   },
 
   delete: function(id, callback) {
-    return db.query('delete from user where id_card=?', [id], callback);
+    return db.query('delete from card where id_card=?', [id], callback);
   },
 
   update: function(id, update_data, callback) {
     bcrypt.hash(update_data.pin, saltRounds, function (err, hashedPin) {
             return db.query(
-                'update card set card_number=?,pin=?, id_account=?, id_user=? where id_card=?',
-                [update_data.card_number, hashedPin, update_data.id_account, update_data.id_user, id],
-                callback);
+                'update card set card_number=?,pin=?, id_account=?,id_user=? where id_card=?',
+                [update_data.card_number, hashedPin, update_data.id_account, 
+                update_data.id_user, id],callback);
             });
         }      
       };

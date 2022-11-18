@@ -1,29 +1,26 @@
 const db = require('../database');
 
 const user = {
-  getById: function(id_card, callback) {
-    return db.query('select * from card where id_card=?', [id_card], callback);
+  getById: function(id, callback) {
+    return db.query('select * from user where id_user=?', [id], callback);
   },
-
   getAll: function(callback) {
-    return db.query('select * from card', callback);
+    return db.query('select * from user', callback);
   },
-
   add: function(add_data, callback) {
     return db.query(
-      'insert into user (card_number,pin,id_account,id_user) values(?,?,?,?)',
-      [add_data.card_number, add_data.pin, add_data.id_account, add_data.id_user],
+      'insert into user (id_user,fname,lname,address,phone) values(?,?,?,?,?)',
+      [add_data.id_user, add_data.fname, add_data.lname, add_data.address, add_data.phone],
       callback
     );
   },
-
-  delete: function(id_, callback) {
-    return db.query('delete from card where id_card=?', [id_card], callback);
+  delete: function(id, callback) {
+    return db.query('delete from user where id_user=?', [id], callback);
   },
-  update: function(id_card, update_data, callback) {
+  update: function(id, update_data, callback) {
     return db.query(
-      'update user set card_number=?,pin=?, id_account=?, id_user=? where id_card=?',
-      [update_data.card_number, update_data.pin, update_id_account, update_data.id_user, id_card],
+      'update user set fname=?,lname=?, address=?, phone=? where id_user=?',
+      [update_data.fname, update_data.lname, update_data.address, update_data.phone, id],
       callback
     );
   }
