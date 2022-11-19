@@ -23,3 +23,26 @@ card_number: 112233
 pin: 1111
 id_account: 3
 id_user: 2
+
+USERS
+
+1:
+id_user: 1
+fname: Aino
+lname: Virtanen
+address: Pakkahuoneenkatu 7
+phone: +358 44558812
+
+2:
+id_user: 2
+fname: Juhani
+lname: Virtanen
+address: Uusikatu 5 
+phone: +358 986655429
+
+3: 
+id_user: 3
+fname: Maija
+lname : Virta
+address: Viestikatu 2
+phone: +358 004455771
