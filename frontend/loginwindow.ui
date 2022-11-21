@@ -2,6 +2,14 @@
 <ui version="4.0">
  <class>loginWindow</class>
  <widget class="QDialog" name="loginWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>751</width>
+    <height>511</height>
+   </rect>
+  </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
@@ -114,8 +122,8 @@ color: rgb(255, 255, 255);</string>
   <widget class="QPushButton" name="btnKirjaudu">
    <property name="geometry">
     <rect>
-     <x>240</x>
-     <y>390</y>
+     <x>210</x>
+     <y>410</y>
      <width>101</width>
      <height>31</height>
     </rect>
@@ -132,7 +140,7 @@ color: rgb(255, 255, 255);</string>
    <property name="geometry">
     <rect>
      <x>440</x>
-     <y>390</y>
+     <y>410</y>
      <width>101</width>
      <height>31</height>
     </rect>
@@ -143,6 +151,28 @@ color: rgb(255, 255, 255);</string>
    </property>
    <property name="text">
     <string>Poistu</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labelInfo">
+   <property name="geometry">
+    <rect>
+     <x>170</x>
+     <y>330</y>
+     <width>451</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>16</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string/>
    </property>
   </widget>
  </widget>
