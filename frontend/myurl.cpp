@@ -11,6 +11,6 @@ QString MyURL::getBaseURL()
 }
 
 QString MyURL::base_url{
-    "http://localhost:3000"
+    "http://localhost:3000/"
 
 };
