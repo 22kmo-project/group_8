@@ -17,8 +17,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_btnSisaan_clicked()
 {
-    loginWindow loginWind;
-    loginWind.setModal(true);
-    loginWind.exec();
+    objectloginWindow = new loginWindow();
+    objectloginWindow->show();
 }
 

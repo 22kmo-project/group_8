@@ -1,7 +1,12 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "loginwindow.h"
 #include <QMainWindow>
+
+#include <QtNetwork>
+#include <QNetworkAccessManager>
+#include <QJsonDocument>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -20,5 +25,8 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    loginWindow *objectloginWindow;
+
+
 };
 #endif // MAINWINDOW_H
