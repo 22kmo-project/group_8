@@ -17,6 +17,8 @@ loginWindow::loginWindow(QWidget *parent) :
 loginWindow::~loginWindow()
 {
     delete ui;
+    delete objectmenuWindow;
+    objectmenuWindow=nullptr;
 }
 
 void loginWindow::on_btnPoistu_clicked()
@@ -41,7 +43,6 @@ void loginWindow::on_btnKirjaudu_clicked()
     loginManager = new QNetworkAccessManager(this);
     connect(loginManager, SIGNAL(finished (QNetworkReply*)),
             this, SLOT(loginSlot(QNetworkReply*)));
-
     reply = loginManager->post(request, QJsonDocument(jsonObj).toJson());
 
 }
@@ -53,30 +54,30 @@ void loginWindow::loginSlot(QNetworkReply *reply)
     int test=QString::compare(response_data,"false");
     qDebug()<<test;
 
-    if(response_data.length()==0){
+    if(response_data.length()==0)
+    {
         ui->labelInfo->setText("Palvelin ei vastaa");
     }
-    else {
+    else
+    {
         if(QString::compare(response_data,"-4078")==0){
             ui->labelInfo->setText("Virhe tietokanta yhteydessä");
         }
-        else {
+        else
+        {
             if(test==0){
+                ui->lineUsername->clear();
                 ui->linePin->clear();
                 ui->labelInfo->setText("Tunnus ja salasana eivät täsmää");
             }
-        else
-        {
-            objectmenuWindow=new menuWindow();
-            objectmenuWindow->setWebToken("Bearer "+response_data);
-            objectmenuWindow->show();
-        }
+            else {
+                objectmenuWindow=new menuWindow();
+                objectmenuWindow->setWebToken("Bearer "+response_data);
+                objectmenuWindow->show();
+            }
         }
     }
     reply->deleteLater();
     loginManager->deleteLater();
+
 }
-
-
-
-

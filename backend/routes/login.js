@@ -12,7 +12,7 @@ router.post('/',
       const pin = request.body.pin;
         card.checkPin(card_number, function(dbError, dbResult) {
           if(dbError){
-            response.json(dbError);
+            response.json(dbError.errno);
           }
           else{
             if (dbResult.length > 0) {

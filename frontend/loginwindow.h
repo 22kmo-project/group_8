@@ -3,7 +3,7 @@
 
 #include "menuwindow.h"
 #include "qnetworkaccessmanager.h"
-
+#include <QtNetwork>
 #include <QDialog>
 
 namespace Ui {
