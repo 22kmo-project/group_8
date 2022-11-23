@@ -24,6 +24,12 @@ pin: 1111
 id_account: 3
 id_user: 2
 
+card_number: 332211
+pin 5555
+id_account 4
+id_user: 3 
+
+
 USERS
 
 1:
