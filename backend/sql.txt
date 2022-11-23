@@ -47,6 +47,18 @@ lname : Virta
 address: Viestikatu 2
 phone: +358 004455771
 
-plöö
+4:
+id_user: 4
+fname: Eino
+lname: Koski
+address: Vetoporontie 1
+phone: +358 55778890
+
+5:
+id_user: 5
+fname: Liisa
+lname: Koski
+address: Vetoporontie 1
+phone: +358 55346790
 
 
