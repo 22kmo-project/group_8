@@ -5,6 +5,7 @@
 #include "qobjectdefs.h"
 #include "ui_loginwindow.h"
 #include "myurl.h"
+#include "mainwindow.h"
 
 
 loginWindow::loginWindow(QWidget *parent) :
@@ -12,6 +13,9 @@ loginWindow::loginWindow(QWidget *parent) :
     ui(new Ui::loginWindow)
 {
     ui->setupUi(this);
+    timer = new QTimer(this);
+    connect(timer,SIGNAL(timeout()),
+            this, SLOT(ajastin()));
 }
 
 loginWindow::~loginWindow()
@@ -71,13 +75,28 @@ void loginWindow::loginSlot(QNetworkReply *reply)
                 ui->labelInfo->setText("Tunnus ja salasana eivät täsmää");
             }
             else {
-                objectmenuWindow=new menuWindow();
+                objectmenuWindow=new menuWindow(card_number);
                 objectmenuWindow->setWebToken("Bearer "+response_data);
                 objectmenuWindow->show();
+                loginWindow::close();
             }
         }
     }
     reply->deleteLater();
     loginManager->deleteLater();
 
+}
+
+void loginWindow::ajastin()
+{
+      if(loginWindow::isVisible())
+    {
+        timer->start(1000);
+        if(aika < 10000)
+        {
+            loginWindow::close();
+            qDebug()<<"update";
+        }
+
+    }
 }
