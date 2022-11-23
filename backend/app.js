@@ -33,6 +33,7 @@ var accountRouter = require('./routes/account');
 var loginRouter = require('./routes/login');
 var userRouter = require('./routes/user');
 var cardRouter = require('./routes/card');
+var transactionRouter = require('./routes/transaction');
 
 
 
@@ -55,6 +56,7 @@ app.use('/', indexRouter);
 app.use('/user', userRouter);
 app.use('/card',cardRouter);
 app.use('/account', accountRouter);
+app.use('/transaction', transactionRouter);
 
 
 
