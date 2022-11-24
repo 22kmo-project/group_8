@@ -316,7 +316,7 @@
        <string>Poistu</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit">
+     <widget class="QLineEdit" name="lineEdit_cardnumber">
       <property name="geometry">
        <rect>
         <x>400</x>
@@ -326,7 +326,7 @@
        </rect>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_2">
+     <widget class="QLineEdit" name="lineEdit_pin">
       <property name="geometry">
        <rect>
         <x>400</x>
@@ -362,6 +362,19 @@
        <string>KÄYTTÄJÄTUNNUS</string>
       </property>
      </widget>
+     <widget class="QLabel" name="labelInfo">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>320</y>
+        <width>421</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
     </widget>
    </widget>
   </widget>
@@ -371,7 +384,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>22</height>
+     <height>17</height>
     </rect>
    </property>
   </widget>

@@ -24,7 +24,6 @@ private slots:
     void on_btnPoistu_clicked();
     void on_btnKirjaudu_clicked();
     void loginSlot (QNetworkReply *reply);
-    void ajastin();
 
 private:
     Ui::loginWindow *ui;
@@ -33,7 +32,7 @@ private:
     QNetworkReply *reply;
     QByteArray response_data;
     QTimer *timer;
-    int aika;
+    int time;
 
     QString card_number;
     QString pin;

@@ -5,7 +5,12 @@
 #include <QtWidgets>
 #include <QtGui>
 #include <QStackedWidget>
+#include <QtNetwork>
+#include <QNetworkAccessManager>
+#include <QJsonDocument>
+#include <QTimer>
 
+#include "myurl.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -18,6 +23,8 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    const QString &getWebtoken() const;
+    void setWebToken(const QByteArray &newWebToken);
 
 public slots:
     void SisaanWidget();
@@ -29,8 +36,23 @@ public slots:
     void OttoWidget();
     void LuottorajanNostoWidget();
 
+private slots:
+    void loginSlot (QNetworkReply *reply);
+    void on_btnKirjaudu_clicked();
+
+    void on_btnSisaan_clicked();
+
+    void on_btnPoistu_clicked();
 
 private:
     Ui::MainWindow *ui;
+    QNetworkAccessManager *loginManager;
+    QNetworkReply *reply;
+    QByteArray response_data;
+    QByteArray webToken;
+    QTimer *timer;
+    QString card_number;
+    QString pin;
+    int time;
 };
 #endif // MAINWINDOW_H
