@@ -1,11 +1,12 @@
 #include "menuwindow.h"
 #include "ui_menuwindow.h"
 
-menuWindow::menuWindow(QWidget *parent) :
+menuWindow::menuWindow(QString card_number, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::menuWindow)
 {
     ui->setupUi(this);
+    ui->labelCardnumber->setText(card_number);
 }
 
 menuWindow::~menuWindow()
@@ -20,8 +21,8 @@ void menuWindow::setWebToken(const QByteArray &newWebToken)
 }
 
 
-void menuWindow::on_pushButton_Saldo_clicked()
+void menuWindow::on_pushButton_KirjauduUlos_clicked()
 {
-
+    menuWindow::close();
 }
 
