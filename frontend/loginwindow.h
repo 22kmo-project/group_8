@@ -5,7 +5,6 @@
 #include "qnetworkaccessmanager.h"
 #include <QtNetwork>
 #include <QDialog>
-#include <QTimer>
 
 namespace Ui {
 class loginWindow;
@@ -30,10 +29,8 @@ private:
     menuWindow *objectmenuWindow;
     QNetworkAccessManager *loginManager;
     QNetworkReply *reply;
-    QByteArray response_data;
-    QTimer *timer;
-    int time;
 
+    QByteArray response_data;
     QString card_number;
     QString pin;
     QString webtoken;

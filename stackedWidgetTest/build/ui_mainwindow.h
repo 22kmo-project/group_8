@@ -36,6 +36,7 @@ public:
     QPushButton *btnTilitapahtumat;
     QPushButton *btnLuottorajanNosto;
     QPushButton *btnPoistu_2;
+    QLabel *labelkayttajan_nimi;
     QWidget *page_valitseKortti;
     QPushButton *btnDebit;
     QPushButton *btnCredit;
@@ -100,6 +101,9 @@ public:
         btnPoistu_2 = new QPushButton(page_menu);
         btnPoistu_2->setObjectName(QString::fromUtf8("btnPoistu_2"));
         btnPoistu_2->setGeometry(QRect(280, 380, 171, 51));
+        labelkayttajan_nimi = new QLabel(page_menu);
+        labelkayttajan_nimi->setObjectName(QString::fromUtf8("labelkayttajan_nimi"));
+        labelkayttajan_nimi->setGeometry(QRect(80, 40, 301, 31));
         stackedWidget->addWidget(page_menu);
         page_valitseKortti = new QWidget();
         page_valitseKortti->setObjectName(QString::fromUtf8("page_valitseKortti"));
@@ -181,7 +185,7 @@ public:
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 800, 17));
+        menubar->setGeometry(QRect(0, 0, 800, 21));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -202,6 +206,7 @@ public:
         btnTilitapahtumat->setText(QCoreApplication::translate("MainWindow", "Tilitapahtumat", nullptr));
         btnLuottorajanNosto->setText(QCoreApplication::translate("MainWindow", "Luottorajan Nosto", nullptr));
         btnPoistu_2->setText(QCoreApplication::translate("MainWindow", "Poistu", nullptr));
+        labelkayttajan_nimi->setText(QString());
         btnDebit->setText(QCoreApplication::translate("MainWindow", "Debit", nullptr));
         btnCredit->setText(QCoreApplication::translate("MainWindow", "Credit", nullptr));
         lblValitse_Kortti->setText(QCoreApplication::translate("MainWindow", "Valitse kortti", nullptr));

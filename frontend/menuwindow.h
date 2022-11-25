@@ -19,7 +19,6 @@ public:
     void setWebToken(const QByteArray &newWebToken);
 
 private slots:
-
     void on_pushButton_KirjauduUlos_clicked();
 
 private:

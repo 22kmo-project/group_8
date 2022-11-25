@@ -3,7 +3,6 @@
 
 #include "loginwindow.h"
 #include <QMainWindow>
-
 #include <QtNetwork>
 #include <QNetworkAccessManager>
 #include <QJsonDocument>
@@ -26,7 +25,5 @@ private slots:
 private:
     Ui::MainWindow *ui;
     loginWindow *objectloginWindow;
-
-
 };
 #endif // MAINWINDOW_H

@@ -8,6 +8,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
     time = 0;
     QObject::connect(ui->btnSisaan, SIGNAL(clicked()), this, SLOT(KirjauduWidget()));
     timer = new QTimer(this);
@@ -18,11 +19,6 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete ui;
-}
-
-void MainWindow::setWebToken(const QByteArray &newWebToken)
-{
-    webToken = newWebToken;
 }
 
 
@@ -38,10 +34,10 @@ void MainWindow::SisaanWidget()
 
 void MainWindow::KirjauduWidget()
 {
-    //QObject::connect(ui->btnKirjaudu, SIGNAL(clicked()), this, SLOT(ValitseKorttiWidget()));
+    QObject::connect(ui->btnKirjaudu, SIGNAL(clicked()), this, SLOT(ValitseKorttiWidget()));
     QObject::connect(ui->btnPoistu, SIGNAL(clicked()), this, SLOT(SisaanWidget()));
     ui->stackedWidget->setCurrentWidget(ui->page_kirjaudu);
-
+    ui->labelkayttajan_nimi->setText(card_number);
 }
 
 void MainWindow::ValitseKorttiWidget()
@@ -52,6 +48,7 @@ void MainWindow::ValitseKorttiWidget()
 }
 void MainWindow::MenuWidget()
 {
+
     QObject::connect(ui->btnSaldo, SIGNAL(clicked()), this, SLOT(SaldoWidget()));
     QObject::connect(ui->btnTilitapahtumat, SIGNAL(clicked()), this, SLOT(TilitapahtumatWidget()));
     QObject::connect(ui->btnOtto, SIGNAL(clicked()), this, SLOT(OttoWidget()));
@@ -112,21 +109,16 @@ void MainWindow::loginSlot(QNetworkReply *reply)
     response_data=reply->readAll();
         qDebug()<<response_data;
         int test=QString::compare(response_data,"false");
-        int attempts=0;
         qDebug()<<test;
-
         if(test==-1)
         {
             ui->stackedWidget->setCurrentWidget(ui->page_menu);
         }
-        else
-        {
-            if(test==0 && attempts < 3)
+
+        if(test==0)
             {
-                attempts ++;
                 ui->lineEdit_cardnumber->clear();
                 ui->lineEdit_pin->clear();
-                qDebug()<<"Yritykset"<<attempts;
                 timer->stop();
                 time = 0;
                 timer->start(1000);
@@ -142,13 +134,7 @@ void MainWindow::loginSlot(QNetworkReply *reply)
                     timer->stop();
                 }
             }
-            else
-            {
-                ui->labelInfo->setText("Kolme yritystä");
-                ui->stackedWidget->setCurrentWidget(ui->page_sisaan);
-            }
 
-        }
         reply->deleteLater();
         loginManager->deleteLater();
 }
@@ -167,6 +153,7 @@ void MainWindow::on_btnSisaan_clicked()
     {
         ui->stackedWidget->setCurrentWidget(ui->page_sisaan);
         timer->stop();
+        time = 0;
     }
 
 }
@@ -180,3 +167,10 @@ void MainWindow::on_btnPoistu_clicked()
 
 }
 
+
+void MainWindow::on_btnPoistu_2_clicked()
+{
+    timer->stop();
+    time=0;
+        ui->stackedWidget->setCurrentWidget(ui->page_sisaan);
+}

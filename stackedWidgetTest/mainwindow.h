@@ -23,8 +23,6 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    const QString &getWebtoken() const;
-    void setWebToken(const QByteArray &newWebToken);
 
 public slots:
     void SisaanWidget();
@@ -44,12 +42,13 @@ private slots:
 
     void on_btnPoistu_clicked();
 
+    void on_btnPoistu_2_clicked();
+
 private:
     Ui::MainWindow *ui;
     QNetworkAccessManager *loginManager;
     QNetworkReply *reply;
     QByteArray response_data;
-    QByteArray webToken;
     QTimer *timer;
     QString card_number;
     QString pin;

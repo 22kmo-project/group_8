@@ -120,6 +120,19 @@
        <string>Poistu</string>
       </property>
      </widget>
+     <widget class="QLabel" name="labelkayttajan_nimi">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>40</y>
+        <width>301</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="page_valitseKortti">
      <widget class="QPushButton" name="btnDebit">
@@ -384,7 +397,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>17</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>

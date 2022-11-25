@@ -5,7 +5,6 @@
 #include "qobjectdefs.h"
 #include "ui_loginwindow.h"
 #include "myurl.h"
-#include "mainwindow.h"
 
 
 loginWindow::loginWindow(QWidget *parent) :
@@ -13,9 +12,7 @@ loginWindow::loginWindow(QWidget *parent) :
     ui(new Ui::loginWindow)
 {
     ui->setupUi(this);
-    timer = new QTimer(this);
-    connect(timer,SIGNAL(timeout()),
-            this, SLOT(ajastin()));
+
 }
 
 loginWindow::~loginWindow()
@@ -53,50 +50,38 @@ void loginWindow::on_btnKirjaudu_clicked()
 
 void loginWindow::loginSlot(QNetworkReply *reply)
 {
+    int attempts=0;
     response_data=reply->readAll();
     qDebug()<<response_data;
     int test=QString::compare(response_data,"false");
     qDebug()<<test;
 
-    if(response_data.length()==0)
+    if(test==-1)
     {
-        ui->labelInfo->setText("Palvelin ei vastaa");
+        objectmenuWindow=new menuWindow(card_number);
+        objectmenuWindow->setWebToken("Bearer "+response_data);
+        objectmenuWindow->show();
+        loginWindow::close();
     }
+
     else
     {
-        if(QString::compare(response_data,"-4078")==0){
-            ui->labelInfo->setText("Virhe tietokanta yhteydessä");
+        if(attempts < 3)
+        {
+            ui->lineUsername->clear();
+            ui->linePin->clear();
+            qDebug()<<"Yritykset"<<attempts;
+            attempts ++;
         }
         else
         {
-            if(test==0){
-                ui->lineUsername->clear();
-                ui->linePin->clear();
-                ui->labelInfo->setText("Tunnus ja salasana eivät täsmää");
-            }
-            else {
-                objectmenuWindow=new menuWindow(card_number);
-                objectmenuWindow->setWebToken("Bearer "+response_data);
-                objectmenuWindow->show();
-                loginWindow::close();
-            }
+            ui->labelInfo->setText("Kolme yritystä");
+            loginWindow::close();
         }
     }
+
     reply->deleteLater();
     loginManager->deleteLater();
 
 }
 
-void loginWindow::ajastin()
-{
-      if(loginWindow::isVisible())
-    {
-        timer->start(1000);
-        if(aika < 10000)
-        {
-            loginWindow::close();
-            qDebug()<<"update";
-        }
-
-    }
-}
