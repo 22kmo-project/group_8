@@ -5,6 +5,7 @@
 #include "qobjectdefs.h"
 #include "ui_loginwindow.h"
 #include "myurl.h"
+#include "unistd.h"
 
 
 loginWindow::loginWindow(QWidget *parent) :
@@ -12,6 +13,8 @@ loginWindow::loginWindow(QWidget *parent) :
     ui(new Ui::loginWindow)
 {
     ui->setupUi(this);
+    attempts=0;
+    timer = new QTimer();
 
 }
 
@@ -50,7 +53,6 @@ void loginWindow::on_btnKirjaudu_clicked()
 
 void loginWindow::loginSlot(QNetworkReply *reply)
 {
-    int attempts=0;
     response_data=reply->readAll();
     qDebug()<<response_data;
     int test=QString::compare(response_data,"false");
@@ -66,17 +68,17 @@ void loginWindow::loginSlot(QNetworkReply *reply)
 
     else
     {
-        if(attempts < 3)
+        if(attempts < 2)
         {
+            ++attempts;
             ui->lineUsername->clear();
             ui->linePin->clear();
             qDebug()<<"Yritykset"<<attempts;
-            attempts ++;
+
         }
         else
         {
-            ui->labelInfo->setText("Kolme yritystä");
-            loginWindow::close();
+            ui->labelInfo->setText("Kortti on lukittu, sulje ikkuna ja yritä uudestaan");
         }
     }
 
