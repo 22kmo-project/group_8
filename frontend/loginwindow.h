@@ -1,11 +1,11 @@
 #ifndef LOGINWINDOW_H
 #define LOGINWINDOW_H
 
+#include "choosecard.h"
 #include "menuwindow.h"
 #include "qnetworkaccessmanager.h"
 #include <QtNetwork>
 #include <QDialog>
-#include <QTimer>
 
 namespace Ui {
 class loginWindow;
@@ -28,9 +28,9 @@ private slots:
 private:
     Ui::loginWindow *ui;
     menuWindow *objectmenuWindow;
+    ChooseCard *objectChooseCardWindow;
     QNetworkAccessManager *loginManager;
     QNetworkReply *reply;
-    QTimer *timer;
 
     QByteArray response_data;
     QString card_number;

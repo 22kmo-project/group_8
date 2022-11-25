@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>menuWindow</class>
- <widget class="QDialog" name="menuWindow">
+ <class>ChooseCard</class>
+ <widget class="QDialog" name="ChooseCard">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>749</width>
-    <height>527</height>
+    <width>755</width>
+    <height>590</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,12 +16,12 @@
   <property name="styleSheet">
    <string notr="true">background-color: rgb(255, 85, 0);</string>
   </property>
-  <widget class="QPushButton" name="pushButton_Saldo">
+  <widget class="QPushButton" name="pushButton_credit">
    <property name="geometry">
     <rect>
-     <x>80</x>
-     <y>90</y>
-     <width>121</width>
+     <x>130</x>
+     <y>230</y>
+     <width>141</width>
      <height>51</height>
     </rect>
    </property>
@@ -36,39 +36,16 @@
 color: rgb(255, 255, 255);</string>
    </property>
    <property name="text">
-    <string>Saldo</string>
+    <string>Credit</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_Tilitapahtumat">
-   <property name="geometry">
-    <rect>
-     <x>400</x>
-     <y>90</y>
-     <width>171</width>
-     <height>51</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Arial</family>
-     <pointsize>16</pointsize>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: rgb(99, 99, 99);
-color: rgb(255, 255, 255);</string>
-   </property>
-   <property name="text">
-    <string>Tilitapahtumat</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushButton_Otto">
+  <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
      <x>90</x>
-     <y>260</y>
-     <width>121</width>
-     <height>51</height>
+     <y>110</y>
+     <width>561</width>
+     <height>71</height>
     </rect>
    </property>
    <property name="font">
@@ -82,15 +59,18 @@ color: rgb(255, 255, 255);</string>
 color: rgb(255, 255, 255);</string>
    </property>
    <property name="text">
-    <string>Otto</string>
+    <string>Valitse Credit tai Debit</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_LuottorajanNosto">
+  <widget class="QPushButton" name="pushButton_debit">
    <property name="geometry">
     <rect>
-     <x>370</x>
-     <y>260</y>
-     <width>241</width>
+     <x>460</x>
+     <y>230</y>
+     <width>141</width>
      <height>51</height>
     </rect>
    </property>
@@ -105,14 +85,14 @@ color: rgb(255, 255, 255);</string>
 color: rgb(255, 255, 255);</string>
    </property>
    <property name="text">
-    <string>Luottorajan nosto</string>
+    <string>Debit</string>
    </property>
   </widget>
   <widget class="QLabel" name="labelCardnumber">
    <property name="geometry">
     <rect>
-     <x>80</x>
-     <y>50</y>
+     <x>90</x>
+     <y>70</y>
      <width>131</width>
      <height>21</height>
     </rect>
@@ -129,29 +109,6 @@ color: rgb(255, 255, 255);</string>
    </property>
    <property name="text">
     <string/>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushButton_KirjauduUlos">
-   <property name="geometry">
-    <rect>
-     <x>230</x>
-     <y>380</y>
-     <width>201</width>
-     <height>51</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Arial</family>
-     <pointsize>16</pointsize>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: rgb(99, 99, 99);
-color: rgb(255, 255, 255);</string>
-   </property>
-   <property name="text">
-    <string>Kirjaudu ulos</string>
    </property>
   </widget>
  </widget>

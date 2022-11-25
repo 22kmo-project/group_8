@@ -5,8 +5,6 @@
 #include "qobjectdefs.h"
 #include "ui_loginwindow.h"
 #include "myurl.h"
-#include "unistd.h"
-
 
 loginWindow::loginWindow(QWidget *parent) :
     QDialog(parent),
@@ -14,8 +12,6 @@ loginWindow::loginWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     attempts=0;
-    timer = new QTimer();
-
 }
 
 loginWindow::~loginWindow()
@@ -23,6 +19,9 @@ loginWindow::~loginWindow()
     delete ui;
     delete objectmenuWindow;
     objectmenuWindow=nullptr;
+
+    //delete objectChooseCardWindow;
+    //objectChooseCardWindow=nullptr;
 }
 
 void loginWindow::on_btnPoistu_clicked()
@@ -58,9 +57,24 @@ void loginWindow::loginSlot(QNetworkReply *reply)
     int test=QString::compare(response_data,"false");
     qDebug()<<test;
 
+    /*bool credit;
+    if(jason_obj["card_type"].toInt()==1)
+    {
+        credit == true;
+    }
+    else
+    {
+        credit = false;
+    }*/
+
     if(test==-1)
     {
-        objectmenuWindow=new menuWindow(card_number);
+        /*if(credit==true)
+        {
+            objectChooseCardWindow= new ChooseCard(card_number);
+            objectChooseCardWindow->setWebToken("Bearer "+response_data);
+        }*/
+        objectmenuWindow=new menuWindow(card_number, false);
         objectmenuWindow->setWebToken("Bearer "+response_data);
         objectmenuWindow->show();
         loginWindow::close();
