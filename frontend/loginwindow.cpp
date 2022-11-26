@@ -5,17 +5,13 @@
 #include "qobjectdefs.h"
 #include "ui_loginwindow.h"
 #include "myurl.h"
-#include "mainwindow.h"
-
 
 loginWindow::loginWindow(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::loginWindow)
 {
     ui->setupUi(this);
-    timer = new QTimer(this);
-    connect(timer,SIGNAL(timeout()),
-            this, SLOT(ajastin()));
+    attempts=0;
 }
 
 loginWindow::~loginWindow()
@@ -23,6 +19,9 @@ loginWindow::~loginWindow()
     delete ui;
     delete objectmenuWindow;
     objectmenuWindow=nullptr;
+
+    //delete objectChooseCardWindow;
+    //objectChooseCardWindow=nullptr;
 }
 
 void loginWindow::on_btnPoistu_clicked()
@@ -58,45 +57,47 @@ void loginWindow::loginSlot(QNetworkReply *reply)
     int test=QString::compare(response_data,"false");
     qDebug()<<test;
 
-    if(response_data.length()==0)
+    /*bool credit;
+    if(jason_obj["card_type"].toInt()==1)
     {
-        ui->labelInfo->setText("Palvelin ei vastaa");
+        credit == true;
     }
     else
     {
-        if(QString::compare(response_data,"-4078")==0){
-            ui->labelInfo->setText("Virhe tietokanta yhteydessä");
+        credit = false;
+    }*/
+
+    if(test==-1)
+    {
+        /*if(credit==true)
+        {
+            objectChooseCardWindow= new ChooseCard(card_number);
+            objectChooseCardWindow->setWebToken("Bearer "+response_data);
+        }*/
+        objectmenuWindow=new menuWindow(card_number, false);
+        objectmenuWindow->setWebToken("Bearer "+response_data);
+        objectmenuWindow->show();
+        loginWindow::close();
+    }
+
+    else
+    {
+        if(attempts < 2)
+        {
+            ++attempts;
+            ui->lineUsername->clear();
+            ui->linePin->clear();
+            qDebug()<<"Yritykset"<<attempts;
+
         }
         else
         {
-            if(test==0){
-                ui->lineUsername->clear();
-                ui->linePin->clear();
-                ui->labelInfo->setText("Tunnus ja salasana eivät täsmää");
-            }
-            else {
-                objectmenuWindow=new menuWindow(card_number);
-                objectmenuWindow->setWebToken("Bearer "+response_data);
-                objectmenuWindow->show();
-                loginWindow::close();
-            }
+            ui->labelInfo->setText("Kortti on lukittu, sulje ikkuna ja yritä uudestaan");
         }
     }
+
     reply->deleteLater();
     loginManager->deleteLater();
 
 }
 
-void loginWindow::ajastin()
-{
-      if(loginWindow::isVisible())
-    {
-        timer->start(1000);
-        if(aika < 10000)
-        {
-            loginWindow::close();
-            qDebug()<<"update";
-        }
-
-    }
-}

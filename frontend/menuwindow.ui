@@ -43,7 +43,7 @@ color: rgb(255, 255, 255);</string>
    <property name="geometry">
     <rect>
      <x>400</x>
-     <y>100</y>
+     <y>90</y>
      <width>171</width>
      <height>51</height>
     </rect>
@@ -111,14 +111,24 @@ color: rgb(255, 255, 255);</string>
   <widget class="QLabel" name="labelCardnumber">
    <property name="geometry">
     <rect>
-     <x>90</x>
-     <y>40</y>
+     <x>80</x>
+     <y>50</y>
      <width>131</width>
      <height>21</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>16</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(99, 99, 99);
+color: rgb(255, 255, 255);</string>
+   </property>
    <property name="text">
-    <string>TextLabel</string>
+    <string/>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButton_KirjauduUlos">

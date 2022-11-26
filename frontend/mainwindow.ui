@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1009</width>
-    <height>706</height>
+    <width>772</width>
+    <height>624</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,8 +20,8 @@
    <widget class="QLabel" name="labelWelcome">
     <property name="geometry">
      <rect>
-      <x>220</x>
-      <y>150</y>
+      <x>180</x>
+      <y>140</y>
       <width>381</width>
       <height>121</height>
      </rect>
@@ -233,6 +233,9 @@
       <underline>false</underline>
      </font>
     </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
     <property name="styleSheet">
      <string notr="true">color: rgb(255, 255, 255);
 background-color: rgb(107, 107, 107);
@@ -266,11 +269,17 @@ background-color: rgb(107, 107, 107);
    <widget class="QPushButton" name="btnSisaan">
     <property name="geometry">
      <rect>
-      <x>340</x>
-      <y>380</y>
+      <x>300</x>
+      <y>370</y>
       <width>151</width>
       <height>51</height>
      </rect>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
     </property>
     <property name="styleSheet">
      <string notr="true">color: rgb(255, 255, 255);
@@ -287,7 +296,7 @@ background-color: rgb(118, 118, 118);</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1009</width>
+     <width>772</width>
      <height>21</height>
     </rect>
    </property>

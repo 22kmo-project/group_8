@@ -1,7 +1,7 @@
 #include "menuwindow.h"
 #include "ui_menuwindow.h"
 
-menuWindow::menuWindow(QString card_number, QWidget *parent) :
+menuWindow::menuWindow(QString card_number, bool credit, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::menuWindow)
 {
