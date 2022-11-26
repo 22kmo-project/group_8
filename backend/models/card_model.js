@@ -20,7 +20,7 @@ const card = {
   add: function(add_data, callback) {
     bcrypt.hash(add_data.pin, saltRounds, function (err, hashedPin){
     return db.query(
-      'insert into card (card_number,pin,zid_account,id_user) values(?,?,?,?)',
+      'insert into card (card_number,pin,id_account,id_user) values(?,?,?,?)',
       [add_data.card_number, hashedPin, add_data.id_account, add_data.id_user],
       callback);
     });
