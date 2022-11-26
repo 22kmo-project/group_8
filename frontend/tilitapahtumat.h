@@ -3,6 +3,9 @@
 
 #include "menuwindow.h"
 #include <QDialog>
+#include <QNetworkAccessManager>
+#include <QtNetwork>
+#include <QJsonDocument>
 
 namespace Ui {
 class tilitapahtumat;
@@ -16,9 +19,20 @@ public:
     explicit tilitapahtumat(QWidget *parent = nullptr);
     ~tilitapahtumat();
 
+private slots:
+
+    void tilitapahtumatSlot (QNetworkReply *reply);
+    void on_naytaTilitapahtumatBtn_clicked();
+
+    void on_TakaisinBtn_clicked();
+
 private:
     Ui::tilitapahtumat *ui;
     menuWindow *objectMenuToTilitapahtumat;
+
+    QNetworkAccessManager *tilitapahtumatManager;
+    QNetworkReply *reply;
+    QByteArray response_data;
 };
 
 #endif // TILITAPAHTUMAT_H

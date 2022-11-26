@@ -43,7 +43,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.use('/login', loginRouter); //login not protected
-app.use(authenticateToken);
+//app.use(authenticateToken);
 
 //protected
 app.use('/', indexRouter);

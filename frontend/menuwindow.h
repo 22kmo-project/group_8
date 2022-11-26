@@ -27,6 +27,8 @@ private slots:
 
     void on_pushButton_LuottorajanNosto_clicked();
 
+    void on_pushButton_Tilitapahtumat_clicked();
+
 private:
     Ui::menuWindow *ui;
     QByteArray webToken;

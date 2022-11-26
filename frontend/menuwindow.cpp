@@ -3,6 +3,7 @@
 #include "saldo.h"
 #include "otto.h"
 #include "luottoraja.h"
+#include "tilitapahtumat.h"
 
 menuWindow::menuWindow(QString card_number, QWidget *parent) :
     QDialog(parent),
@@ -33,6 +34,7 @@ void menuWindow::on_pushButton_KirjauduUlos_clicked()
 void menuWindow::on_pushButton_Saldo_clicked()
 {
 
+}
 void menuWindow::on_pushButton_Otto_clicked()
 {
     otto nosto;
@@ -45,5 +47,13 @@ void menuWindow::on_pushButton_LuottorajanNosto_clicked()
     luottoraja luotto;
     luotto.setModal(true);
     luotto.exec();
+}
+
+
+void menuWindow::on_pushButton_Tilitapahtumat_clicked()
+{
+    tilitapahtumat tilitapahtumat;
+    tilitapahtumat.setModal(true);
+    tilitapahtumat.exec();
 }
 

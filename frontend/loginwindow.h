@@ -6,7 +6,7 @@
 #include "qnetworkaccessmanager.h"
 #include <QtNetwork>
 #include <QDialog>
-#include <QSqlQuery>
+//#include <QSqlQuery>
 
 namespace Ui {
 class loginWindow;
