@@ -23,6 +23,9 @@ private slots:
     void on_pushButton_KirjauduUlos_clicked();
 
     void on_pushButton_Saldo_clicked();
+    void on_pushButton_Otto_clicked();
+
+    void on_pushButton_LuottorajanNosto_clicked();
 
 private:
     Ui::menuWindow *ui;

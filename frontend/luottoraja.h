@@ -16,6 +16,13 @@ public:
     explicit luottoraja(QWidget *parent = nullptr);
     ~luottoraja();
 
+private slots:
+
+
+    void on_luottoPoistu_clicked();
+
+    void on_luottoHae_clicked();
+
 private:
     Ui::luottoraja *ui;
     menuWindow *objectMenuToLuottoraja;
