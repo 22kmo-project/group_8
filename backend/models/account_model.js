@@ -7,36 +7,19 @@ const account = {
   getAll: function(callback) {
     return db.query('select * from account', callback);
   },
-<<<<<<< HEAD
   add: function(add_data, callback) {
     return db.query(
       'insert into account (account_type,balance) values(?,?)',
-      [add_data.account_type, add_data.balance],
-=======
-  add: function(account, callback) {
-    return db.query(
-      'insert into account (account_type,balance) values(?,?)',
-      [account.account_type, account.balance],
->>>>>>> e31a0cc1f5177798cd7bebddf233ac4f298b3848
-      callback
-    );
+      [add_data.account_type, add_data.balance]);
   },
   delete: function(id, callback) {
     return db.query('delete from account where id_account=?', [id], callback);
   },
-<<<<<<< HEAD
   update: function(id, update_data, callback) {
     return db.query(
       'update account set account_type=?,balance=? where id_account=?',
-      [update_data.account_type, update_data.balance, id],
-=======
-  update: function(id, account, callback) {
-    return db.query(
-      'update account set account_type=?,balance=? where id_account=?',
-      [account.account_type, account.balance, id],
->>>>>>> e31a0cc1f5177798cd7bebddf233ac4f298b3848
-      callback
-    );
-  }
+      [update_data.account_type, update_data.balance, id]);
+
+},
 };
 module.exports = account;
