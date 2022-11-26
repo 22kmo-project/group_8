@@ -1,5 +1,7 @@
 #include "menuwindow.h"
 #include "ui_menuwindow.h"
+#include "otto.h"
+#include "luottoraja.h"
 
 menuWindow::menuWindow(QString card_number, bool credit, QWidget *parent) :
     QDialog(parent),
@@ -24,5 +26,20 @@ void menuWindow::setWebToken(const QByteArray &newWebToken)
 void menuWindow::on_pushButton_KirjauduUlos_clicked()
 {
     menuWindow::close();
+}
+
+
+void menuWindow::on_pushButton_Otto_clicked()
+{
+    otto nosto;
+    nosto.setModal(true);
+    nosto.exec();
+}
+
+void menuWindow::on_pushButton_LuottorajanNosto_clicked()
+{
+    luottoraja luotto;
+    luotto.setModal(true);
+    luotto.exec();
 }
 
