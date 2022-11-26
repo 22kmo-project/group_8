@@ -20,8 +20,8 @@ const card = {
   add: function(add_data, callback) {
     bcrypt.hash(add_data.pin, saltRounds, function (err, hashedPin){
     return db.query(
-      'insert into card (card_number,pin,id_account,id_user) values(?,?,?,?)',
-      [add_data.card_number, hashedPin, add_data.id_account, add_data.id_user],
+      'insert into card (card_number,pin,credit,id_account,id_user) values(?,?,?,?)',
+      [add_data.card_number, hashedPin,add.data.credit,add_data.id_account, add_data.id_user],
       callback);
     });
   },
@@ -33,8 +33,8 @@ const card = {
   update: function(id, update_data, callback) {
     bcrypt.hash(update_data.pin, saltRounds, function (err, hashedPin) {
             return db.query(
-                'update card set card_number=?,pin=?, id_account=?,id_user=? where id_card=?',
-                [update_data.card_number, hashedPin, update_data.id_account, 
+                'update card set card_number=?,pin=?,credit=?,id_account=?,id_user=? where id_card=?',
+                [update_data.card_number, hashedPin, update_data.credit, update_data.id_account, 
                 update_data.id_user, id],callback);
             });
         }      
