@@ -16,6 +16,9 @@ public:
     explicit saldo(QWidget *parent = nullptr);
     ~saldo();
 
+private slots:
+    void on_saldoTakaisin_clicked();
+
 private:
     Ui::saldo *ui;
     menuWindow *objectMenuToSaldo;

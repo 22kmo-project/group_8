@@ -1,5 +1,6 @@
 #include "menuwindow.h"
 #include "ui_menuwindow.h"
+#include "saldo.h"
 #include "otto.h"
 #include "luottoraja.h"
 
@@ -28,6 +29,9 @@ void menuWindow::on_pushButton_KirjauduUlos_clicked()
     menuWindow::close();
 }
 
+
+void menuWindow::on_pushButton_Saldo_clicked()
+{
 
 void menuWindow::on_pushButton_Otto_clicked()
 {
