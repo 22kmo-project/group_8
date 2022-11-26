@@ -12,3 +12,18 @@ luottoraja::~luottoraja()
 {
     delete ui;
 }
+
+
+
+
+void luottoraja::on_luottoPoistu_clicked()
+{
+    luottoraja::close();
+}
+
+
+void luottoraja::on_luottoHae_clicked()
+{
+
+}
+
