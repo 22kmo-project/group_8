@@ -23,14 +23,16 @@ void ChooseCard::setWebToken(const QByteArray &newWebToken)
 
 void ChooseCard::on_pushButton_credit_clicked()
 {
-    objectCardToMenu=new menuWindow(card_number, true);
+    objectCardToMenu=new menuWindow(card_number);
     objectCardToMenu->setWebToken(webToken);
+    objectCardToMenu->show();
 }
 
 
 void ChooseCard::on_pushButton_debit_clicked()
 {
-    objectCardToMenu=new menuWindow(card_number, false);
+    objectCardToMenu=new menuWindow(card_number);
     objectCardToMenu->setWebToken(webToken);
+    objectCardToMenu->show();
 }
 

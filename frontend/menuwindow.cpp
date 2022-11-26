@@ -4,7 +4,7 @@
 #include "otto.h"
 #include "luottoraja.h"
 
-menuWindow::menuWindow(QString card_number, bool credit, QWidget *parent) :
+menuWindow::menuWindow(QString card_number, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::menuWindow)
 {
