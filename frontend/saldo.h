@@ -3,6 +3,10 @@
 
 #include "menuwindow.h"
 #include <QDialog>
+#include <QtNetwork>
+#include <QNetworkAccessManager>
+#include <QJsonDocument>
+
 
 namespace Ui {
 class saldo;
@@ -17,7 +21,10 @@ public:
     ~saldo();
 
 private slots:
-    void on_saldoTakaisin_clicked();
+
+
+    void on_poistuSaldo_clicked();
+
 
 private:
     Ui::saldo *ui;

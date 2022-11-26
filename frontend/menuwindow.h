@@ -31,6 +31,7 @@ private:
     Ui::menuWindow *ui;
     QByteArray webToken;
 
+
 };
 
 #endif // MENUWINDOW_H
