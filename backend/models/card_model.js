@@ -10,7 +10,7 @@ const card = {
   },
 
   getById: function(id, callback) {
-    return db.query('select * from card where id_card=?', [id], callback);
+    return db.query('select * from card where card_number=?', [id], callback);
   },
 
   getAll: function(callback) {

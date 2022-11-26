@@ -7,7 +7,9 @@ const dotenv = require('dotenv');
 
 router.post('/', 
   function(request, response) {
+    const testit=response.dbResult;
     if(request.body.card_number && request.body.pin){
+      const testi = request.body;
       const card_number = request.body.card_number;
       const pin = request.body.pin;
         card.checkPin(card_number, function(dbError, dbResult) {
@@ -19,6 +21,10 @@ router.post('/',
               bcrypt.compare(pin,dbResult[0].pin, function(err,compareResult) {
                 if(compareResult) {
                   console.log("succes");
+                  card.getById(card_number, function(dbError, dbResult){
+                    //let id_user=dbResult[1];
+                    console.log(testit);
+                  })
                   const token = generateAccessToken({username:card_number})
                   response.send(token);
                 }

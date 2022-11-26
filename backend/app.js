@@ -2,8 +2,8 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
 const jwt = require('jsonwebtoken');
+
 function authenticateToken(req, res, next)  {
     const authHeader = req.headers['authorization']
     const token = authHeader && authHeader.split(' ')[1]
@@ -23,15 +23,9 @@ function authenticateToken(req, res, next)  {
 }
 
 var indexRouter = require('./routes/index');
-
-
 var userRouter = require('./routes/user');
-
 var accountRouter = require('./routes/account');
-
-
 var loginRouter = require('./routes/login');
-var userRouter = require('./routes/user');
 var cardRouter = require('./routes/card');
 var transactionRouter = require('./routes/transaction');
 
