@@ -13,7 +13,13 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QPushButton" name="saldoTakaisin">
+  <property name="autoFillBackground">
+   <bool>false</bool>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(255, 85, 0);</string>
+  </property>
+  <widget class="QPushButton" name="poistuSaldo">
    <property name="geometry">
     <rect>
      <x>640</x>
@@ -22,34 +28,67 @@
      <height>61</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>20</pointsize>
+    </font>
+   </property>
    <property name="autoFillBackground">
     <bool>false</bool>
    </property>
    <property name="text">
-    <string>Takaisin</string>
+    <string>Poistu</string>
    </property>
   </widget>
-  <widget class="QLabel" name="kortin_numero">
+  <widget class="QTextEdit" name="textnaytaSaldo">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>170</y>
+     <width>291</width>
+     <height>181</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>20</pointsize>
+    </font>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>100</y>
+     <width>141</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>20</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Saldo</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labelKortinNumero">
    <property name="geometry">
     <rect>
      <x>40</x>
-     <y>50</y>
-     <width>161</width>
+     <y>30</y>
+     <width>141</width>
      <height>41</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>20</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string/>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="naytaSaldo">
-   <property name="geometry">
-    <rect>
-     <x>90</x>
-     <y>170</y>
-     <width>431</width>
-     <height>161</height>
-    </rect>
    </property>
   </widget>
  </widget>
