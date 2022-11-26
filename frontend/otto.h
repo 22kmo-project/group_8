@@ -15,6 +15,15 @@ class otto : public QDialog
 public:
     explicit otto(QWidget *parent = nullptr);
     ~otto();
+    void updateAccountData();
+
+private slots:
+
+
+    void on_ottoPoistu_clicked();
+
+    //void on_ottoNosta_clicked();
+
 
 private:
     Ui::otto *ui;
