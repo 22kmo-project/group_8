@@ -1,5 +1,6 @@
 #include "menuwindow.h"
 #include "ui_menuwindow.h"
+#include "saldo.h"
 
 menuWindow::menuWindow(QString card_number, bool credit, QWidget *parent) :
     QDialog(parent),
@@ -24,5 +25,11 @@ void menuWindow::setWebToken(const QByteArray &newWebToken)
 void menuWindow::on_pushButton_KirjauduUlos_clicked()
 {
     menuWindow::close();
+}
+
+
+void menuWindow::on_pushButton_Saldo_clicked()
+{
+
 }
 
