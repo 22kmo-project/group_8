@@ -6,91 +6,13 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>830</width>
-    <height>546</height>
+    <width>716</width>
+    <height>553</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <property name="autoFillBackground">
-   <bool>false</bool>
-  </property>
-  <property name="styleSheet">
-   <string notr="true">background-color: rgb(255, 85, 0);</string>
-  </property>
-  <widget class="QPushButton" name="poistuSaldo">
-   <property name="geometry">
-    <rect>
-     <x>640</x>
-     <y>420</y>
-     <width>121</width>
-     <height>61</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>20</pointsize>
-    </font>
-   </property>
-   <property name="autoFillBackground">
-    <bool>false</bool>
-   </property>
-   <property name="text">
-    <string>Poistu</string>
-   </property>
-  </widget>
-  <widget class="QTextEdit" name="textnaytaSaldo">
-   <property name="geometry">
-    <rect>
-     <x>50</x>
-     <y>170</y>
-     <width>291</width>
-     <height>181</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>20</pointsize>
-    </font>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>50</x>
-     <y>100</y>
-     <width>141</width>
-     <height>51</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>20</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string>Saldo</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="labelKortinNumero">
-   <property name="geometry">
-    <rect>
-     <x>40</x>
-     <y>30</y>
-     <width>141</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>20</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
  </widget>
  <resources/>
  <connections/>

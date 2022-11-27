@@ -20,16 +20,9 @@ loginWindow::~loginWindow()
     delete objectmenuWindow;
     objectmenuWindow=nullptr;
 
-    delete objectChooseCardWindow;
-    objectChooseCardWindow=nullptr;
+    //delete objectChooseCardWindow;
+    //objectChooseCardWindow=nullptr;
 }
-
-/*QString loginWindow::getid_account(QString card_number)
-{
-    QSqlQuery nimiTest("SELECT id_accout FROM card WHERE card_number=?");
-    nimiTest.addBindValue(card_number);
-    return nimiTest.value(0).toString();
-}*/
 
 void loginWindow::on_btnPoistu_clicked()
 {
@@ -41,7 +34,7 @@ void loginWindow::on_btnKirjaudu_clicked()
 {
     card_number = ui->lineUsername->text();
     pin = ui->linePin->text();
-    qDebug()<<card_number;
+
     QJsonObject jsonObj;
     jsonObj.insert("card_number", card_number);
     jsonObj.insert("pin", pin);
@@ -64,61 +57,47 @@ void loginWindow::loginSlot(QNetworkReply *reply)
     int test=QString::compare(response_data,"false");
     qDebug()<<test;
 
-    QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
-    QJsonObject json_obj = json_doc.object();
-
-    QString testi=(json_obj["id_card"].toString());
-
-    if(response_data.length()==0)
+    /*bool credit;
+    if(jason_obj["card_type"].toInt()==1)
     {
-        ui->labelInfo->setText("Palvelin ei vastaa");
+        credit == true;
     }
     else
     {
-        if(QString::compare(response_data,"-4078")==0){
-            ui->labelInfo->setText("Virhe tietokanta yhteydessä");
+        credit = false;
+    }*/
+
+    if(test==-1)
+    {
+        /*if(credit==true)
+        {
+            objectChooseCardWindow= new ChooseCard(card_number);
+            objectChooseCardWindow->setWebToken("Bearer "+response_data);
+        }*/
+        objectmenuWindow=new menuWindow(card_number, false);
+        objectmenuWindow->setWebToken("Bearer "+response_data);
+        objectmenuWindow->show();
+        loginWindow::close();
+    }
+
+    else
+    {
+        if(attempts < 2)
+        {
+            ++attempts;
+            ui->lineUsername->clear();
+            ui->linePin->clear();
+            qDebug()<<"Yritykset"<<attempts;
+
         }
         else
         {
-            if(test==0){
-                ui->lineUsername->clear();
-                ui->linePin->clear();
-                ui->labelInfo->setText("Tunnus ja salasana eivät täsmää");
-                if(attempts < 2)
-                {
-                    ++attempts;
-                    ui->lineUsername->clear();
-                    ui->linePin->clear();
-                    qDebug()<<"Yritykset"<<attempts;
-
-                }
-                else
-                {
-                    ui->labelInfo->setText("Kortti on lukittu, sulje ikkuna ja yritä uudestaan");
-                }
-            }
-            else {
-                if(card_number=="332211")
-                {
-                objectmenuWindow=new menuWindow(card_number);
-                objectmenuWindow->setWebToken("Bearer "+response_data);
-                objectmenuWindow->show();
-                loginWindow::close();
-                }
-                else
-                {
-                    objectChooseCardWindow=new ChooseCard(card_number);
-                    objectChooseCardWindow->setWebToken("Bearer "+response_data);
-                    objectChooseCardWindow->show();
-                    loginWindow::close();
-                }
-
-
-
-            }
+            ui->labelInfo->setText("Kortti on lukittu, sulje ikkuna ja yritä uudestaan");
         }
     }
+
     reply->deleteLater();
     loginManager->deleteLater();
 
 }
+

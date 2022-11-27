@@ -13,7 +13,7 @@ class menuWindow : public QDialog
     Q_OBJECT
 
 public:
-    explicit menuWindow(QString card_number, QWidget *parent = nullptr);
+    explicit menuWindow(QString card_number, bool credit, QWidget *parent = nullptr);
     ~menuWindow();
 
     const QString &getWebtoken() const;
@@ -22,7 +22,6 @@ public:
 private slots:
     void on_pushButton_KirjauduUlos_clicked();
 
-    void on_pushButton_Saldo_clicked();
     void on_pushButton_Otto_clicked();
 
     void on_pushButton_LuottorajanNosto_clicked();
@@ -30,7 +29,6 @@ private slots:
 private:
     Ui::menuWindow *ui;
     QByteArray webToken;
-
 
 };
 

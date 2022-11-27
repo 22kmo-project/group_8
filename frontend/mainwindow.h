@@ -6,7 +6,19 @@
 #include <QtNetwork>
 #include <QNetworkAccessManager>
 #include <QJsonDocument>
+#include <QTimer>
+#include <QSql>
+#include <QSqlDatabase>
+#include <QSqlQuery>
+#include <QSqlTableModel>
+//#include "../group_8/backend/database"
 
+enum SearchMode
+{
+    name,
+    saldo,
+    activity
+};
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -19,14 +31,16 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    bool editSaldo(QString account_id, int amount);
 
 private slots:
     void on_btnSisaan_clicked();
+    //QTimer *objectTimer;
 
 private:
     Ui::MainWindow *ui;
     loginWindow *objectloginWindow;
-
-
+    QTimer *objectTimer;
+    //DLLMySQL *objectMySQL;
 };
 #endif // MAINWINDOW_H
