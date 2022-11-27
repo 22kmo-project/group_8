@@ -1,13 +1,18 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "loginwindow.h"
-#include "saldo.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    //objectMySQL = new DLLMySQL;
+    objectTimer = new QTimer;
+    objectTimer->setInterval(30000);
+    objectTimer->setSingleShot(true);
+    connect(objectTimer, SIGNAL(timeout()), this, SLOT(on_timeout()));
 }
 
 MainWindow::~MainWindow()
