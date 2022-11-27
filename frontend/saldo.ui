@@ -36,6 +36,9 @@
    <property name="autoFillBackground">
     <bool>false</bool>
    </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(67, 67, 67);</string>
+   </property>
    <property name="text">
     <string>Poistu</string>
    </property>
@@ -45,7 +48,7 @@
     <rect>
      <x>50</x>
      <y>170</y>
-     <width>291</width>
+     <width>381</width>
      <height>181</height>
     </rect>
    </property>
@@ -53,6 +56,9 @@
     <font>
      <pointsize>20</pointsize>
     </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(91, 91, 91);</string>
    </property>
   </widget>
   <widget class="QLabel" name="label">
@@ -69,6 +75,9 @@
      <pointsize>20</pointsize>
     </font>
    </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(70, 70, 70);</string>
+   </property>
    <property name="text">
     <string>Saldo</string>
    </property>
@@ -76,10 +85,10 @@
   <widget class="QLabel" name="labelKortinNumero">
    <property name="geometry">
     <rect>
-     <x>40</x>
+     <x>50</x>
      <y>30</y>
-     <width>141</width>
-     <height>41</height>
+     <width>151</width>
+     <height>51</height>
     </rect>
    </property>
    <property name="font">

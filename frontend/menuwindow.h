@@ -4,6 +4,7 @@
 #include <QDialog>
 
 
+
 namespace Ui {
 class menuWindow;
 }
@@ -30,6 +31,8 @@ private slots:
 private:
     Ui::menuWindow *ui;
     QByteArray webToken;
+
+
 
 
 };

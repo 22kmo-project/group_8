@@ -8,6 +8,7 @@
 #include <QJsonDocument>
 
 
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -26,7 +27,9 @@ private slots:
 private:
     Ui::MainWindow *ui;
     loginWindow *objectloginWindow;
-
+    QNetworkAccessManager *getManager;
+    QNetworkReply *reply;
+    QByteArray response_data;
 
 };
 #endif // MAINWINDOW_H
