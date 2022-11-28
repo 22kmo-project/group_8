@@ -37,9 +37,9 @@ public:
     ~otto();
     void updateAccountData();
     void addActivity(QString accountID, int amount);
-    void editSaldo(QString accountID, int amount, QString account_type);
+    void editSaldo(QString accountID, int amount); //QString account_type);
     QString getAccountData(QString accountId);
-    void withdraw(int amount, QString account_type);
+    void withdraw(int amount);// QString account_type);
     void resetTimer();
     int amount;
     const QString &getWebtoken() const;

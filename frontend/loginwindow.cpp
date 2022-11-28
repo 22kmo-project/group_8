@@ -100,7 +100,7 @@ void loginWindow::loginSlot(QNetworkReply *reply)
             else {
                 if(card_number=="332211")
                 {
-                objectmenuWindow=new menuWindow(card_number, false);
+                objectmenuWindow=new menuWindow(card_number, false, response_data);
                 objectmenuWindow->setWebToken("Bearer "+response_data);
                 objectmenuWindow->show();
                 loginWindow::close();

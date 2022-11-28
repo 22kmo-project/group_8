@@ -4,7 +4,7 @@ const db = require('../database');
 const user_account = {
     getByUserAccountId: function(uid, aid, callback) {
         return db.query('select * from user_account where id_user=? AND id_account=?', [uid, aid], callback);
-      }/*,
+      }/*
       getByUserId: function(uid, callback) {
     return db.query('select * from user_account where id_user=?', [uid], callback);
   },

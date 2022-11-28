@@ -59,4 +59,14 @@ function(request, response) {
   });
 });
 
+router.get('/:card_number', function (request, response) {
+  account.getIdCard(request.params.card_number, function (err, dbResult) {
+    if (err) {
+      response.json(err);
+    } else {
+      response.json(dbResult);
+    }
+  });
+});
+
 module.exports = router;
