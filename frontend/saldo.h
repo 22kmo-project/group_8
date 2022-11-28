@@ -21,7 +21,7 @@ class saldo : public QDialog
     Q_OBJECT
 
 public:
-    explicit saldo(QWidget *parent = nullptr);
+    explicit saldo(QByteArray wt, QWidget *parent = nullptr);
     ~saldo();
     const QString &getWebtoken() const;
     void setWebToken(const QByteArray &newWebToken);
@@ -42,6 +42,7 @@ private:
     QNetworkReply *reply;
     QByteArray response_data;
     QString account;
+    QByteArray myToken;
 
 
 

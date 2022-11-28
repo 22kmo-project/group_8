@@ -36,9 +36,9 @@ void menuWindow::on_pushButton_KirjauduUlos_clicked()
 
 void menuWindow::on_pushButton_Saldo_clicked()
 {
-    //saldo nayta;
-    //nayta.setModal(true);
-    //nayta.exec();
+    //saldo saldo;
+    //saldo.setModal(true);
+    //saldo.exec();
 }
 
 void menuWindow::idCardSlot(QNetworkReply *reply)
@@ -85,7 +85,7 @@ void menuWindow::on_pushButton_Otto_clicked()
 
 void menuWindow::on_pushButton_LuottorajanNosto_clicked()
 {
-    luottoraja luotto;
+    luottoraja luotto(webToken);
     luotto.setModal(true);
     luotto.exec();
 }

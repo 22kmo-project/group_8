@@ -4,11 +4,11 @@
 #include "myurl.h"
 
 
-saldo::saldo(QWidget *parent) :
+saldo::saldo(QByteArray wt, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::saldo)
 {
-
+    myToken = wt;
     ui->setupUi(this);
     ui->textnaytaSaldo->setText(account);
 
@@ -18,6 +18,9 @@ saldo::saldo(QWidget *parent) :
 
     QString site_url=MyURL::getBaseURL()+"/account";
     QNetworkRequest request((site_url));
+    //WEBTOKENIN ALKU
+    request.setRawHeader(QByteArray("Authorization"),(myToken));
+    //WEBTOKENIN LOPPU
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
 
     saldoManager = new QNetworkAccessManager(this);
@@ -38,7 +41,7 @@ saldo::~saldo()
 
 void saldo::setWebToken(const QByteArray &newWebToken)
 {
-webToken = newWebToken;
+    webToken = newWebToken;
 }
 
 void saldo::getSaldo(QNetworkReply *reply)

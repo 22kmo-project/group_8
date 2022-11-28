@@ -13,7 +13,7 @@ class luottoraja : public QDialog
     Q_OBJECT
 
 public:
-    explicit luottoraja(QWidget *parent = nullptr);
+    explicit luottoraja(QByteArray wt, QWidget *parent = nullptr);
     ~luottoraja();
 
 private slots:

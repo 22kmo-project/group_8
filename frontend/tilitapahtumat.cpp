@@ -12,3 +12,8 @@ tilitapahtumat::~tilitapahtumat()
 {
     delete ui;
 }
+
+void tilitapahtumat::setWebToken(const QByteArray &newWebToken)
+{
+
+}
