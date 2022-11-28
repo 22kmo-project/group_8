@@ -16,28 +16,11 @@
   <property name="styleSheet">
    <string notr="true">background-color: rgb(255, 85, 0);</string>
   </property>
-  <widget class="QPushButton" name="ottoNosta">
-   <property name="geometry">
-    <rect>
-     <x>240</x>
-     <y>340</y>
-     <width>80</width>
-     <height>24</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: rgb(112, 112, 112);
-color: rgb(255, 255, 255);</string>
-   </property>
-   <property name="text">
-    <string>Nosta</string>
-   </property>
-  </widget>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
      <x>100</x>
-     <y>130</y>
+     <y>200</y>
      <width>511</width>
      <height>61</height>
     </rect>
@@ -56,7 +39,7 @@ color: rgb(255, 255, 255);</string>
     <enum>QFrame::WinPanel</enum>
    </property>
    <property name="text">
-    <string>Valitse nostettava summa ja paina ''Nosta''</string>
+    <string>Valitse nostettava summa </string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
@@ -65,34 +48,11 @@ color: rgb(255, 255, 255);</string>
     <number>0</number>
    </property>
   </widget>
-  <widget class="QTextEdit" name="textEdit">
-   <property name="geometry">
-    <rect>
-     <x>230</x>
-     <y>260</y>
-     <width>251</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Arial</family>
-     <pointsize>16</pointsize>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: rgb(255, 255, 255);</string>
-   </property>
-   <property name="lineWrapMode">
-    <enum>QTextEdit::WidgetWidth</enum>
-   </property>
-  </widget>
   <widget class="QPushButton" name="ottoPoistu">
    <property name="geometry">
     <rect>
-     <x>380</x>
-     <y>340</y>
+     <x>310</x>
+     <y>470</y>
      <width>80</width>
      <height>24</height>
     </rect>
@@ -103,6 +63,91 @@ color: rgb(255, 255, 255);</string>
    </property>
    <property name="text">
     <string>Poistu</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="Nosto10">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>350</y>
+     <width>80</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(0, 170, 0);
+color: rgb(255, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string>10e</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="Nosto20">
+   <property name="geometry">
+    <rect>
+     <x>190</x>
+     <y>350</y>
+     <width>80</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(0, 170, 0);
+color: rgb(255, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string>20e</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="Nosto50">
+   <property name="geometry">
+    <rect>
+     <x>310</x>
+     <y>350</y>
+     <width>80</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(0, 170, 0);
+color: rgb(255, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string>50e</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="Nosto100">
+   <property name="geometry">
+    <rect>
+     <x>430</x>
+     <y>350</y>
+     <width>80</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(0, 170, 0);
+color: rgb(255, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string>100e</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="Nosto200">
+   <property name="geometry">
+    <rect>
+     <x>540</x>
+     <y>350</y>
+     <width>80</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(0, 170, 0);
+color: rgb(255, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string>200e</string>
    </property>
   </widget>
  </widget>
