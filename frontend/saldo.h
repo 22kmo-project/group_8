@@ -1,8 +1,20 @@
 #ifndef SALDO_H
 #define SALDO_H
 
-#include "menuwindow.h"
 #include <QDialog>
+#include <QtNetwork>
+#include <QNetworkAccessManager>
+#include <QJsonDocument>
+#include <qbytearray.h>
+#include "myurl.h"
+#include <QMainWindow>
+#include <QtNetwork>
+
+
+
+
+
+
 
 namespace Ui {
 class saldo;
@@ -15,10 +27,28 @@ class saldo : public QDialog
 public:
     explicit saldo(QWidget *parent = nullptr);
     ~saldo();
+    const QString &getWebtoken() const;
+    void setWebToken(const QByteArray &newWebToken);
+
+
+
+private slots:
+
+    void getSaldo (QNetworkReply *reply);
+    void on_poistuSaldo_clicked();
+    void on_textnaytaSaldo_textChanged();
+
 
 private:
     Ui::saldo *ui;
-    menuWindow *objectMenuToSaldo;
+    QByteArray webToken;
+    QNetworkAccessManager *saldoManager;
+    QNetworkReply *reply;
+    QByteArray response_data;
+    QString account;
+
+
+
 };
 
 #endif // SALDO_H

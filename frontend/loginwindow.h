@@ -7,6 +7,10 @@
 #include <QtNetwork>
 #include <QDialog>
 
+//#include <QSqlQuery>
+
+main
+
 namespace Ui {
 class loginWindow;
 }
@@ -39,5 +43,7 @@ private:
     int attempts;
     int time;
 };
+
+
 
 #endif // LOGINWINDOW_H

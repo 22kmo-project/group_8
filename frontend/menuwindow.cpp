@@ -2,6 +2,7 @@
 #include "ui_menuwindow.h"
 #include "otto.h"
 #include "luottoraja.h"
+#include "myurl.h"
 
 menuWindow::menuWindow(QString card_number, bool credit, QWidget *parent) :
     QDialog(parent),
@@ -28,6 +29,15 @@ void menuWindow::on_pushButton_KirjauduUlos_clicked()
     menuWindow::close();
 }
 
+
+void menuWindow::on_pushButton_Saldo_clicked()
+{
+saldo nayta;
+nayta.setModal(true);
+nayta.exec();
+
+
+}
 
 void menuWindow::on_pushButton_Otto_clicked()
 {
