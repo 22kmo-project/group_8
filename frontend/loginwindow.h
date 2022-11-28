@@ -9,8 +9,6 @@
 
 //#include <QSqlQuery>
 
-main
-
 namespace Ui {
 class loginWindow;
 }

@@ -27,7 +27,7 @@ private:
     Ui::ChooseCard *ui;
     menuWindow *objectCardToMenu;
     QByteArray webToken;
-    QString card_number;
+    QString cardNumber;
 };
 
 #endif // CHOOSECARD_H

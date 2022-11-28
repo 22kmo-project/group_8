@@ -32,16 +32,14 @@ void menuWindow::on_pushButton_KirjauduUlos_clicked()
 
 void menuWindow::on_pushButton_Saldo_clicked()
 {
-saldo nayta;
-nayta.setModal(true);
-nayta.exec();
-
-
+    //saldo nayta;
+    //nayta.setModal(true);
+    //nayta.exec();
 }
 
 void menuWindow::on_pushButton_Otto_clicked()
 {
-    otto nosto;
+    otto nosto(webToken);
     nosto.setModal(true);
     nosto.exec();
 }

@@ -12,10 +12,6 @@
 
 
 
-
-
-
-
 namespace Ui {
 class saldo;
 }
