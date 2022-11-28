@@ -1,6 +1,7 @@
 #ifndef MENUWINDOW_H
 #define MENUWINDOW_H
 
+//#include "otto.h"
 #include <QDialog>
 
 
@@ -27,10 +28,12 @@ private slots:
 
     void on_pushButton_LuottorajanNosto_clicked();
 
+    void on_pushButton_Saldo_clicked();
+
 private:
     Ui::menuWindow *ui;
     QByteArray webToken;
-
+    //otto *objectMenuToOtto;
 };
 
 #endif // MENUWINDOW_H

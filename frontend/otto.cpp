@@ -3,11 +3,13 @@
 #include "mainwindow.h"
 
 
-otto::otto(QWidget *parent) :
+otto::otto(QByteArray wt, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::otto)
 {
     ui->setupUi(this);
+    myToken = "Bearer" + wt;
+
 
 }
 
@@ -17,6 +19,10 @@ otto::~otto()
 
 }
 
+void otto::setWebToken(const QByteArray &newWebToken)
+{
+    webToken = newWebToken;
+}
 
 
 void otto::on_ottoPoistu_clicked()
@@ -69,6 +75,7 @@ void otto::resetTimer()
     objectTimer->start();
 }
 
+
 void otto::withdraw(int amount, QString account_type)
 {
     editSaldo("1", -amount, account_type);
@@ -87,6 +94,9 @@ void otto::editSaldo(QString accountId, int amount, QString account_type)
     jsonObj.insert("account_type",account_type);
     QString site_url=MyURL::getBaseURL()+"/account/"+accountId;
     QNetworkRequest request((site_url));
+    //WEBTOKENIN ALKU
+    request.setRawHeader(QByteArray("Authorization"),(myToken));
+    //WEBTOKENIN LOPPU
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
     //qDebug()<<request;
     ottoManager = new QNetworkAccessManager(this);
