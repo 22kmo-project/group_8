@@ -1,11 +1,10 @@
 #include "menuwindow.h"
 #include "ui_menuwindow.h"
-#include "saldo.h"
 #include "otto.h"
 #include "luottoraja.h"
 #include "myurl.h"
 
-menuWindow::menuWindow(QString card_number, QWidget *parent) :
+menuWindow::menuWindow(QString card_number, bool credit, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::menuWindow)
 {

@@ -7,6 +7,12 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    //objectMySQL = new DLLMySQL;
+    objectTimer = new QTimer;
+    objectTimer->setInterval(30000);
+    objectTimer->setSingleShot(true);
+    connect(objectTimer, SIGNAL(timeout()), this, SLOT(on_timeout()));
 }
 
 MainWindow::~MainWindow()

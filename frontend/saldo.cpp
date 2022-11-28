@@ -1,8 +1,7 @@
 #include "saldo.h"
 #include "ui_saldo.h"
+
 #include "myurl.h"
-
-
 
 
 saldo::saldo(QWidget *parent) :
@@ -25,6 +24,7 @@ saldo::saldo(QWidget *parent) :
     connect(saldoManager, SIGNAL(finished (QNetworkReply*)),
             this, SLOT(getSaldo(QNetworkReply*)));
     reply = saldoManager->get(request/*, QJsonDocument(jsonObj).toJson()*/);
+
 
 
 
