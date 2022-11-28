@@ -3,6 +3,8 @@
 #include "otto.h"
 #include "luottoraja.h"
 #include "myurl.h"
+#include "saldo.h"
+
 
 menuWindow::menuWindow(QString card_number, bool credit, QByteArray webToken, QWidget *parent) :
     QDialog(parent),
@@ -36,9 +38,9 @@ void menuWindow::on_pushButton_KirjauduUlos_clicked()
 
 void menuWindow::on_pushButton_Saldo_clicked()
 {
-    //saldo nayta;
-    //nayta.setModal(true);
-    //nayta.exec();
+  class saldo nayta(webToken);
+  nayta.setModal(true);
+  nayta.exec();
 }
 
 void menuWindow::idCardSlot(QNetworkReply *reply)
