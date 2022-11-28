@@ -3,6 +3,7 @@
 
 #include <QDialog>
 
+
 namespace Ui {
 class menuWindow;
 }
@@ -21,9 +22,15 @@ public:
 private slots:
     void on_pushButton_KirjauduUlos_clicked();
 
+    void on_pushButton_Saldo_clicked();
+    void on_pushButton_Otto_clicked();
+
+    void on_pushButton_LuottorajanNosto_clicked();
+
 private:
     Ui::menuWindow *ui;
     QByteArray webToken;
+
 };
 
 #endif // MENUWINDOW_H
