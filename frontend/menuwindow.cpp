@@ -4,12 +4,16 @@
 #include "luottoraja.h"
 #include "myurl.h"
 
-menuWindow::menuWindow(QString card_number, bool credit, QWidget *parent) :
+menuWindow::menuWindow(QString card_number, bool credit, QByteArray webToken, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::menuWindow)
 {
     ui->setupUi(this);
-    ui->labelCardnumber->setText(card_number);
+    cardNumber = card_number;
+    token = webToken;
+    this->isCredit = credit;
+    this->getIdCard(cardNumber);
+    this->setWebToken(token);
 }
 
 menuWindow::~menuWindow()
@@ -35,6 +39,41 @@ void menuWindow::on_pushButton_Saldo_clicked()
     //saldo nayta;
     //nayta.setModal(true);
     //nayta.exec();
+}
+
+void menuWindow::idCardSlot(QNetworkReply *reply)
+{
+    QByteArray response_data=reply->readAll();
+       QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
+       QJsonArray json_array = json_doc.array();
+       foreach (const QJsonValue &value, json_array)
+       {
+           QJsonObject json_obj = value.toObject();
+           qDebug()<<json_obj["id_card"].toString();
+           id_card=json_obj["id_card"].toString();
+       }
+
+       qDebug()<<id_card;
+       ui->labelCardnumber->setText(id_card);
+
+       reply->deleteLater();
+       idCardManager->deleteLater();
+}
+
+void menuWindow::getIdCard(QString card_number)
+{
+    qDebug()<<token;
+    QString site_url=MyURL::getBaseURL()+"/card/"+card_number;
+    qDebug()<<site_url;
+    QNetworkRequest request((site_url));
+    //WEBTOKEN ALKU
+    request.setRawHeader(QByteArray("Authorization"),(token));
+    //WEBTOKEN LOPPU
+    idCardManager = new QNetworkAccessManager(this);
+
+    connect(idCardManager, SIGNAL(finished (QNetworkReply*)), this, SLOT(idCardSlot(QNetworkReply*)));
+
+    reply = idCardManager->get(request);
 }
 
 void menuWindow::on_pushButton_Otto_clicked()

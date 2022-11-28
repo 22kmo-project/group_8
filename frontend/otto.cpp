@@ -8,7 +8,8 @@ otto::otto(QByteArray wt, QWidget *parent) :
     ui(new Ui::otto)
 {
     ui->setupUi(this);
-    myToken = "Bearer" + wt;
+    myToken = wt;
+    qDebug()<<myToken;
 
 
 }
@@ -32,7 +33,7 @@ void otto::on_ottoPoistu_clicked()
 
 void otto::on_Nosto10_clicked()
 {
-   withdraw(10,"debit");
+   withdraw(10);
    //getAccountData("1");
 }
 
@@ -76,14 +77,14 @@ void otto::resetTimer()
 }
 
 
-void otto::withdraw(int amount, QString account_type)
+void otto::withdraw(int amount)
 {
-    editSaldo("1", -amount, account_type);
+    editSaldo("1", -amount);
 
 }
 
 // Muuta annetun tilin saldoa
-void otto::editSaldo(QString accountId, int amount, QString account_type)
+void otto::editSaldo(QString accountId, int amount)// QString account_type)
 {
     // Keskeytä jos annettu määrä on 0 tai suurempi kuin tilin saldo
 
@@ -91,7 +92,7 @@ void otto::editSaldo(QString accountId, int amount, QString account_type)
     QJsonObject jsonObj;
     jsonObj.insert("balance",amount);
 
-    jsonObj.insert("account_type",account_type);
+    //jsonObj.insert("account_type",account_type);
     QString site_url=MyURL::getBaseURL()+"/account/"+accountId;
     QNetworkRequest request((site_url));
     //WEBTOKENIN ALKU
@@ -103,6 +104,8 @@ void otto::editSaldo(QString accountId, int amount, QString account_type)
     connect(ottoManager, SIGNAL(finished (QNetworkReply*)),
             this, SLOT(ottoSlot(QNetworkReply*)));
     reply = ottoManager->put(request, QJsonDocument(jsonObj).toJson());
+
+    //lisäys transactioniin
 
 }
 
