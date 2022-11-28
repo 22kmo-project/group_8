@@ -6,11 +6,18 @@ luottoraja::luottoraja(QByteArray wt, QWidget *parent) :
     ui(new Ui::luottoraja)
 {
     ui->setupUi(this);
+    myToken = wt;
+    qDebug()<<myToken;
 }
 
 luottoraja::~luottoraja()
 {
     delete ui;
+}
+
+void luottoraja::setWebToken(const QByteArray &newWebToken)
+{
+    webToken = newWebToken;
 }
 
 
