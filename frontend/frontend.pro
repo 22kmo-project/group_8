@@ -1,11 +1,14 @@
 QT       += core gui
 QT += network
 <<<<<<< HEAD
+<<<<<<< HEAD
 QT +=sql
 =======
 QT += sql
 
 >>>>>>> 658ea41d5065f5ff1dc63744e348242dc598a9d6
+=======
+>>>>>>> be618614738eeebfdc208efeda32e0f044646eeb
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++11
