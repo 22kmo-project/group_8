@@ -31,15 +31,14 @@ private slots:
 private:
     Ui::tilitapahtumat *ui;
     menuWindow *objectMenuToTilitapahtumat;
-<<<<<<< HEAD
 
     QNetworkAccessManager *tilitapahtumatManager;
     QNetworkReply *reply;
     QByteArray response_data;
-=======
+
     QByteArray myToken;
     QByteArray webToken;
->>>>>>> main
+
 };
 
 #endif // TILITAPAHTUMAT_H

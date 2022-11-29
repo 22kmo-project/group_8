@@ -6,10 +6,7 @@
 #include "qnetworkaccessmanager.h"
 #include <QtNetwork>
 #include <QDialog>
-<<<<<<< HEAD
-=======
 
->>>>>>> main
 //#include <QSqlQuery>
 
 namespace Ui {

@@ -2,12 +2,10 @@
 #include "ui_menuwindow.h"
 #include "otto.h"
 #include "luottoraja.h"
-<<<<<<< HEAD
 #include "tilitapahtumat.h"
-=======
 #include "myurl.h"
 #include "saldo.h"
->>>>>>> main
+
 
 
 menuWindow::menuWindow(QString card_number, bool credit, QByteArray webToken, QWidget *parent) :
@@ -42,10 +40,6 @@ void menuWindow::on_pushButton_KirjauduUlos_clicked()
 
 void menuWindow::on_pushButton_Saldo_clicked()
 {
-
-<<<<<<< HEAD
-}
-=======
     //saldo saldo;
     //saldo.setModal(true);
     //saldo.exec();
@@ -91,7 +85,6 @@ void menuWindow::getIdCard(QString card_number)
     reply = idCardManager->get(request);
 }
 
->>>>>>> main
 void menuWindow::on_pushButton_Otto_clicked()
 {
     otto nosto(webToken);
@@ -109,7 +102,7 @@ void menuWindow::on_pushButton_LuottorajanNosto_clicked()
 
 void menuWindow::on_pushButton_Tilitapahtumat_clicked()
 {
-    tilitapahtumat tilitapahtumat;
+    tilitapahtumat tilitapahtumat(webToken);
     tilitapahtumat.setModal(true);
     tilitapahtumat.exec();
 }
