@@ -28,11 +28,14 @@ private slots:
 
     void on_pushButton_LuottorajanNosto_clicked();
 
+    void on_pushButton_Tilitapahtumat_clicked();
+
     void on_pushButton_Saldo_clicked();
 
     void idCardSlot (QNetworkReply *reply);
 
     void getIdCard (QString card_number);
+
 private:
     Ui::menuWindow *ui;
     QByteArray webToken;

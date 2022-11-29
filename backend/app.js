@@ -31,6 +31,7 @@ var transactionRouter = require('./routes/transaction');
 var user_accountRouter = require('./routes/user_account');
 
 
+
 var app = express();
 
 app.use(logger('dev'));
@@ -43,7 +44,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.use('/login', loginRouter); //login not protected
-app.use(authenticateToken);
+//app.use(authenticateToken);
 
 //protected
 app.use('/', indexRouter);
@@ -52,6 +53,7 @@ app.use('/card',cardRouter);
 app.use('/account', accountRouter);
 app.use('/transaction', transactionRouter);
 app.use('/user_account', user_accountRouter);
+
 
 
 module.exports = app;

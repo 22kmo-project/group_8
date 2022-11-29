@@ -11,9 +11,7 @@ const account = {
   add: function(add_data, callback) {
     return db.query(
       'insert into account (account_type,balance) values(?,?)',
-      [add_data.account_type, add_data.balance],
-      callback
-    );
+      [add_data.account_type, add_data.balance]);
   },
   delete: function(id, callback) {
     return db.query('delete from account where id_account=?', [id], callback);
@@ -21,9 +19,8 @@ const account = {
   update: function(id, update_data, callback) {
     return db.query(
       'update account set account_type=?,balance=? where id_account=?',
-      [update_data.account_type, update_data.balance, id],
-      callback
-    );
-  }
+      [update_data.account_type, update_data.balance, id]);
+
+},
 };
 module.exports = account;
