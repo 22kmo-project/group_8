@@ -2,11 +2,14 @@
 #include "ui_menuwindow.h"
 #include "otto.h"
 #include "luottoraja.h"
+#include "tilitapahtumat.h"
 #include "myurl.h"
 #include "saldo.h"
 
 
+
 menuWindow::menuWindow(Info *givenInfo, QWidget *parent) ://QString card_number, bool credit, QByteArray webToken,
+
     QDialog(parent),
     ui(new Ui::menuWindow)
 {
@@ -40,7 +43,6 @@ void menuWindow::on_pushButton_KirjauduUlos_clicked()
 
 void menuWindow::on_pushButton_Saldo_clicked()
 {
-
     //saldo saldo;
     //saldo.setModal(true);
     //saldo.exec();
@@ -64,5 +66,13 @@ void menuWindow::on_pushButton_LuottorajanNosto_clicked()
     luottoraja luotto(webToken);
     luotto.setModal(true);
     luotto.exec();
+}
+
+
+void menuWindow::on_pushButton_Tilitapahtumat_clicked()
+{
+    tilitapahtumat tilitapahtumat(webToken);
+    tilitapahtumat.setModal(true);
+    tilitapahtumat.exec();
 }
 

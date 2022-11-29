@@ -3,6 +3,9 @@
 
 #include "menuwindow.h"
 #include <QDialog>
+#include <QNetworkAccessManager>
+#include <QtNetwork>
+#include <QJsonDocument>
 
 namespace Ui {
 class tilitapahtumat;
@@ -18,11 +21,24 @@ public:
     const QString &getWebtoken() const;
     void setWebToken(const QByteArray &newWebToken);
 
+private slots:
+
+    void tilitapahtumatSlot (QNetworkReply *reply);
+    void on_naytaTilitapahtumatBtn_clicked();
+
+    void on_TakaisinBtn_clicked();
+
 private:
     Ui::tilitapahtumat *ui;
     menuWindow *objectMenuToTilitapahtumat;
+
+    QNetworkAccessManager *tilitapahtumatManager;
+    QNetworkReply *reply;
+    QByteArray response_data;
+
     QByteArray myToken;
     QByteArray webToken;
+
 };
 
 #endif // TILITAPAHTUMAT_H

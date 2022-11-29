@@ -28,6 +28,8 @@ private slots:
 
     void on_pushButton_LuottorajanNosto_clicked();
 
+    void on_pushButton_Tilitapahtumat_clicked();
+
     void on_pushButton_Saldo_clicked();
 
 private:
