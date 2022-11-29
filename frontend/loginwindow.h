@@ -6,6 +6,10 @@
 #include "qnetworkaccessmanager.h"
 #include <QtNetwork>
 #include <QDialog>
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
 //#include <QSqlQuery>
 
 namespace Ui {
@@ -19,7 +23,7 @@ class loginWindow : public QDialog
 public:
     explicit loginWindow(QWidget *parent = nullptr);
     ~loginWindow();
-    QString getid_account(QString card_number);
+
 
 private slots:
     void on_btnPoistu_clicked();
@@ -33,7 +37,6 @@ private:
     QNetworkAccessManager *loginManager;
     QNetworkReply *reply;
 
-
     QByteArray response_data;
     QString card_number;
     QString pin;
@@ -41,5 +44,7 @@ private:
     int attempts;
     int time;
 };
+
+
 
 #endif // LOGINWINDOW_H

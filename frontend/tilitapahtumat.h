@@ -16,8 +16,10 @@ class tilitapahtumat : public QDialog
     Q_OBJECT
 
 public:
-    explicit tilitapahtumat(QWidget *parent = nullptr);
+    explicit tilitapahtumat(QByteArray wt, QWidget *parent = nullptr);
     ~tilitapahtumat();
+    const QString &getWebtoken() const;
+    void setWebToken(const QByteArray &newWebToken);
 
 private slots:
 
@@ -29,10 +31,15 @@ private slots:
 private:
     Ui::tilitapahtumat *ui;
     menuWindow *objectMenuToTilitapahtumat;
+<<<<<<< HEAD
 
     QNetworkAccessManager *tilitapahtumatManager;
     QNetworkReply *reply;
     QByteArray response_data;
+=======
+    QByteArray myToken;
+    QByteArray webToken;
+>>>>>>> main
 };
 
 #endif // TILITAPAHTUMAT_H

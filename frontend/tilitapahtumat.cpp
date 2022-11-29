@@ -2,12 +2,18 @@
 #include "tilitapahtumat.h"
 #include "ui_tilitapahtumat.h"
 
+<<<<<<< HEAD
 
 tilitapahtumat::tilitapahtumat(QWidget *parent) :
+=======
+tilitapahtumat::tilitapahtumat(QByteArray wt, QWidget *parent) :
+>>>>>>> main
     QDialog(parent),
     ui(new Ui::tilitapahtumat)
 {
     ui->setupUi(this);
+    myToken = wt;
+    qDebug()<<myToken;
 }
 
 tilitapahtumat::~tilitapahtumat()
@@ -15,6 +21,7 @@ tilitapahtumat::~tilitapahtumat()
     delete ui;
 }
 
+<<<<<<< HEAD
 void tilitapahtumat::on_naytaTilitapahtumatBtn_clicked()
 {
     QString site_url=MyURL::getBaseURL()+"/transaction";
@@ -53,3 +60,9 @@ void tilitapahtumat::on_TakaisinBtn_clicked()
     tilitapahtumat::close();
 }
 
+=======
+void tilitapahtumat::setWebToken(const QByteArray &newWebToken)
+{
+    webToken = newWebToken;
+}
+>>>>>>> main

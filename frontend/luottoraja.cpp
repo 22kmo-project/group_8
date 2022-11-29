@@ -1,16 +1,23 @@
 #include "luottoraja.h"
 #include "ui_luottoraja.h"
 
-luottoraja::luottoraja(QWidget *parent) :
+luottoraja::luottoraja(QByteArray wt, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::luottoraja)
 {
     ui->setupUi(this);
+    myToken = wt;
+    qDebug()<<myToken;
 }
 
 luottoraja::~luottoraja()
 {
     delete ui;
+}
+
+void luottoraja::setWebToken(const QByteArray &newWebToken)
+{
+    webToken = newWebToken;
 }
 
 

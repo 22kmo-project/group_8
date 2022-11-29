@@ -13,8 +13,10 @@ class luottoraja : public QDialog
     Q_OBJECT
 
 public:
-    explicit luottoraja(QWidget *parent = nullptr);
+    explicit luottoraja(QByteArray wt, QWidget *parent = nullptr);
     ~luottoraja();
+    const QString &getWebtoken() const;
+    void setWebToken(const QByteArray &newWebToken);
 
 private slots:
 
@@ -26,6 +28,8 @@ private slots:
 private:
     Ui::luottoraja *ui;
     menuWindow *objectMenuToLuottoraja;
+    QByteArray myToken;
+    QByteArray webToken;
 };
 
 #endif // LUOTTORAJA_H

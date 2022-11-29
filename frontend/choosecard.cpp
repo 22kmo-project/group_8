@@ -7,6 +7,7 @@ ChooseCard::ChooseCard(QString card_number, QWidget *parent) :
 {
     ui->setupUi(this);
     ui->labelCardnumber->setText(card_number);
+    cardNumber = card_number;
 }
 
 ChooseCard::~ChooseCard()
@@ -23,16 +24,17 @@ void ChooseCard::setWebToken(const QByteArray &newWebToken)
 
 void ChooseCard::on_pushButton_credit_clicked()
 {
-    objectCardToMenu=new menuWindow(card_number);
+    objectCardToMenu=new menuWindow(cardNumber, true, webToken);
     objectCardToMenu->setWebToken(webToken);
     objectCardToMenu->show();
+    ChooseCard::close();
 }
 
 
 void ChooseCard::on_pushButton_debit_clicked()
 {
-    objectCardToMenu=new menuWindow(card_number);
+    objectCardToMenu=new menuWindow(cardNumber, false, webToken);
     objectCardToMenu->setWebToken(webToken);
     objectCardToMenu->show();
+    ChooseCard::close();
 }
-
