@@ -8,7 +8,7 @@ saldo::saldo(QByteArray wt, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::saldo)
 {
-
+    myToken = wt;
     ui->setupUi(this);
     //ui->labelNaytaSaldo->text();
 
@@ -18,6 +18,10 @@ saldo::saldo(QByteArray wt, QWidget *parent) :
 
     QString site_url=MyURL::getBaseURL()+"/account/";
     QNetworkRequest request((site_url));
+
+    //WEBTOKENIN ALKU
+
+
     request.setRawHeader(QByteArray("Authorization"),(myToken));
     //WEBTOKENIN LOPPU
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
@@ -39,7 +43,7 @@ saldo::~saldo()
 
 void saldo::setWebToken(const QByteArray &newWebToken)
 {
-webToken = newWebToken;
+    webToken = newWebToken;
 }
 
 void saldo::getSaldo(QNetworkReply *reply)
