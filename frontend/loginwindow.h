@@ -6,6 +6,7 @@
 #include "qnetworkaccessmanager.h"
 #include <QtNetwork>
 #include <QDialog>
+#include "info.h"
 
 //#include <QSqlQuery>
 
@@ -33,6 +34,7 @@ private:
     ChooseCard *objectChooseCardWindow;
     QNetworkAccessManager *loginManager;
     QNetworkReply *reply;
+    Info *info;
 
     QByteArray response_data;
     QString card_number;

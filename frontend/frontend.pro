@@ -12,6 +12,7 @@ CONFIG += c++11
 
 SOURCES += \
     choosecard.cpp \
+    info.cpp \
     loginwindow.cpp \
     luottoraja.cpp \
     main.cpp \
@@ -24,6 +25,7 @@ SOURCES += \
 
 HEADERS += \
     choosecard.h \
+    info.h \
     loginwindow.h \
     luottoraja.h \
     mainwindow.h \
