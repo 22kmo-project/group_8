@@ -1,7 +1,7 @@
 #ifndef MENUWINDOW_H
 #define MENUWINDOW_H
 
-#include "qnetworkreply.h"
+#include "info.h"
 #include <QDialog>
 
 
@@ -15,7 +15,7 @@ class menuWindow : public QDialog
     Q_OBJECT
 
 public:
-    explicit menuWindow(QString card_number, bool credit, QByteArray token, QWidget *parent = nullptr);
+    explicit menuWindow(Info *info =nullptr, QWidget *parent = nullptr);
     ~menuWindow();
 
     const QString &getWebtoken() const;
@@ -30,9 +30,6 @@ private slots:
 
     void on_pushButton_Saldo_clicked();
 
-    void idCardSlot (QNetworkReply *reply);
-
-    void getIdCard (QString card_number);
 private:
     Ui::menuWindow *ui;
     QByteArray webToken;
@@ -42,6 +39,7 @@ private:
     QNetworkReply *reply;
     QString cardNumber;
     QByteArray token;
+    Info *info;
 };
 
 #endif // MENUWINDOW_H

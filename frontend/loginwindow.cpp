@@ -1,4 +1,5 @@
 #include "loginwindow.h"
+#include "info.h"
 #include "qjsondocument.h"
 #include "qjsonobject.h"
 #include "qnetworkreply.h"
@@ -24,12 +25,6 @@ loginWindow::~loginWindow()
     objectChooseCardWindow=nullptr;
 }
 
-/*QString loginWindow::getid_account(QString card_number)
-{
-    QSqlQuery nimiTest("SELECT id_accout FROM card WHERE card_number=?");
-    nimiTest.addBindValue(card_number);
-    return nimiTest.value(0).toString();
-}*/
 
 void loginWindow::on_btnPoistu_clicked()
 {
@@ -98,17 +93,22 @@ void loginWindow::loginSlot(QNetworkReply *reply)
                 }
             }
             else {
-                if(card_number=="332211")
+                if(card_number=="332211") //pelkkä debit-kortti
                 {
-                objectmenuWindow=new menuWindow(card_number, false, response_data);
-                objectmenuWindow->setWebToken("Bearer "+response_data);
-                objectmenuWindow->show();
-                loginWindow::close();
+                    info = new Info();
+                    info->setWebToken(response_data);
+                    info->setCard_Number(card_number);
+                    info->getIdCard();
+                    loginWindow::close();
+                //objectmenuWindow=new menuWindow(card_number, false, response_data);
+                //objectmenuWindow->setWebToken(response_data);
+                //objectmenuWindow->show();
+
                 }
                 else
                 {
                     objectChooseCardWindow=new ChooseCard(card_number);
-                    objectChooseCardWindow->setWebToken("Bearer "+response_data);
+                    objectChooseCardWindow->setWebToken(response_data);
                     objectChooseCardWindow->show();
                     loginWindow::close();
                 }

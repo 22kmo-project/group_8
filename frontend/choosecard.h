@@ -1,6 +1,7 @@
 #ifndef CHOOSECARD_H
 #define CHOOSECARD_H
 
+#include "info.h"
 #include "menuwindow.h"
 #include <QDialog>
 
@@ -28,6 +29,7 @@ private:
     menuWindow *objectCardToMenu;
     QByteArray webToken;
     QString cardNumber;
+    Info *info;
 };
 
 #endif // CHOOSECARD_H
