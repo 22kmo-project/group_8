@@ -10,24 +10,26 @@ saldo::saldo(QByteArray wt, QWidget *parent) :
 {
     myToken = wt;
     ui->setupUi(this);
-    ui->textnaytaSaldo->setText(account);
+    //ui->labelNaytaSaldo->text();
+
+    myToken = wt;
+    qDebug()<<myToken;
 
 
-    QJsonObject jsonObj;
-    jsonObj.insert("account", account);
-
-    QString site_url=MyURL::getBaseURL()+"/account";
+    QString site_url=MyURL::getBaseURL()+"/account/";
     QNetworkRequest request((site_url));
+
     //WEBTOKENIN ALKU
+
+
     request.setRawHeader(QByteArray("Authorization"),(myToken));
     //WEBTOKENIN LOPPU
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
-
     saldoManager = new QNetworkAccessManager(this);
-    connect(saldoManager, SIGNAL(finished (QNetworkReply*)),
-            this, SLOT(getSaldo(QNetworkReply*)));
-    reply = saldoManager->get(request/*, QJsonDocument(jsonObj).toJson()*/);
 
+    connect(saldoManager, SIGNAL(finished (QNetworkReply*)), this, SLOT(getSaldo(QNetworkReply*)));
+
+    reply = saldoManager->get(request);
 
 
 
@@ -45,24 +47,28 @@ void saldo::setWebToken(const QByteArray &newWebToken)
 }
 
 void saldo::getSaldo(QNetworkReply *reply)
+
 {
 
-     response_data=reply->readAll();
+
+    response_data=reply->readAll();
      qDebug()<<"DATA : "+response_data;
      QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
      QJsonArray json_array = json_doc.array();
      QString account;
      foreach (const QJsonValue &value, json_array) {
         QJsonObject json_obj = value.toObject();
-        account+=QString::number(json_obj["id_account"].toInt())+", "+json_obj["account_type"].toString()+", "+json_obj["balance"].toString()+"\r";
+        account+=QString::number(json_obj["balance"].toInt())+", "+json_obj["account_type"].toString()+"\n"/*+", "+json_obj["id_account"].toString()+","+"\n";*/;
      }
 
-     ui->textnaytaSaldo->setText(account);
+     ui->labelNaytaSaldo->setText(account);
 
      reply->deleteLater();
      saldoManager->deleteLater();
-    }
 
+
+
+}
 
 
 void saldo::on_poistuSaldo_clicked()
@@ -72,11 +78,21 @@ void saldo::on_poistuSaldo_clicked()
 
 
 
-
-
-void saldo::on_textnaytaSaldo_textChanged()
+/*void saldo::on_textnaytaSaldo_textChanged()
 {
+    QString site_url=MyURL::getBaseURL()+"/account/";
+    QNetworkRequest request((site_url));
+    request.setRawHeader(QByteArray("Authorization"),(myToken));
+    //WEBTOKENIN LOPPU
+    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+    saldoManager = new QNetworkAccessManager(this);
+
+    connect(saldoManager, SIGNAL(finished (QNetworkReply*)), this, SLOT(getSaldo(QNetworkReply*)));
+
+    reply = saldoManager->get(request);
 
 }
+
+*/
 
 

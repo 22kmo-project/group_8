@@ -32,7 +32,10 @@ private slots:
 
     void getSaldo (QNetworkReply *reply);
     void on_poistuSaldo_clicked();
-    void on_textnaytaSaldo_textChanged();
+    //void on_textnaytaSaldo_textChanged();
+
+
+
 
 
 private:
@@ -43,6 +46,10 @@ private:
     QByteArray response_data;
     QString account;
     QByteArray myToken;
+
+
+
+
 
 
 
