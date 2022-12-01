@@ -5,6 +5,10 @@ const account = {
     return db.query('select * from account where id_account=?', [id], callback);
   },
 
+  owner: function (id,callback) {
+    return db.query('select account_owner from account where id_account=?', [id], callback);
+  },
+
   getAll: function (callback) {
     return db.query('select * from account', callback);
   },

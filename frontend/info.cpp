@@ -91,8 +91,8 @@ void Info::getAccountSlot(QNetworkReply *reply)
 void Info::startMenuWindow()
 {
     menuWindow *objectmenuWindow;
-    objectmenuWindow = new menuWindow(this);
-   //objectmenuWindow->setWebToken(webToken);
+    objectmenuWindow = new menuWindow(bearerToken, idAccount);
+    //objectmenuWindow->setWebToken(webToken);
     objectmenuWindow->show();
 }
 

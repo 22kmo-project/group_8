@@ -25,27 +25,27 @@ router.get('/:id?',
 
 router.get('/:id?',
   function (request, response) {
-      account.getAccountID(request.params.id, function (err, dbResult) {
-        if (err) {
-          response.json(err);
-        } else {
-          response.json(dbResult[0]);
-        }
-      });
-});
-  
+    account.getAccountID(request.params.id, function (err, dbResult) {
+      if (err) {
+        response.json(err);
+      } else {
+        response.json(dbResult[0]);
+      }
+    });
+  });
+
 
 
 router.post('/',
-    function (request, response) {
-      account.add(request.body, function (err, dbResult) {
-        if (err) {
-          response.json(err);
-        } else {
-          response.json(request.body);
-        }
-      });
+  function (request, response) {
+    account.add(request.body, function (err, dbResult) {
+      if (err) {
+        response.json(err);
+      } else {
+        response.json(request.body);
+      }
     });
+  });
 
 router.delete('/:id',
   function (request, response) {
@@ -69,14 +69,25 @@ router.put('/:id',
     });
   });
 
-  router.post('/idaccount?',
+router.post('/idaccount?',
   function (request, response) {
-      account.idaccount(request.params.id_card, function (err, dbResult) {
-        if (err) {
-          response.json(err);
-        } else {
-          response.json(dbResult[0]);
-        }
-      });
-});
+    account.idaccount(request.params.id_card, function (err, dbResult) {
+      if (err) {
+        response.json(err);
+      } else {
+        response.json(dbResult[0]);
+      }
+    });
+  });
+
+router.post('/owner',
+  function (request, response) {
+    account.owner(request.body, function (err, dbResult) {
+      if (err) {
+        response.json(err);
+      } else {
+        response.json(dbResult[0]);
+      }
+    });
+  });
 module.exports = router;
