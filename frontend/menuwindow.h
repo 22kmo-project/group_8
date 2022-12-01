@@ -3,8 +3,7 @@
 
 #include "info.h"
 #include <QDialog>
-
-
+#include "myurl.h"
 
 namespace Ui {
 class menuWindow;
@@ -15,7 +14,7 @@ class menuWindow : public QDialog
     Q_OBJECT
 
 public:
-    explicit menuWindow(Info *info =nullptr, QWidget *parent = nullptr);
+    explicit menuWindow(QByteArray bearerToken, QString idAccount, QWidget *parent = nullptr);
     ~menuWindow();
 
     const QString &getWebtoken() const;
@@ -32,16 +31,23 @@ private slots:
 
     void on_pushButton_Saldo_clicked();
 
+private slots:
+    void getOwnerSlot (QNetworkReply *reply);
 private:
     Ui::menuWindow *ui;
     QByteArray webToken;
     bool isCredit;
     QString id_card;
+    QString id_account;
     QNetworkAccessManager *idCardManager;
+    QNetworkAccessManager *ownerManager;
     QNetworkReply *reply;
     QString cardNumber;
     QByteArray token;
     Info *info;
+    QByteArray response_data;
+    QString owner;
+    QByteArray ownerData;
 };
 
 #endif // MENUWINDOW_H

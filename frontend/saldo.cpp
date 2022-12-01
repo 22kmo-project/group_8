@@ -4,17 +4,17 @@
 #include "myurl.h"
 
 
-saldo::saldo(QByteArray wt, QWidget *parent) :
+saldo::saldo(QByteArray bearerToken, QString idAccount, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::saldo)
 {
-    myToken = wt;
     ui->setupUi(this);
     //ui->labelNaytaSaldo->text();
 
-    myToken = wt;
+    myToken = bearerToken;
     qDebug()<<myToken;
-
+    id_account = idAccount;
+    qDebug()<<id_account;
 
     QString site_url=MyURL::getBaseURL()+"/account/";
     QNetworkRequest request((site_url));

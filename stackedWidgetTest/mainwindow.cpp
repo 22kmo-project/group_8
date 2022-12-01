@@ -130,7 +130,7 @@ void MainWindow::loginSlot(QNetworkReply *reply)
                 }
                 else
                 {
-                    ui->stackedWidget->setCurrentWidget(ui->page_sisaan);
+                    ui->stackedWidget->setCurrentWidget(ui->page_valitseKortti);
                     timer->stop();
                 }
             }

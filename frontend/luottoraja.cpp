@@ -1,13 +1,16 @@
 #include "luottoraja.h"
 #include "ui_luottoraja.h"
 
-luottoraja::luottoraja(QByteArray wt, QWidget *parent) :
+luottoraja::luottoraja(QByteArray bearerToken, QString idAccount, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::luottoraja)
 {
     ui->setupUi(this);
-    myToken = wt;
+    myToken = bearerToken;
     qDebug()<<myToken;
+    id_account = idAccount;
+    qDebug()<<id_account;
+
 }
 
 luottoraja::~luottoraja()

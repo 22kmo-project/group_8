@@ -1,17 +1,16 @@
 #include "otto.h"
 #include "ui_otto.h"
-#include "mainwindow.h"
 
 
-otto::otto(QByteArray wt, QWidget *parent) :
+otto::otto(QByteArray bearerToken, QString idAccount, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::otto)
 {
     ui->setupUi(this);
-    myToken = wt;
+    myToken = bearerToken;
     qDebug()<<myToken;
-
-
+    id_account = idAccount;
+    qDebug()<<id_account;
 }
 
 otto::~otto()

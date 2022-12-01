@@ -3,14 +3,16 @@
 #include "ui_tilitapahtumat.h"
 
 
-tilitapahtumat::tilitapahtumat(QByteArray wt, QWidget *parent) :
+tilitapahtumat::tilitapahtumat(QByteArray bearerToken, QString idAccount, QWidget *parent) :
 
     QDialog(parent),
     ui(new Ui::tilitapahtumat)
 {
     ui->setupUi(this);
-    myToken = wt;
+    myToken = bearerToken;
     qDebug()<<myToken;
+    id_account = idAccount;
+    qDebug()<<id_account;
 }
 
 tilitapahtumat::~tilitapahtumat()

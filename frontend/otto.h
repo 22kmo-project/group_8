@@ -33,7 +33,7 @@ class otto : public QDialog
     Q_OBJECT
 
 public:
-    explicit otto(QByteArray wt, QWidget *parent = nullptr);
+    explicit otto(QByteArray bearerToken, QString idAccount, QWidget *parent = nullptr);
     ~otto();
     void updateAccountData();
     void addActivity(QString accountID, int amount);
@@ -67,7 +67,7 @@ private:
     QByteArray response_data;
     QByteArray myToken;
     QByteArray webToken;
-
+    QString id_account;
     //PopUpDialog *objectPopUpDialog;
 };
 

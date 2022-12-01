@@ -16,7 +16,7 @@ class tilitapahtumat : public QDialog
     Q_OBJECT
 
 public:
-    explicit tilitapahtumat(QByteArray wt, QWidget *parent = nullptr);
+    explicit tilitapahtumat(QByteArray bearerToken, QString idAccount, QWidget *parent = nullptr);
     ~tilitapahtumat();
     const QString &getWebtoken() const;
     void setWebToken(const QByteArray &newWebToken);
@@ -38,6 +38,7 @@ private:
 
     QByteArray myToken;
     QByteArray webToken;
+    QString id_account;
 
 };
 
