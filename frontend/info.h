@@ -15,6 +15,7 @@ public:
     Info();
 
     void getIdCard();
+    void getIdAccount();
     const QString &getWebToken() const;
     void setWebToken(const QByteArray &newWebToken);
 
@@ -24,15 +25,23 @@ public:
     const QString &getCardId() const;
     void setCardId(const QString &newCardId);
 
+    const QString &getIdAccount() const;
+    void setIdAccount(const QString &newIdAccount);
+
+
+
 private slots:
 
     void getIdSlot(QNetworkReply *reply);
+    void getAccountSlot (QNetworkReply *reply);
 
 private:
     QString idCard;
+    QString idAccount;
     QString cardNumber;
     QByteArray webToken;
     QNetworkAccessManager *idCardManager;
+    QNetworkAccessManager *idAccountManager;
     QNetworkReply *reply;
     QByteArray response_data;
     void startMenuWindow();

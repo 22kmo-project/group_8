@@ -31,7 +31,7 @@ const QString &menuWindow::getWebtoken() const
 
 void menuWindow::setWebToken(const QByteArray &newWebToken)
 {
-    webToken = newWebToken;
+
 }
 
 

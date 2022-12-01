@@ -93,8 +93,8 @@ void loginWindow::loginSlot(QNetworkReply *reply)
                 }
             }
             else {
-                if(card_number=="332211") //pelkkä debit-kortti
-                {
+                //if(card_number=="332211") //pelkkä debit-kortti
+                //{
                     info = new Info();
                     info->setWebToken(response_data);
                     info->setCard_Number(card_number);
@@ -105,7 +105,7 @@ void loginWindow::loginSlot(QNetworkReply *reply)
                 //objectmenuWindow->show();
 
                 }
-                else
+               /* else
                 {
                     objectChooseCardWindow=new ChooseCard(card_number);
                     objectChooseCardWindow->setWebToken(response_data);
@@ -115,7 +115,7 @@ void loginWindow::loginSlot(QNetworkReply *reply)
 
 
 
-            }
+            }*/
         }
     }
     reply->deleteLater();
