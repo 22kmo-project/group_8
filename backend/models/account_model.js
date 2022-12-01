@@ -15,7 +15,7 @@ const account = {
   add: function (add_data, callback) {
     return db.query(
       'insert into account (account_type,balance,account_owner, id_card) values(?,?,?,?)',
-      [add_data.account_type, add_data.balance, add_data.account_owner, add_data.id_card]);
+      [add_data.account_type, add_data.balance, add_data.account_owner, add_data.id_card], callback);
   },
   delete: function (id, callback) {
     return db.query('delete from account where id_account=?', [id], callback);
@@ -23,7 +23,7 @@ const account = {
   update: function (id, update_data, callback) {
     return db.query(
       'update account set account_type=?,balance=?, account_owner=?, id_card=? where id_account=?',
-      [update_data.account_type, update_data.balance, update_data.account_owner, updata_data.id_card, id]);
+      [update_data.account_type, update_data.balance, update_data.account_owner, update_data.id_card, id],callback);
   },
 
 
