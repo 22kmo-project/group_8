@@ -4,7 +4,7 @@ const idaccount = require('../models/idaccount_model');
 
 router.post('/',
 function (request, response) {
-    idaccount.getIdAccount(request.params.id_card, function (err, dbResult) {
+    idaccount.getIdAccount(request.body.id_card, function (err, dbResult) {
       if (err) {
         response.json(err);
       } else {
