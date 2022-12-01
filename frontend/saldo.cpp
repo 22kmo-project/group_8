@@ -16,7 +16,7 @@ saldo::saldo(QByteArray bearerToken, QString idAccount, QWidget *parent) :
     id_account = idAccount;
     qDebug()<<id_account;
 
-    QString site_url=MyURL::getBaseURL()+"/account/";
+    QString site_url=MyURL::getBaseURL()+"/account/"+idAccount;
     QNetworkRequest request((site_url));
 
     //WEBTOKENIN ALKU
@@ -58,7 +58,7 @@ void saldo::getSaldo(QNetworkReply *reply)
      QString account;
      foreach (const QJsonValue &value, json_array) {
         QJsonObject json_obj = value.toObject();
-        account+=QString::number(json_obj["balance"].toInt())+", "+json_obj["account_type"].toString()+"\n"/*+", "+json_obj["id_account"].toString()+","+"\n";*/;
+        account+=QString::number(json_obj["balance"].toInt())+", "+json_obj["account_type"].toString()+"\n";
      }
 
      ui->labelNaytaSaldo->setText(account);
