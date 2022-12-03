@@ -9,10 +9,10 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
     //objectMySQL = new DLLMySQL;
-    objectTimer = new QTimer;
-    objectTimer->setInterval(30000);
-    objectTimer->setSingleShot(true);
-    connect(objectTimer, SIGNAL(timeout()), this, SLOT(on_timeout()));
+    //objectTimer = new QTimer;
+    //objectTimer->setInterval(30000);
+    //objectTimer->setSingleShot(true);
+    //connect(objectTimer, SIGNAL(timeout()), this, SLOT(on_timeout()));
 }
 
 MainWindow::~MainWindow()
@@ -25,7 +25,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_btnSisaan_clicked()
 {
-    objectloginWindow = new loginWindow();
-    objectloginWindow->show();
+    objectloginWindow = new loginWindow(); //luodaan olio login-ikkunsta
+    objectloginWindow->show(); //avaa login-ikkunan
 }
 

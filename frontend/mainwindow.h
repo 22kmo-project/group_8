@@ -3,9 +3,6 @@
 
 #include "loginwindow.h"
 #include <QMainWindow>
-#include <QtNetwork>
-#include <QNetworkAccessManager>
-#include <QJsonDocument>
 #include <QTimer>
 #include <QSql>
 #include <QSqlDatabase>
@@ -13,12 +10,12 @@
 #include <QSqlTableModel>
 //#include "../group_8/backend/database"
 
-enum SearchMode
+/*enum SearchMode
 {
     name,
     saldo,
     activity
-};
+}; voiko poistaa? */
 
 
 QT_BEGIN_NAMESPACE
@@ -32,7 +29,6 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    bool editSaldo(QString account_id, int amount);
 
 private slots:
     void on_btnSisaan_clicked();
@@ -41,12 +37,7 @@ private slots:
 private:
     Ui::MainWindow *ui;
     loginWindow *objectloginWindow;
-    QNetworkAccessManager *getManager;
-    QNetworkReply *reply;
-    QByteArray response_data;
-
-
-    QTimer *objectTimer;
+    //QTimer *objectTimer;
     //DLLMySQL *objectMySQL;
 };
 #endif // MAINWINDOW_H
