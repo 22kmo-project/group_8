@@ -7,7 +7,7 @@ const account = {
 
   //tämä koodi on uudempi versio kommentoidusta... katsotaan toimiiko
 
-  owner: function (id,callback) {
+  /*owner: function (id,callback) {
     return db.query('select concat(u.fname, " ", u.lname) as "account_owner" from user as u join account as a using(id_user) where id_account=?', [id], callback);
   },
 

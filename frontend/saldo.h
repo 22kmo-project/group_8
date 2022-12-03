@@ -25,20 +25,12 @@ public:
     ~saldo();
     const QString &getWebtoken() const;
     void setWebToken(const QByteArray &newWebToken);
-
-
-
-
     void setBalance(const QString &newBalance);
 
 private slots:
 
     void on_poistuSaldo_clicked();
     void getBalanceSlot (QNetworkReply *reply);
-
-
-
-
 
 private:
     Ui::saldo *ui;
@@ -51,12 +43,7 @@ private:
     QString balance;
     QNetworkAccessManager *balanceManager;
 
-
-
-
-
-
-
 };
+
 
 #endif // SALDO_H

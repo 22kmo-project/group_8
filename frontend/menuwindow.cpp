@@ -35,22 +35,19 @@ menuWindow::menuWindow(QByteArray bearerToken, QString idAccount, QWidget *paren
 
     reply = ownerManager->get(request);
     ui->labelCardnumber->setText(owner);
-
 }
 
 void menuWindow::getOwnerSlot(QNetworkReply *reply)
 {
-     response_data = reply->readAll();
-     qDebug()<<response_data;
-     QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
-     QJsonObject json_obj = json_doc.object();
-     owner=json_obj["account_owner"].toString();
-     qDebug()<<owner;
+    response_data = reply->readAll();
+    qDebug()<<response_data;
+    QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
+    QJsonObject json_obj = json_doc.object();
+    owner=json_obj["account_owner"].toString();
+    qDebug()<<owner;
 
-    // reply->deleteLater();
-     ui->labelCardnumber->setText("Tervetuloa "+owner+"!");
-
-
+   // reply->deleteLater();
+    ui->labelCardnumber->setText("Tervetuloa "+owner+"!");
 }
 
 
