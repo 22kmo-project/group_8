@@ -1,6 +1,6 @@
 #include "otto.h"
 #include "ui_otto.h"
-
+#include "myurl.h"
 
 otto::otto(QByteArray bearerToken, QString idAccount, QWidget *parent) :
     QDialog(parent),

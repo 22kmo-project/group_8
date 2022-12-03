@@ -79,6 +79,7 @@ void loginWindow::loginSlot(QNetworkReply *reply)
                 { //jos yrityksiä tulee kolme, kirjaudu-nappi häviää ja käyttäjän täytyy sulkea ikkuna voidakseen yrittää uudelleen.
                     ui->labelInfo->setText("Kortti on lukittu, sulje ikkuna ja yritä uudestaan");
                     ui->btnKirjaudu->hide();
+
                 }
             }
             else { //jos kirjautuminen onnistuu luodaan olio info-luokasta. välitetään luokalle kortin numero, sekä responsedata
@@ -86,6 +87,7 @@ void loginWindow::loginSlot(QNetworkReply *reply)
                     info->setWebToken(response_data);
                     info->setCard_Number(card_number);
                     info->getIdCard();
+                    //info->getAccount_Type(account_Type);
                     loginWindow::close();
                 }
         }
