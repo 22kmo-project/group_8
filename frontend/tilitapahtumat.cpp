@@ -22,10 +22,10 @@ tilitapahtumat::~tilitapahtumat()
 
 void tilitapahtumat::on_naytaTilitapahtumatBtn_clicked()
 {
-    QString site_url=MyURL::getBaseURL()+"/transaction";
+    QString site_url=MyURL::getBaseURL()+"/transaction/"+id_account;
     QNetworkRequest request((site_url));
     //WEBTOKEN ALKU
-    //request.setRawHeader(QByteArray("Authorization"),(webToken));
+    request.setRawHeader(QByteArray("Authorization"),(myToken));
     //WEBTOKEN LOPPU
 
     tilitapahtumatManager = new QNetworkAccessManager(this);
@@ -37,10 +37,10 @@ void tilitapahtumat::on_naytaTilitapahtumatBtn_clicked()
 
 void tilitapahtumat::tilitapahtumatSlot(QNetworkReply *reply)
 {
-    QByteArray response_data=reply->readAll();
+    /*QByteArray response_data=reply->readAll();
     QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
     QJsonArray json_array = json_doc.array();
-    QString transaction="";
+    QString transaction;
     foreach (const QJsonValue &value, json_array) {
         QJsonObject json_obj = value.toObject();
              transaction+=json_obj["transaction_date"].toString()+"\r\n"+
@@ -49,7 +49,19 @@ void tilitapahtumat::tilitapahtumatSlot(QNetworkReply *reply)
     qDebug()<<transaction;
     ui->textTilitapahtumat->setText(transaction);
     reply->deleteLater();
-    tilitapahtumatManager->deleteLater();
+    tilitapahtumatManager->deleteLater();*/
+
+    response_data = reply->readAll();
+    QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
+    QJsonObject json_obj = json_doc.object();
+
+    qDebug()<<response_data;
+
+    transaction+=json_obj["transaction_date"].toString()+"\r\n"+
+            json_obj["activity"].toString()+" , "+QString::number(json_obj["amount"].toInt())+"\r\n";
+    qDebug()<<transaction;
+    ui->textTilitapahtumat->setText(transaction);
+
 }
 
 

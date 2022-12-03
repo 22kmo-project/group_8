@@ -16,7 +16,7 @@ menuWindow::menuWindow(QByteArray bearerToken, QString idAccount, QWidget *paren
     qDebug()<<webToken;
     id_account = idAccount;
 
-    QString site_url=MyURL::getBaseURL()+"/account/owner/";
+    QString site_url=MyURL::getBaseURL()+"/account/"+idAccount;
     QNetworkRequest request((site_url));
     //WEBTOKEN ALKU
     QByteArray myToken=bearerToken;
@@ -25,13 +25,17 @@ menuWindow::menuWindow(QByteArray bearerToken, QString idAccount, QWidget *paren
     //WEBTOKEN LOPPU
     ownerManager = new QNetworkAccessManager(this);
 
-    QJsonObject jsonObj;
-    jsonObj.insert("id_account",id_account);
-    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+   // QJsonObject jsonObj;
+    //jsonObj.insert("account_owner", owner);
+    //request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
 
-    connect(ownerManager, SIGNAL(finished (QNetworkReply*)),
-            this, SLOT(getOwnerSlot(QNetworkReply*)));
-    reply = ownerManager->post(request, QJsonDocument(jsonObj).toJson());
+    ownerManager = new QNetworkAccessManager(this);
+
+    connect(ownerManager, SIGNAL(finished (QNetworkReply*)), this, SLOT(getOwnerSlot(QNetworkReply*)));
+
+    reply = ownerManager->get(request);
+    ui->labelCardnumber->setText(owner);
+
 }
 
 void menuWindow::getOwnerSlot(QNetworkReply *reply)
@@ -43,8 +47,10 @@ void menuWindow::getOwnerSlot(QNetworkReply *reply)
      owner=json_obj["account_owner"].toString();
      qDebug()<<owner;
 
-     reply->deleteLater();
+    // reply->deleteLater();
      ui->labelCardnumber->setText("Tervetuloa "+owner+"!");
+
+
 }
 
 

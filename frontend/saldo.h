@@ -28,11 +28,13 @@ public:
 
 
 
+
+    void setBalance(const QString &newBalance);
+
 private slots:
 
-    void getSaldo (QNetworkReply *reply);
     void on_poistuSaldo_clicked();
-    //void on_textnaytaSaldo_textChanged();
+    void getBalanceSlot (QNetworkReply *reply);
 
 
 
@@ -41,12 +43,13 @@ private slots:
 private:
     Ui::saldo *ui;
     QByteArray webToken;
-    QNetworkAccessManager *saldoManager;
     QNetworkReply *reply;
     QByteArray response_data;
     QString account;
     QByteArray myToken;
     QString id_account;
+    QString balance;
+    QNetworkAccessManager *balanceManager;
 
 
 
