@@ -31,7 +31,11 @@ const account = {
   },
   add: function (add_data, callback) {
     return db.query(
+<<<<<<< HEAD
       'insert into account (account_type,balance,id_card, id_user, account_owner) values(?,?,?,?,?np)',
+=======
+      'insert into account (account_type,balance,id_card, id_user, account_owner) values(?,?,?,?,?)',
+>>>>>>> 6ddb02cdaf0f4e1b21f5df32830368d68df2a480
       [add_data.account_type, add_data.balance, add_data.id_card, add_data.id_user, add_data.account_owner], callback);
   },
   delete: function (id, callback) {

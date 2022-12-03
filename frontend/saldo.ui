@@ -17,7 +17,7 @@
    <bool>false</bool>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(255, 85, 0);</string>
+   <string notr="true">background-color: rgb(8, 8, 67);</string>
   </property>
   <widget class="QPushButton" name="poistuSaldo">
    <property name="geometry">
@@ -37,7 +37,8 @@
     <bool>false</bool>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(67, 67, 67);</string>
+    <string notr="true">background-color: rgb(2, 3, 48);
+color: rgb(255, 255, 255);</string>
    </property>
    <property name="text">
     <string>Poistu</string>
@@ -58,7 +59,8 @@
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(70, 70, 70);</string>
+    <string notr="true">background-color: rgb(8, 8, 67);
+color: rgb(255, 255, 255);</string>
    </property>
    <property name="text">
     <string>Saldo</string>
@@ -85,14 +87,32 @@
   <widget class="QTextEdit" name="textSaldo">
    <property name="geometry">
     <rect>
-     <x>60</x>
+     <x>50</x>
      <y>180</y>
+
+     <width>231</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>26</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">alternate-background-color: rgb(8, 8, 67);
+color: rgb(255, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string/>
+
      <width>361</width>
      <height>291</height>
     </rect>
    </property>
    <property name="styleSheet">
     <string notr="true">background-color: rgb(70, 70, 70);</string>
+
    </property>
   </widget>
  </widget>
