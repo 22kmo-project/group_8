@@ -7,6 +7,9 @@ const transaction = {
   getAll: function(callback) {
     return db.query('select * from transaction', callback);
   },
+  getTransaction: function (id, callback) {
+    return db.query('select * from transaction where id_account=?', [id], callback);
+  },
   add: function(add_data, callback) {
     return db.query(
       'insert into transaction (id_transaction,transaction_date,activity,amount,id_account) values(?,?,?,?,?)',
