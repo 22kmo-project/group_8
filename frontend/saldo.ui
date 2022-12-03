@@ -47,24 +47,15 @@
     <rect>
      <x>40</x>
      <y>100</y>
-     <width>37</width>
-     <height>12</height>
-    </rect>
-   </property>
-   <property name="text">
-
-    <string>TextLabel</string>
-
-    <string/>
-
-     <width>220</width>
-     <height>291</height>
+     <width>151</width>
+     <height>51</height>
     </rect>
    </property>
    <property name="styleSheet">
     <string notr="true">background-color: rgb(70, 70, 70);</string>
-
-
+   </property>
+   <property name="text">
+    <string/>
    </property>
   </widget>
  </widget>
