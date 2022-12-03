@@ -137,3 +137,12 @@ void Info::setIdAccount(const QString &newIdAccount)
     idAccount = newIdAccount;
 }
 
+const QString &Info::getAccount_Type() const
+{
+    return account_Type;
+}
+
+void Info::setAccount_Type(const QString &newAccount_Type)
+{
+    account_Type = newAccount_Type;
+}

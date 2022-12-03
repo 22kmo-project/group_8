@@ -28,6 +28,11 @@ public:
     const QString &getIdAccount() const;
     void setIdAccount(const QString &newIdAccount);
 
+    const QString &getAccount_Type() const;
+    void setAccount_Type(const QString &newAccount_Type);
+
+
+
 
 
 private slots:
@@ -46,6 +51,7 @@ private:
     QByteArray response_data;
     void startMenuWindow();
     QByteArray bearerToken;
+    QString account_Type;
 };
 
 #endif // INFO_H
