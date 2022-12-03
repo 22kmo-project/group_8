@@ -84,11 +84,12 @@ color: rgb(255, 255, 255);</string>
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="labelNaytaSaldo">
+  <widget class="QTextEdit" name="textSaldo">
    <property name="geometry">
     <rect>
      <x>50</x>
      <y>180</y>
+
      <width>231</width>
      <height>91</height>
     </rect>
@@ -104,6 +105,14 @@ color: rgb(255, 255, 255);</string>
    </property>
    <property name="text">
     <string/>
+
+     <width>361</width>
+     <height>291</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(70, 70, 70);</string>
+
    </property>
   </widget>
  </widget>

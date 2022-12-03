@@ -1,9 +1,4 @@
 #include "loginwindow.h"
-#include "info.h"
-#include "qjsondocument.h"
-#include "qjsonobject.h"
-#include "qnetworkreply.h"
-#include "qobjectdefs.h"
 #include "ui_loginwindow.h"
 #include "myurl.h"
 
@@ -18,11 +13,6 @@ loginWindow::loginWindow(QWidget *parent) :
 loginWindow::~loginWindow()
 {
     delete ui;
-    delete objectmenuWindow;
-    objectmenuWindow=nullptr;
-
-    delete objectChooseCardWindow;
-    objectChooseCardWindow=nullptr;
 }
 
 
@@ -62,7 +52,6 @@ void loginWindow::loginSlot(QNetworkReply *reply)
     QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
     QJsonObject json_obj = json_doc.object();
 
-    QString testi=(json_obj["id_card"].toString());
 
     if(response_data.length()==0)
     {
@@ -79,43 +68,26 @@ void loginWindow::loginSlot(QNetworkReply *reply)
                 ui->lineUsername->clear();
                 ui->linePin->clear();
                 ui->labelInfo->setText("Tunnus ja salasana eivät täsmää");
-                if(attempts < 2)
+                if(attempts < 2) //käyttäjällä on 3 yritystä kirjautua.
                 {
                     ++attempts;
                     ui->lineUsername->clear();
                     ui->linePin->clear();
                     qDebug()<<"Yritykset"<<attempts;
-
                 }
                 else
-                {
+                { //jos yrityksiä tulee kolme, kirjaudu-nappi häviää ja käyttäjän täytyy sulkea ikkuna voidakseen yrittää uudelleen.
                     ui->labelInfo->setText("Kortti on lukittu, sulje ikkuna ja yritä uudestaan");
+                    ui->btnKirjaudu->hide();
                 }
             }
-            else {
-                //if(card_number=="332211") //pelkkä debit-kortti
-                //{
+            else { //jos kirjautuminen onnistuu luodaan olio info-luokasta. välitetään luokalle kortin numero, sekä responsedata
                     info = new Info();
                     info->setWebToken(response_data);
                     info->setCard_Number(card_number);
                     info->getIdCard();
                     loginWindow::close();
-                //objectmenuWindow=new menuWindow(card_number, false, response_data);
-                //objectmenuWindow->setWebToken(response_data);
-                //objectmenuWindow->show();
-
                 }
-               /* else
-                {
-                    objectChooseCardWindow=new ChooseCard(card_number);
-                    objectChooseCardWindow->setWebToken(response_data);
-                    objectChooseCardWindow->show();
-                    loginWindow::close();
-                }
-
-
-
-            }*/
         }
     }
     reply->deleteLater();

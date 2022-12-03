@@ -41,11 +41,9 @@ menuWindow::menuWindow(QByteArray bearerToken, QString idAccount, QWidget *paren
 void menuWindow::getOwnerSlot(QNetworkReply *reply)
 {
      response_data = reply->readAll();
+     qDebug()<<response_data;
      QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
      QJsonObject json_obj = json_doc.object();
-
-     qDebug()<<response_data;
-
      owner=json_obj["account_owner"].toString();
      qDebug()<<owner;
 

@@ -54,11 +54,25 @@ void saldo::on_poistuSaldo_clicked() //Suljetaan saldo-ikkuna
 void saldo::getBalanceSlot(QNetworkReply *reply) //Pyydetään balance tietokannasta
 {
 
+
     response_data = reply->readAll();
     QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
     QJsonObject json_obj = json_doc.object();
 
     qDebug()<<response_data;
+
+    response_data=reply->readAll();
+     qDebug()<<"DATA : "+response_data;
+     QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
+     QJsonArray json_array = json_doc.array();
+     QString account ="";
+     foreach (const QJsonValue &value, json_array) {
+        QJsonObject json_obj = value.toObject();
+        account+=QString::number(json_obj["balance"].toInt())+", "+json_obj["account_type"].toString()+"\n";
+     }
+
+     ui->textSaldo->setText(account);
+
 
     balance=QString::number(json_obj["balance"].toInt())+"\n";;
     qDebug()<<balance;
