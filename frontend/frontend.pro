@@ -11,7 +11,6 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    choosecard.cpp \
     info.cpp \
     loginwindow.cpp \
     luottoraja.cpp \
@@ -24,7 +23,6 @@ SOURCES += \
     tilitapahtumat.cpp
 
 HEADERS += \
-    choosecard.h \
     info.h \
     loginwindow.h \
     luottoraja.h \
@@ -36,7 +34,6 @@ HEADERS += \
     tilitapahtumat.h
 
 FORMS += \
-    choosecard.ui \
     loginwindow.ui \
     luottoraja.ui \
     mainwindow.ui \

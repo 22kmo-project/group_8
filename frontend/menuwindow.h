@@ -3,7 +3,6 @@
 
 #include "info.h"
 #include <QDialog>
-#include "myurl.h"
 
 namespace Ui {
 class menuWindow;
@@ -22,13 +21,9 @@ public:
 
 private slots:
     void on_pushButton_KirjauduUlos_clicked();
-
     void on_pushButton_Otto_clicked();
-
     void on_pushButton_LuottorajanNosto_clicked();
-
     void on_pushButton_Tilitapahtumat_clicked();
-
     void on_pushButton_Saldo_clicked();
 
 private slots:
@@ -47,7 +42,6 @@ private:
     Info *info;
     QByteArray response_data;
     QString owner;
-    QByteArray ownerData;
 };
 
 #endif // MENUWINDOW_H

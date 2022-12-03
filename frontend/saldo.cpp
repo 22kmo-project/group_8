@@ -55,13 +55,13 @@ void saldo::getSaldo(QNetworkReply *reply)
      qDebug()<<"DATA : "+response_data;
      QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
      QJsonArray json_array = json_doc.array();
-     QString account;
+     QString account ="";
      foreach (const QJsonValue &value, json_array) {
         QJsonObject json_obj = value.toObject();
         account+=QString::number(json_obj["balance"].toInt())+", "+json_obj["account_type"].toString()+"\n";
      }
 
-     ui->labelNaytaSaldo->setText(account);
+     ui->textSaldo->setText(account);
 
      reply->deleteLater();
      saldoManager->deleteLater();
