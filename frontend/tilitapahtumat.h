@@ -39,6 +39,7 @@ private:
     QByteArray myToken;
     QByteArray webToken;
     QString id_account;
+    QString transaction;
 
 };
 
