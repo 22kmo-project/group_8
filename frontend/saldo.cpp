@@ -63,7 +63,7 @@ void saldo::getBalanceSlot(QNetworkReply *reply) //Pyydetään balance tietokann
 
     response_data=reply->readAll();
      qDebug()<<"DATA : "+response_data;
-     QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
+     //QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
      QJsonArray json_array = json_doc.array();
      QString account ="";
      foreach (const QJsonValue &value, json_array) {
@@ -87,6 +87,7 @@ void saldo::setBalance(const QString &newBalance)
 {
     balance = newBalance;
 }
+
 
 
 
