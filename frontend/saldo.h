@@ -9,6 +9,8 @@
 #include "myurl.h"
 #include <QMainWindow>
 #include <QtNetwork>
+#include <QDialog>
+#include <QTimer>
 
 
 
@@ -31,6 +33,7 @@ private slots:
 
     void on_poistuSaldo_clicked();
     void getBalanceSlot (QNetworkReply *reply);
+    void timeoutSlot();
 
 private:
     Ui::saldo *ui;
@@ -42,6 +45,8 @@ private:
     QString id_account;
     QString balance;
     QNetworkAccessManager *balanceManager;
+    int time;
+    QTimer *timer;
 
 };
 
