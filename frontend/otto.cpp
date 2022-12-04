@@ -40,36 +40,57 @@ void otto::setWebToken(const QByteArray &newWebToken)
 
 void otto::on_ottoPoistu_clicked()
 {
-    otto::close();
+    QJsonObject jsonObjUpdate;
+    jsonObjUpdate.insert("balance", balance);
+    QString site_url=MyURL::getBaseURL()+"/account/balance/"+id_account;
+    qDebug()<<site_url;
+    QNetworkRequest request((site_url));
+    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+    //WEBTOKEN ALKU
+    request.setRawHeader(QByteArray("Authorization"),(myToken));
+    qDebug()<<myToken;
+    //WEBTOKEN LOPPU
+
+    updateBalanceManager = new QNetworkAccessManager(this);
+    connect(updateBalanceManager, SIGNAL(finished(QNetworkReply*)),
+            this, SLOT(updateBalanceSlot(QNetworkReply*)));
+
+    reply = updateBalanceManager->put(request, QJsonDocument(jsonObjUpdate).toJson());
+
+
 }
 
 void otto::on_Nosto10_clicked()
 {
-   withdraw(10);
-   //getAccountData("1");
+    checkMoney(balanceValue,10);
+    amount=10;
 }
 
 
 void otto::on_Nosto20_clicked()
 {
-   amount=20;
+    checkMoney(balanceValue,20);
+    amount=20;
 }
 
 
 void otto::on_Nosto50_clicked()
 {
-   amount=50;
+    checkMoney(balanceValue,50);
+    amount=50;
 }
 
 
 void otto::on_Nosto100_clicked()
 {
-   amount=100;
+    checkMoney(balanceValue,100);
+    amount=100;
 }
 
 
 void otto::on_Nosto200_clicked()
 {
+    checkMoney(balanceValue,200);
     amount=200;
 }
 
@@ -89,13 +110,13 @@ void otto::resetTimer()
 }
 
 
-void otto::withdraw(int amount)
+/*void otto::withdraw(int amount)
 {
     editSaldo("1", -amount);
 
-}
+}*/
 
-// Muuta annetun tilin saldoa
+/*// Muuta annetun tilin saldoa
 void otto::editSaldo(QString accountId, int amount)// QString accountType)
 {
     // Keskeytä jos annettu määrä on 0 tai suurempi kuin tilin saldo
@@ -134,12 +155,8 @@ QString otto::getAccountData(QString idAccount)
     connect(ottoManager, SIGNAL(finished (QNetworkReply*)),
             this, SLOT(ottoSlot(QNetworkReply*)));
     reply = ottoManager->post(request, QJsonDocument(jsonObj).toJson());
-}
+}*/
 
-void otto::getAccountType()
-{
-
-}
 
 void otto::getAccountTypeSlot(QNetworkReply *reply)
 {
@@ -148,7 +165,35 @@ void otto::getAccountTypeSlot(QNetworkReply *reply)
     QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
     QJsonObject json_obj = json_doc.object();
     accountType=json_obj["account_type"].toString();
+    balance=QString::number(json_obj["balance"].toDouble());
+    balanceValue=QString(balance).toDouble();
+    qDebug()<<balance;
     qDebug()<<accountType;
 
     reply->deleteLater();
+    AccountTypeManager->deleteLater();
 }
+
+void otto::checkMoney(double balanssi, double amountti)
+{
+    if(balanssi<amountti)
+    {
+        qDebug()<<"ei onnistunut";
+    }
+    else
+    {
+        balanssi=balanssi-amountti;
+        balance=QString::number(balanssi);
+        qDebug()<<"onnistui";
+    }
+}
+
+void otto::updateBalanceSlot(QNetworkReply *reply)
+{
+    response_data=reply->readAll();
+    qDebug()<<response_data;
+    reply->deleteLater();
+    updateBalanceManager->deleteLater();
+    otto::close();
+}
+

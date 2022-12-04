@@ -41,10 +41,8 @@ public:
     QString getAccountData(QString accountId);
     void withdraw(int amount);// QString account_type);
     void resetTimer();
-    int amount;
     const QString &getWebtoken() const;
     void setWebToken(const QByteArray &newWebToken);
-    void getAccountType();
 
 private slots:
 
@@ -58,6 +56,8 @@ private slots:
     void on_Nosto200_clicked();
     void ottoSlot (QNetworkReply *reply);
     void getAccountTypeSlot (QNetworkReply *reply);
+    void checkMoney(double balance, double amount);
+    void updateBalanceSlot(QNetworkReply *reply);
 
 
 private:
@@ -74,6 +74,10 @@ private:
     QString account_type;
     QString accountType;
     QNetworkAccessManager *AccountTypeManager;
+    QNetworkAccessManager *updateBalanceManager;
+    QString balance;
+    QString amount;
+    double balanceValue;
 
     //PopUpDialog *objectPopUpDialog;
 };

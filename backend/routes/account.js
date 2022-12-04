@@ -69,6 +69,17 @@ router.put('/:id',
     });
   });
 
+  router.put('/balance/:id',
+  function (request, response) {
+    account.balance(request.params.id, request.body, function (err, dbResult) {
+      if (err) {
+        response.json(err);
+      } else {
+        response.json(dbResult);
+      }
+    });
+  });
+
 router.post('/idaccount?',
   function (request, response) {
     account.idaccount(request.params.id_card, function (err, dbResult) {

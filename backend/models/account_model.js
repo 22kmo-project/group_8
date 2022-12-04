@@ -44,6 +44,12 @@ const account = {
       [update_data.account_type, update_data.balance, update_data.id_card, update_data.id_user, update_data.account_owner, id],callback);
   },
 
+  balance: function (id, update_data, callback) {
+    return db.query(
+      'update account set balance=? where id_account=?',
+      [update_data.balance,id],callback);
+  },
+
 
 };
 module.exports = account;
