@@ -1,6 +1,7 @@
 #include "saldo.h"
 #include "ui_saldo.h"
 #include "myurl.h"
+#include <QTimer>
 
 
 saldo::saldo(QByteArray bearerToken, QString idAccount, QWidget *parent) : //Välitetään bearerToken ja idAccount
@@ -28,6 +29,12 @@ saldo::saldo(QByteArray bearerToken, QString idAccount, QWidget *parent) : //Vä
 
     ui->labelNaytaSaldo->setText(balance);
 
+    timer = new QTimer(this);
+    connect (timer, SIGNAL (timeout()),
+            this, SLOT (timeoutSlot()));
+    timer->start(1000);
+    time = 0;
+
 }
 
 saldo::~saldo()
@@ -44,6 +51,7 @@ void saldo::setWebToken(const QByteArray &newWebToken)
 
 void saldo::on_poistuSaldo_clicked() //Suljetaan saldo-ikkuna
 {
+    timer->stop();
     saldo::close();
 }
 
@@ -57,14 +65,13 @@ void saldo::getBalanceSlot(QNetworkReply *reply) //Pyydetään balance tietokann
 
     qDebug()<<response_data;
 
-    response_data=reply->readAll();
+     response_data=reply->readAll();
      qDebug()<<"DATA : "+response_data;
-     //QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
      QJsonArray json_array = json_doc.array();
      QString account ="";
      foreach (const QJsonValue &value, json_array) {
         QJsonObject json_obj = value.toObject();
-        account+=QString::number(json_obj["balance"].toInt())+", "+json_obj["account_type"].toString()+"\n";
+        account+=QString::number(json_obj["balance"].toInt())+"\n";
 }
 
 
@@ -72,6 +79,17 @@ void saldo::getBalanceSlot(QNetworkReply *reply) //Pyydetään balance tietokann
     qDebug()<<balance;
     ui->labelNaytaSaldo->setText(balance);
 
+}
+
+void saldo::timeoutSlot()
+{
+    time ++;
+    qDebug()<<time;
+    if(time>30)
+    {
+        saldo::close();
+        timer->stop();
+    }
 }
 
 void saldo::setBalance(const QString &newBalance)
