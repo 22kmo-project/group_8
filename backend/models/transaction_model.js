@@ -2,7 +2,7 @@ const db = require('../database');
 
 const transaction = {
   getById: function(id, callback) {
-    return db.query('select * from transaction where id_account=?', [id], callback);
+    return db.query('SELECT id_transaction, date_format(transaction_date, "%d.%m.%Y") as "transaction_date", activity, amount FROM transaction INNER JOIN account ON transaction.id_account=account.id_account WHERE account.id_account=? ORDER BY id_transaction DESC LIMIT 10', [id], callback);
   },
   getAll: function(callback) {
     return db.query('select * from transaction', callback);
