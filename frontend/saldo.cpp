@@ -3,19 +3,16 @@
 #include "myurl.h"
 
 
-saldo::saldo(QByteArray bearerToken, QString idAccount, QWidget *parent) :
+saldo::saldo(QByteArray bearerToken, QString idAccount, QWidget *parent) : //Välitetään bearerToken ja idAccount
     QDialog(parent),
     ui(new Ui::saldo)
 {
     ui->setupUi(this);
 
-
     myToken = bearerToken;
     qDebug()<<myToken;
     id_account = idAccount;
     qDebug()<<id_account;
-
-
 
     QString site_url=MyURL::getBaseURL()+"/account/"+idAccount;
        QNetworkRequest request((site_url));
@@ -30,8 +27,6 @@ saldo::saldo(QByteArray bearerToken, QString idAccount, QWidget *parent) :
 
 
     ui->labelNaytaSaldo->setText(balance);
-
-
 
 }
 
@@ -70,17 +65,12 @@ void saldo::getBalanceSlot(QNetworkReply *reply) //Pyydetään balance tietokann
      foreach (const QJsonValue &value, json_array) {
         QJsonObject json_obj = value.toObject();
         account+=QString::number(json_obj["balance"].toInt())+", "+json_obj["account_type"].toString()+"\n";
-     }
-
-     ui->textSaldo->setText(account);
+}
 
 
     balance=QString::number(json_obj["balance"].toInt())+"\n";;
     qDebug()<<balance;
     ui->labelNaytaSaldo->setText(balance);
-
-
-
 
 }
 
