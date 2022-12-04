@@ -16,6 +16,7 @@ public:
 
     void getIdCard();
     void getIdAccount();
+
     const QString &getWebToken() const;
     void setWebToken(const QByteArray &newWebToken);
 
@@ -25,11 +26,10 @@ public:
     const QString &getCardId() const;
     void setCardId(const QString &newCardId);
 
-    const QString &getIdAccount() const;
-    void setIdAccount(const QString &newIdAccount);
+    const QString &getAccountId() const;
+    void setAccountId(const QString &newIdAccount);
 
-    const QString &getAccount_Type() const;
-    void setAccount_Type(const QString &newAccount_Type);
+
 
 
 
@@ -51,7 +51,8 @@ private:
     QByteArray response_data;
     void startMenuWindow();
     QByteArray bearerToken;
-    QString account_Type;
+
 };
+
 
 #endif // INFO_H

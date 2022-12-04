@@ -16,6 +16,7 @@ saldo::saldo(QByteArray bearerToken, QString idAccount, QWidget *parent) :
     qDebug()<<id_account;
 
 
+
     QString site_url=MyURL::getBaseURL()+"/account/"+idAccount;
        QNetworkRequest request((site_url));
        //WEBTOKEN ALKU

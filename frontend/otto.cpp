@@ -11,6 +11,19 @@ otto::otto(QByteArray bearerToken, QString idAccount, QWidget *parent) :
     qDebug()<<myToken;
     id_account = idAccount;
     qDebug()<<id_account;
+
+    QString site_url = MyURL::getBaseURL()+"/account/"+idAccount;
+    qDebug()<<site_url;
+    QNetworkRequest request((site_url));
+    request.setRawHeader(QByteArray("Authorization"),(myToken));
+    //request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+
+    AccountTypeManager = new QNetworkAccessManager();
+
+    connect(AccountTypeManager, SIGNAL(finished(QNetworkReply*)),
+            this, SLOT(getAccountTypeSlot(QNetworkReply*)));
+
+    reply = AccountTypeManager->get(request);
 }
 
 otto::~otto()
@@ -83,7 +96,7 @@ void otto::withdraw(int amount)
 }
 
 // Muuta annetun tilin saldoa
-void otto::editSaldo(QString accountId, int amount)// QString account_type)
+void otto::editSaldo(QString accountId, int amount)// QString accountType)
 {
     // Keskeytä jos annettu määrä on 0 tai suurempi kuin tilin saldo
 
@@ -91,8 +104,8 @@ void otto::editSaldo(QString accountId, int amount)// QString account_type)
     QJsonObject jsonObj;
     jsonObj.insert("balance",amount);
 
-    //jsonObj.insert("account_type",account_type);
-    QString site_url=MyURL::getBaseURL()+"/account/"+accountId;
+    //jsonObj.insert("account_type",accountType);
+    QString site_url=MyURL::getBaseURL()+"/account/"+idAccount;
     QNetworkRequest request((site_url));
     //WEBTOKENIN ALKU
     request.setRawHeader(QByteArray("Authorization"),(myToken));
@@ -109,12 +122,11 @@ void otto::editSaldo(QString accountId, int amount)// QString account_type)
 }
 
 // Palauta pyydetty tieto annetulta tililtä
-QString otto::getAccountData(QString accountId)
+QString otto::getAccountData(QString idAccount)
 {
     QJsonObject jsonObj;
 
-    jsonObj.insert("id_account",accountId);
-    QString site_url=MyURL::getBaseURL()+"/account/"+accountId;
+    QString site_url=MyURL::getBaseURL()+"/account/"+idAccount;
     QNetworkRequest request((site_url));
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
     //qDebug()<<request;
@@ -124,4 +136,19 @@ QString otto::getAccountData(QString accountId)
     reply = ottoManager->post(request, QJsonDocument(jsonObj).toJson());
 }
 
+void otto::getAccountType()
+{
 
+}
+
+void otto::getAccountTypeSlot(QNetworkReply *reply)
+{
+    response_data = reply->readAll();
+    qDebug()<<response_data;
+    QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
+    QJsonObject json_obj = json_doc.object();
+    accountType=json_obj["account_type"].toString();
+    qDebug()<<accountType;
+
+    reply->deleteLater();
+}

@@ -44,6 +44,7 @@ public:
     int amount;
     const QString &getWebtoken() const;
     void setWebToken(const QByteArray &newWebToken);
+    void getAccountType();
 
 private slots:
 
@@ -56,12 +57,14 @@ private slots:
     void on_Nosto100_clicked();
     void on_Nosto200_clicked();
     void ottoSlot (QNetworkReply *reply);
+    void getAccountTypeSlot (QNetworkReply *reply);
+
 
 private:
     Ui::otto *ui;
     QSqlQuery *query;
     QTimer *objectTimer;
-    QString accountId;
+    QString idAccount;
     QNetworkAccessManager *ottoManager;
     QNetworkReply *reply;
     QByteArray response_data;
@@ -69,6 +72,9 @@ private:
     QByteArray webToken;
     QString id_account;
     QString account_type;
+    QString accountType;
+    QNetworkAccessManager *AccountTypeManager;
+
     //PopUpDialog *objectPopUpDialog;
 };
 
