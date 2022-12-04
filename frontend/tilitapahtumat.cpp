@@ -37,7 +37,7 @@ void tilitapahtumat::on_naytaTilitapahtumatBtn_clicked()
 
 void tilitapahtumat::tilitapahtumatSlot(QNetworkReply *reply)
 {
-    /*QByteArray response_data=reply->readAll();
+   /* QByteArray response_data=reply->readAll();
     QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
     QJsonArray json_array = json_doc.array();
     QString transaction;
@@ -48,8 +48,11 @@ void tilitapahtumat::tilitapahtumatSlot(QNetworkReply *reply)
 }
     qDebug()<<transaction;
     ui->textTilitapahtumat->setText(transaction);
-    reply->deleteLater();
-    tilitapahtumatManager->deleteLater();*/
+   // reply->deleteLater();
+   // tilitapahtumatManager->deleteLater();
+    ui->naytaTilitapahtumatBtn->setText(transaction);*/
+
+
 
     response_data = reply->readAll();
     QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
@@ -61,6 +64,9 @@ void tilitapahtumat::tilitapahtumatSlot(QNetworkReply *reply)
             json_obj["activity"].toString()+" , "+QString::number(json_obj["amount"].toInt())+"\r\n";
     qDebug()<<transaction;
     ui->textTilitapahtumat->setText(transaction);
+
+
+
 
 }
 

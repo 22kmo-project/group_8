@@ -22,8 +22,13 @@
      <x>30</x>
      <y>140</y>
      <width>251</width>
-     <height>231</height>
+     <height>71</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>20</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>TextLabel</string>
@@ -34,28 +39,35 @@
     <rect>
      <x>380</x>
      <y>350</y>
-     <width>80</width>
-     <height>18</height>
+     <width>101</width>
+     <height>51</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>20</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Poistu</string>
    </property>
   </widget>
-  <widget class="QLabel" name="textSaldo">
+  <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>100</y>
-     <width>151</width>
+     <x>30</x>
+     <y>80</y>
+     <width>91</width>
      <height>51</height>
     </rect>
    </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: rgb(70, 70, 70);</string>
+   <property name="font">
+    <font>
+     <pointsize>20</pointsize>
+    </font>
    </property>
    <property name="text">
-    <string/>
+    <string>Saldo</string>
    </property>
   </widget>
  </widget>
