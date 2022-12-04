@@ -54,6 +54,7 @@ void Info::getIdAccount()
     reply = idAccountManager->post(request, QJsonDocument(jsonObj).toJson());
 }
 
+
 void Info::getIdSlot(QNetworkReply *reply)
 {
     response_data = reply->readAll();
@@ -77,7 +78,7 @@ void Info::getAccountSlot(QNetworkReply *reply)
      QJsonObject json_obj = json_doc.object();
 
      qDebug()<<response_data;
-     setIdAccount(QString::number(json_obj["id_account"].toInt()));
+     setAccountId(QString::number(json_obj["id_account"].toInt()));
      qDebug()<<idAccount;
 
      reply->deleteLater();
@@ -127,22 +128,14 @@ void Info::setCardId(const QString &newIdCard)
     idCard = newIdCard;
 }
 
-const QString &Info::getIdAccount() const
+const QString &Info::getAccountId() const
 {
-    return idAccount;
+        return idAccount;
 }
 
-void Info::setIdAccount(const QString &newIdAccount)
+
+void Info::setAccountId(const QString &newIdAccount)
 {
     idAccount = newIdAccount;
 }
 
-const QString &Info::getAccount_Type() const
-{
-    return account_Type;
-}
-
-void Info::setAccount_Type(const QString &newAccount_Type)
-{
-    account_Type = newAccount_Type;
-}
