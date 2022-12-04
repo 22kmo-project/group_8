@@ -3,6 +3,7 @@
 
 #include "info.h"
 #include <QDialog>
+#include <QTimer>
 
 namespace Ui {
 class menuWindow;
@@ -28,6 +29,8 @@ private slots:
 
 private slots:
     void getOwnerSlot (QNetworkReply *reply);
+    void timeoutSlot();
+
 private:
     Ui::menuWindow *ui;
     QByteArray webToken;
@@ -42,6 +45,8 @@ private:
     Info *info;
     QByteArray response_data;
     QString owner;
+    int time;
+    QTimer *timer;
 };
 
 #endif // MENUWINDOW_H

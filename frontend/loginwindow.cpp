@@ -8,11 +8,20 @@ loginWindow::loginWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     attempts=0;
+    timer = new QTimer(this);
+    connect (timer, SIGNAL (timeout()),
+            this, SLOT (timeoutSlot()));
+    timer->start(1000);
+    time = 0;
+
 }
 
 loginWindow::~loginWindow()
 {
+    delete timer;
+    timer = nullptr;
     delete ui;
+
 }
 
 
@@ -87,6 +96,7 @@ void loginWindow::loginSlot(QNetworkReply *reply)
                     info->setWebToken(response_data);
                     info->setCard_Number(card_number);
                     info->getIdCard();
+                    timer->stop();
                     //info->getAccount_Type(account_Type);
                     loginWindow::close();
                 }
@@ -95,4 +105,15 @@ void loginWindow::loginSlot(QNetworkReply *reply)
     reply->deleteLater();
     loginManager->deleteLater();
 
+}
+
+void loginWindow::timeoutSlot()
+{
+    time ++;
+    qDebug()<<time;
+    if(time>10 && ui->lineUsername->text().isEmpty() && ui->linePin->text().isEmpty())
+    {
+        loginWindow::close();
+        timer->stop();
+    }
 }

@@ -5,6 +5,7 @@
 #include <QtNetwork>
 #include <QDialog>
 #include "info.h"
+#include <QTimer>
 
 //#include <QSqlQuery>
 
@@ -25,6 +26,7 @@ private slots:
     void on_btnPoistu_clicked();
     void on_btnKirjaudu_clicked();
     void loginSlot (QNetworkReply *reply);
+    void timeoutSlot();
 
 private:
     Ui::loginWindow *ui;
@@ -36,6 +38,7 @@ private:
     QString pin;
     int attempts;
     int time;
+    QTimer *timer;
 };
 
 

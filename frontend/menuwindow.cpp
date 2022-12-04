@@ -35,6 +35,13 @@ menuWindow::menuWindow(QByteArray bearerToken, QString idAccount, QWidget *paren
 
     reply = ownerManager->get(request);
     ui->labelCardnumber->setText(owner);
+
+    timer = new QTimer(this);
+    connect (timer, SIGNAL (timeout()),
+            this, SLOT (timeoutSlot()));
+    timer->start(1000);
+    time = 0;
+
 }
 
 void menuWindow::getOwnerSlot(QNetworkReply *reply)
@@ -48,6 +55,17 @@ void menuWindow::getOwnerSlot(QNetworkReply *reply)
 
    // reply->deleteLater();
     ui->labelCardnumber->setText("Tervetuloa "+owner+"!");
+}
+
+void menuWindow::timeoutSlot()
+{
+    time ++;
+    qDebug()<<time;
+    if(time>30)
+    {
+        menuWindow::close();
+        timer->stop();
+    }
 }
 
 
@@ -70,15 +88,17 @@ void menuWindow::setWebToken(const QByteArray &newWebToken)
 
 void menuWindow::on_pushButton_KirjauduUlos_clicked()
 {
+    timer->stop();
     menuWindow::close();
 }
 
 
 void menuWindow::on_pushButton_Saldo_clicked()
 {
-  class saldo nayta(webToken,id_account);
-  nayta.setModal(true);
-  nayta.exec();
+    timer->stop();
+    class saldo nayta(webToken,id_account);
+    nayta.setModal(true);
+    nayta.exec();
 
 }
 
@@ -86,6 +106,7 @@ void menuWindow::on_pushButton_Saldo_clicked()
 
 void menuWindow::on_pushButton_Otto_clicked()
 {
+    timer->stop();
     otto nosto(webToken,id_account);
     nosto.setModal(true);
     nosto.exec();
@@ -93,6 +114,7 @@ void menuWindow::on_pushButton_Otto_clicked()
 
 void menuWindow::on_pushButton_LuottorajanNosto_clicked()
 {
+    timer->stop();
     luottoraja luotto(webToken,id_account);
     luotto.setModal(true);
     luotto.exec();
@@ -101,6 +123,7 @@ void menuWindow::on_pushButton_LuottorajanNosto_clicked()
 
 void menuWindow::on_pushButton_Tilitapahtumat_clicked()
 {
+    timer->stop();
     tilitapahtumat tilitapahtumat(webToken,id_account);
     tilitapahtumat.setModal(true);
     tilitapahtumat.exec();
