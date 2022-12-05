@@ -12,8 +12,8 @@ const transaction = {
   },
   add: function(add_data, callback) {
     return db.query(
-      'insert into transaction (id_transaction,transaction_date,activity,amount,id_account) values(?,?,?,?,?)',
-      [add_data.id_transaction, add_data.transaction_date, add_data.activity, add_data.amount, add_data.id_account],
+      'insert into transaction (transaction_date,activity,amount,id_account) values(?,?,?,?)',
+      [add_data.transaction_date, add_data.activity, add_data.amount, add_data.id_account],
       callback
     );
   },
