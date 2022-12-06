@@ -5,27 +5,12 @@ const account = {
     return db.query('select * from account where id_account=?', [id], callback);
   },
 
-  //tämä koodi on uudempi versio kommentoidusta... katsotaan toimiiko
-
-  /*owner: function (id,callback) {
-    return db.query('select concat(u.fname, " ", u.lname) as "account_owner" from user as u join account as a using(id_user) where id_account=?', [id], callback);
-  },
-
-  //owner: function (id,callback) {
-   // return db.query('select concat(u.fname, " ", u.lname) as owner from user as u join account as a using(id_user) where id_account=?', [id], callback);
-  //},
-
-  /*owner: function (id,callback) {
-    return db.query('select account_owner from account where id_account=?', [id], callback);
-  },*/
-
   getBalance: function (id, callback) {
     return db.query('select balance from account where id_account=?', [id], callback);
   },
   getAccountOwner: function (id, callback) {
     return db.query('select account_owner from account where id_account=?', [id], callback);
   },
-
 
   getAll: function (callback) {
     return db.query('select * from account', callback);
@@ -50,6 +35,11 @@ const account = {
       [update_data.balance,id],callback);
   },
 
+  creditlimit: function(id, update_data, callback) {
+    return db.query(
+      'update account set credit_limit=? where id_account=?',
+      [update_data.credit_limit,id],callback);
+  },
 
 };
 module.exports = account;
