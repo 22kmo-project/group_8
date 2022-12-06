@@ -30,6 +30,8 @@ var cardRouter = require('./routes/card');
 var transactionRouter = require('./routes/transaction');
 var idcardRouter = require('./routes/idcard'); 
 var idaccountRouter = require ('./routes/idaccount');
+var iduserRouter = require ('./routes/iduser');
+
 
 
 
@@ -45,7 +47,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.use('/login', loginRouter); //login not protected
-//app.use(authenticateToken);
+app.use(authenticateToken);
 
 //protected
 app.use('/', indexRouter);
@@ -55,6 +57,8 @@ app.use('/account', accountRouter);
 app.use('/transaction', transactionRouter);
 app.use('/idcard',idcardRouter);
 app.use('/idaccount',idaccountRouter);
+app.use('/iduser',iduserRouter);
+
 
 
 module.exports = app;

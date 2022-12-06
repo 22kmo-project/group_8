@@ -14,7 +14,7 @@ class menuWindow : public QDialog
     Q_OBJECT
 
 public:
-    explicit menuWindow(QByteArray bearerToken, QString idAccount, QWidget *parent = nullptr);
+    explicit menuWindow(QByteArray bearerToken, QString idAccount,  QWidget *parent = nullptr);
     ~menuWindow();
 
     const QString &getWebtoken() const;
