@@ -12,7 +12,7 @@ saldo::saldo(QByteArray bearerToken, QString idAccount, QWidget *parent) : //Vä
     ui->setupUi(this);
 
     myToken = bearerToken;
-    qDebug()<<myToken;
+    //qDebug()<<myToken;
     id_account = idAccount;
     qDebug()<<id_account;
 

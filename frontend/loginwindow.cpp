@@ -27,6 +27,8 @@ loginWindow::~loginWindow()
 
 void loginWindow::on_btnPoistu_clicked()
 {
+    delete timer;
+    timer = nullptr;
     loginWindow::close();
 }
 

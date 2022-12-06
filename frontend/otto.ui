@@ -197,28 +197,6 @@ color: rgb(255, 255, 255);</string>
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="label_eo">
-   <property name="geometry">
-    <rect>
-     <x>280</x>
-     <y>70</y>
-     <width>381</width>
-     <height>101</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>9</pointsize>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: rgb(112, 112, 112);
-color: rgb(255, 255, 255);</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
   <widget class="QLineEdit" name="lineEdit">
    <property name="geometry">
     <rect>

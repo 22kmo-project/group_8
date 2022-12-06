@@ -9,10 +9,9 @@ otto::otto(QByteArray bearerToken, QString idAccount, QWidget *parent) :
 {
     ui->setupUi(this);
     myToken = bearerToken;
-    qDebug()<<myToken;
+    //qDebug()<<myToken;
     id_account = idAccount;
     qDebug()<<id_account;
-    ui->label_eo->hide();
     ui->label_o->hide();
     timer = new QTimer(this);
 
@@ -81,7 +80,10 @@ void otto::on_ottoPoistu_clicked()
             this, SLOT(transactionSlot(QNetworkReply*)));
 
      reply = transactionManager->post(requestPost, QJsonDocument(jsonObjPost).toJson());
-    }
+     menuWindow menu(myToken, id_account);
+     menu.setModal(true);
+     menu.exec();
+    }  
 }
 
 
@@ -143,13 +145,15 @@ void otto::timeoutSlot()
 {
     time ++;
     qDebug()<<time;
-    if(time>10 && ui->label_eo->isVisible())
+
+    /* Tämä koodihan ei toteudu koska label tulee näkyviin vasta kun painaa ok ja ok-nappi pysäyttää kellon
+      if(time>10 && ui->label_o->isVisible())
     {
-            ui->label_eo->hide();
+            ui->label_o->hide();
             timer->stop();
             time = 0;
-    }
-    if(time>10)
+    }*/
+    if(time>10 && ui->lineEdit->text().isEmpty())
     {
         otto::close();
         menuWindow menu(myToken, id_account);
@@ -192,10 +196,10 @@ void otto::withdraw(double balanssi, double maara)
         }
         else
         {
-            ui->label_eo->setVisible(true);
-            ui->label_eo->setText("Tililläsi ei ole tarpeeksi rahaa. \nValitse uusi summa tai paina poistu-painiketta.");
-            timer->start(1000);
-            time = 0;
+            ui->label_o->setVisible(true);
+            ui->label_o->setText("Tililläsi ei ole tarpeeksi rahaa. \nValitse uusi summa tai paina poistu-painiketta.");
+            //timer->start(1000);
+            //time = 0;
         }
     }
     else
@@ -211,8 +215,8 @@ void otto::withdraw(double balanssi, double maara)
         }
         else
         {
-            ui->label_eo->setVisible(true);
-            ui->label_eo->setText("Tililläsi ei ole tarpeeksi rahaa. Valitse uusi summa tai paina poistu-painiketta.");
+            ui->label_o->setVisible(true);
+            ui->label_o->setText("Tililläsi ei ole tarpeeksi rahaa. Valitse uusi summa tai paina poistu-painiketta.");
             timer->start(1000);
             time=0;
 
@@ -227,9 +231,6 @@ void otto::updateBalanceSlot(QNetworkReply *reply)
     reply->deleteLater();
     updateBalanceManager->deleteLater();
     otto::close();
-    menuWindow menu(myToken, id_account);
-    menu.setModal(true);
-    menu.exec();
 }
 
 void otto::transactionSlot(QNetworkReply *reply)
@@ -239,9 +240,6 @@ void otto::transactionSlot(QNetworkReply *reply)
     reply->deleteLater();
     transactionManager->deleteLater();
     otto::close();
-    menuWindow menu(myToken, id_account);
-    menu.setModal(true);
-    menu.exec();
 }
 
 
