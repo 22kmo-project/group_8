@@ -26,30 +26,17 @@ public:
     void setWebToken(const QByteArray &newWebToken);
 
 private slots:
-
-
     void on_luottoPoistu_clicked();
-
     void on_luotto500_clicked();
-
     void on_luotto1000_clicked();
-
     void on_luotto2000_clicked();
-
     void on_luotto5000_clicked();
-
     void on_luotto10000_clicked();
-
     void setlimit(double luottoraja, double maara);
-
     void timeoutSlot();
-
     void on_uusi_luotto_clicked();
-
     void getAccountTypeSlot (QNetworkReply *reply);
-
     void transactionSlot(QNetworkReply *reply);
-
     void updateCreditSlot(QNetworkReply *reply);
 
 private:
@@ -62,13 +49,13 @@ private:
     QNetworkAccessManager *AccountTypeManager;
     QNetworkAccessManager *transactionManager;
     QNetworkAccessManager *updateCreditManager;
+    QString credit_limit;
+    double maara;
     double creditValue;
+    QString creditLimit;
     QTimer *timer;
     int time;
     QByteArray response_data;
-    double creditLimit;
-    double credit_limit;
-    double maara;
     QNetworkReply *reply;
 };
 

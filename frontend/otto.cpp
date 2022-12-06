@@ -43,6 +43,9 @@ otto::~otto()
 
 void otto::on_ottoPoistu_clicked()
 {
+
+    timer->stop();
+    time=0;
     QJsonObject jsonObjUpdate;
     jsonObjUpdate.insert("balance", balance);
     QString site_url=MyURL::getBaseURL()+"/account/balance/"+id_account;
@@ -81,6 +84,7 @@ void otto::on_ottoPoistu_clicked()
             this, SLOT(transactionSlot(QNetworkReply*)));
 
      reply = transactionManager->post(requestPost, QJsonDocument(jsonObjPost).toJson());
+
     }
 }
 
