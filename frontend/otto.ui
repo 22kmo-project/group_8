@@ -19,9 +19,9 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>100</x>
+     <x>20</x>
      <y>200</y>
-     <width>511</width>
+     <width>671</width>
      <height>61</height>
     </rect>
    </property>
@@ -39,7 +39,7 @@ color: rgb(255, 255, 255);</string>
     <enum>QFrame::WinPanel</enum>
    </property>
    <property name="text">
-    <string>Valitse nostettava summa </string>
+    <string>Valitse nostettava summa tai kirjoita vapaavalintainen summa ja paina OK-painiketta</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
@@ -52,7 +52,7 @@ color: rgb(255, 255, 255);</string>
    <property name="geometry">
     <rect>
      <x>310</x>
-     <y>470</y>
+     <y>520</y>
      <width>80</width>
      <height>24</height>
     </rect>
@@ -65,11 +65,11 @@ color: rgb(255, 255, 255);</string>
     <string>Poistu</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="Nosto10">
+  <widget class="QPushButton" name="Nosto500">
    <property name="geometry">
     <rect>
-     <x>80</x>
-     <y>350</y>
+     <x>560</x>
+     <y>470</y>
      <width>80</width>
      <height>24</height>
     </rect>
@@ -79,14 +79,14 @@ color: rgb(255, 255, 255);</string>
 color: rgb(255, 255, 255);</string>
    </property>
    <property name="text">
-    <string>10e</string>
+    <string>500</string>
    </property>
   </widget>
   <widget class="QPushButton" name="Nosto20">
    <property name="geometry">
     <rect>
-     <x>190</x>
-     <y>350</y>
+     <x>90</x>
+     <y>470</y>
      <width>80</width>
      <height>24</height>
     </rect>
@@ -102,8 +102,8 @@ color: rgb(255, 255, 255);</string>
   <widget class="QPushButton" name="Nosto50">
    <property name="geometry">
     <rect>
-     <x>310</x>
-     <y>350</y>
+     <x>200</x>
+     <y>470</y>
      <width>80</width>
      <height>24</height>
     </rect>
@@ -119,8 +119,8 @@ color: rgb(255, 255, 255);</string>
   <widget class="QPushButton" name="Nosto100">
    <property name="geometry">
     <rect>
-     <x>430</x>
-     <y>350</y>
+     <x>310</x>
+     <y>470</y>
      <width>80</width>
      <height>24</height>
     </rect>
@@ -136,8 +136,8 @@ color: rgb(255, 255, 255);</string>
   <widget class="QPushButton" name="Nosto200">
    <property name="geometry">
     <rect>
-     <x>540</x>
-     <y>350</y>
+     <x>440</x>
+     <y>470</y>
      <width>80</width>
      <height>24</height>
     </rect>
@@ -148,6 +148,102 @@ color: rgb(255, 255, 255);</string>
    </property>
    <property name="text">
     <string>200e</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labelSaldo">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>120</y>
+     <width>151</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>7</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(112, 112, 112);
+color: rgb(255, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_o">
+   <property name="geometry">
+    <rect>
+     <x>280</x>
+     <y>70</y>
+     <width>381</width>
+     <height>101</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>9</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(112, 112, 112);
+color: rgb(255, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_eo">
+   <property name="geometry">
+    <rect>
+     <x>280</x>
+     <y>70</y>
+     <width>381</width>
+     <height>101</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>9</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(112, 112, 112);
+color: rgb(255, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit">
+   <property name="geometry">
+    <rect>
+     <x>110</x>
+     <y>330</y>
+     <width>211</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(112, 112, 112);
+color: rgb(255, 255, 255);</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="ok">
+   <property name="geometry">
+    <rect>
+     <x>410</x>
+     <y>330</y>
+     <width>171</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>OK</string>
    </property>
   </widget>
  </widget>

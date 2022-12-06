@@ -1,4 +1,5 @@
 #include "saldo.h"
+#include "menuwindow.h"
 #include "ui_saldo.h"
 #include "myurl.h"
 #include <QTimer>
@@ -53,6 +54,9 @@ void saldo::on_poistuSaldo_clicked() //Suljetaan saldo-ikkuna
 {
     timer->stop();
     saldo::close();
+    menuWindow menu(myToken, id_account);
+    menu.setModal(true);
+    menu.exec();
 }
 
 void saldo::getBalanceSlot(QNetworkReply *reply) //Pyydetään balance tietokannasta

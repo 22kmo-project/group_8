@@ -54,6 +54,9 @@ void tilitapahtumat::tilitapahtumatSlot(QNetworkReply *reply)
 void tilitapahtumat::on_TakaisinBtn_clicked()
 {
     tilitapahtumat::close();
+    menuWindow menu(myToken, id_account);
+    menu.setModal(true);
+    menu.exec();
 }
 
 void tilitapahtumat::setWebToken(const QByteArray &newWebToken)
