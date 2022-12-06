@@ -121,7 +121,7 @@ void saldo::setBalance(const QString &newBalance)
 
 
 
-void saldo::on_pushNaytaTapahtumat_clicked()
+void saldo::on_pushNaytaTapahtumat_clicked() // Haetaan tietokannasta tilitapahtumia
 {
     QString site_url=MyURL::getBaseURL()+"/transaction/"+id_account;
     QNetworkRequest request((site_url));
@@ -137,7 +137,7 @@ void saldo::on_pushNaytaTapahtumat_clicked()
 }
 
 
-void saldo::on_pushKayttajanTiedot_clicked()
+void saldo::on_pushKayttajanTiedot_clicked() // Haetaan tietokannasta käyttäjän tiedot
 {
 
 
