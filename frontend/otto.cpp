@@ -19,7 +19,7 @@ otto::otto(QByteArray bearerToken, QString idAccount, QWidget *parent) :
     qDebug()<<site_url;
     QNetworkRequest request((site_url));
     request.setRawHeader(QByteArray("Authorization"),(myToken));
-    //request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+    //request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");  Onko tämä turha rivi? Jos on niin voi poistaa
 
     AccountTypeManager = new QNetworkAccessManager();
 
@@ -53,7 +53,7 @@ void otto::on_ottoPoistu_clicked()
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
     //WEBTOKEN ALKU
     request.setRawHeader(QByteArray("Authorization"),(myToken));
-    qDebug()<<myToken;
+    //qDebug()<<myToken;
     //WEBTOKEN LOPPU
 
     updateBalanceManager = new QNetworkAccessManager(this);
@@ -83,15 +83,7 @@ void otto::on_ottoPoistu_clicked()
             this, SLOT(transactionSlot(QNetworkReply*)));
 
      reply = transactionManager->post(requestPost, QJsonDocument(jsonObjPost).toJson());
-<<<<<<< HEAD
-     menuWindow menu(myToken, id_account);
-     menu.setModal(true);
-     menu.exec();
     }  
-=======
-
-    }
->>>>>>> 8761e2a765c5c67af7c68307e73451dab1a0eed2
 }
 
 
@@ -101,7 +93,6 @@ void otto::on_Nosto20_clicked()
     maara=20;
     timer->stop();
     time = 0;
-
 }
 
 
@@ -154,13 +145,6 @@ void otto::timeoutSlot()
     time ++;
     qDebug()<<time;
 
-    /* Tämä koodihan ei toteudu koska label tulee näkyviin vasta kun painaa ok ja ok-nappi pysäyttää kellon
-      if(time>10 && ui->label_o->isVisible())
-    {
-            ui->label_o->hide();
-            timer->stop();
-            time = 0;
-    }*/
     if(time>10 && ui->lineEdit->text().isEmpty())
     {
         otto::close();
@@ -181,8 +165,8 @@ void otto::getAccountTypeSlot(QNetworkReply *reply)
     creditLimit=QString::number(json_obj["credit_limit"].toDouble());
     balanceValue=QString(balance).toDouble();
     creditValue=QString(creditLimit).toDouble();
-    qDebug()<<balance;
     ui->labelSaldo->setText("Tilisi saldo on " +balance);
+    qDebug()<<balance;
     qDebug()<<accountType;
     qDebug()<<creditLimit;
 
@@ -239,6 +223,9 @@ void otto::updateBalanceSlot(QNetworkReply *reply)
     reply->deleteLater();
     updateBalanceManager->deleteLater();
     otto::close();
+    menuWindow menu(myToken, id_account);
+    menu.setModal(true);
+    menu.exec();
 }
 
 void otto::transactionSlot(QNetworkReply *reply)
@@ -247,7 +234,6 @@ void otto::transactionSlot(QNetworkReply *reply)
     qDebug()<<response_data;
     reply->deleteLater();
     transactionManager->deleteLater();
-    otto::close();
 }
 
 

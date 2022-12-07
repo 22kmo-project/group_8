@@ -6,6 +6,7 @@
 #include <QNetworkAccessManager>
 #include <QtNetwork>
 #include <QJsonDocument>
+#include <QTimer>
 
 namespace Ui {
 class tilitapahtumat;
@@ -27,6 +28,7 @@ private slots:
     void on_naytaTilitapahtumatBtn_clicked();
 
     void on_TakaisinBtn_clicked();
+    void timeoutSlot();
 
 private:
     Ui::tilitapahtumat *ui;
@@ -40,6 +42,8 @@ private:
     QByteArray webToken;
     QString id_account;
     QString transaction;
+    QTimer *timer;
+    int time;
 
 };
 

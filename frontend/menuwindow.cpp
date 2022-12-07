@@ -25,6 +25,7 @@ menuWindow::menuWindow(QByteArray bearerToken, QString idAccount, QWidget *paren
     //WEBTOKEN LOPPU
     ownerManager = new QNetworkAccessManager(this);
 
+    //Onko nämä alla olevat turhia? Jos on niin voi poistaa.
    // QJsonObject jsonObj;
     //jsonObj.insert("account_owner", owner);
     //request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");

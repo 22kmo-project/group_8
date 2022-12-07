@@ -9,7 +9,7 @@ luottoraja::luottoraja(QByteArray bearerToken, QString idAccount, QWidget *paren
 {
     ui->setupUi(this);
     myToken = bearerToken;
-    qDebug()<<myToken;
+    //qDebug()<<myToken;
     id_account = idAccount;
     qDebug()<<id_account;
 
@@ -38,12 +38,7 @@ void luottoraja::timeoutSlot()
 {
     time ++;
     qDebug()<<time;
-    if(time>10 && ui->label_luotto->isVisible())
-    {
-            ui->label_luotto->hide();
-            timer->stop();
-            time = 0;
-    }
+
     if(time>10)
     {
         luottoraja::close();
@@ -64,13 +59,14 @@ void luottoraja::setWebToken(const QByteArray &newWebToken)
 }
 
 
-
-
 void luottoraja::on_luottoPoistu_clicked()
 {
+    timer->stop();
     luottoraja::close();
+    menuWindow menu(myToken, id_account);
+    menu.setModal(true);
+    menu.exec();
 }
-
 
 
 void luottoraja::on_luotto500_clicked()
@@ -127,7 +123,7 @@ void luottoraja::on_uusi_luotto_clicked()
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
     //WEBTOKEN ALKU
     request.setRawHeader(QByteArray("Authorization"),(myToken));
-    qDebug()<<myToken;
+    //qDebug()<<myToken;
     //WEBTOKEN LOPPU
 
     updateCreditManager = new QNetworkAccessManager(this);
@@ -201,10 +197,11 @@ void luottoraja::transactionSlot(QNetworkReply *reply)
     qDebug()<<response_data;
     reply->deleteLater();
     transactionManager->deleteLater();
+    /*
     luottoraja::close();
     menuWindow menu(myToken, id_account);
     menu.setModal(true);
-    menu.exec();
+    menu.exec();*/
 }
 
 void luottoraja::updateCreditSlot(QNetworkReply *reply)
@@ -213,9 +210,5 @@ void luottoraja::updateCreditSlot(QNetworkReply *reply)
     qDebug()<<response_data;
     reply->deleteLater();
     updateCreditManager->deleteLater();
-    luottoraja::close();
-    menuWindow menu(myToken, id_account);
-    menu.setModal(true);
-    menu.exec();
 }
 

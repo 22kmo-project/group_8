@@ -36,7 +36,7 @@
         "-I",
         "C:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders\\QtCore",
         "-I",
-        "C:\\temp\\Tvt22kmo\\group_8\\frontend",
+        "C:\\Users\\tpaak\\OneDrive\\Työpöytä\\OAMK\\Periodi 4\\group_8\\frontend",
         "-I",
         "C:\\Qt\\5.15.2\\mingw81_32\\include",
         "-I",
@@ -74,10 +74,10 @@
         "-ferror-limit=1000",
         "-x",
         "c++",
-        "C:\\temp\\Tvt22kmo\\group_8\\frontend\\info.cpp"
+        "C:\\Users\\tpaak\\OneDrive\\Työpöytä\\OAMK\\Periodi 4\\group_8\\frontend\\info.cpp"
     ],
     "directory": "C:/temp/Tvt22kmo/group_8/build-frontend-Desktop_Qt_5_15_2_MinGW_32_bit-Debug/.qtc_clangd",
-    "file": "C:/temp/Tvt22kmo/group_8/frontend/info.cpp"
+    "file": "C:/Users/tpaak/OneDrive/Työpöytä/OAMK/Periodi 4/group_8/frontend/info.cpp"
 },
 {
     "arguments": [
@@ -116,7 +116,7 @@
         "-I",
         "C:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders\\QtCore",
         "-I",
-        "C:\\temp\\Tvt22kmo\\group_8\\frontend",
+        "C:\\Users\\tpaak\\OneDrive\\Työpöytä\\OAMK\\Periodi 4\\group_8\\frontend",
         "-I",
         "C:\\Qt\\5.15.2\\mingw81_32\\include",
         "-I",
@@ -154,10 +154,10 @@
         "-ferror-limit=1000",
         "-x",
         "c++",
-        "C:\\temp\\Tvt22kmo\\group_8\\frontend\\loginwindow.cpp"
+        "C:\\Users\\tpaak\\OneDrive\\Työpöytä\\OAMK\\Periodi 4\\group_8\\frontend\\loginwindow.cpp"
     ],
     "directory": "C:/temp/Tvt22kmo/group_8/build-frontend-Desktop_Qt_5_15_2_MinGW_32_bit-Debug/.qtc_clangd",
-    "file": "C:/temp/Tvt22kmo/group_8/frontend/loginwindow.cpp"
+    "file": "C:/Users/tpaak/OneDrive/Työpöytä/OAMK/Periodi 4/group_8/frontend/loginwindow.cpp"
 },
 {
     "arguments": [
@@ -196,7 +196,7 @@
         "-I",
         "C:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders\\QtCore",
         "-I",
-        "C:\\temp\\Tvt22kmo\\group_8\\frontend",
+        "C:\\Users\\tpaak\\OneDrive\\Työpöytä\\OAMK\\Periodi 4\\group_8\\frontend",
         "-I",
         "C:\\Qt\\5.15.2\\mingw81_32\\include",
         "-I",
@@ -234,10 +234,10 @@
         "-ferror-limit=1000",
         "-x",
         "c++",
-        "C:\\temp\\Tvt22kmo\\group_8\\frontend\\luottoraja.cpp"
+        "C:\\Users\\tpaak\\OneDrive\\Työpöytä\\OAMK\\Periodi 4\\group_8\\frontend\\luottoraja.cpp"
     ],
     "directory": "C:/temp/Tvt22kmo/group_8/build-frontend-Desktop_Qt_5_15_2_MinGW_32_bit-Debug/.qtc_clangd",
-    "file": "C:/temp/Tvt22kmo/group_8/frontend/luottoraja.cpp"
+    "file": "C:/Users/tpaak/OneDrive/Työpöytä/OAMK/Periodi 4/group_8/frontend/luottoraja.cpp"
 },
 {
     "arguments": [
@@ -276,7 +276,7 @@
         "-I",
         "C:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders\\QtCore",
         "-I",
-        "C:\\temp\\Tvt22kmo\\group_8\\frontend",
+        "C:\\Users\\tpaak\\OneDrive\\Työpöytä\\OAMK\\Periodi 4\\group_8\\frontend",
         "-I",
         "C:\\Qt\\5.15.2\\mingw81_32\\include",
         "-I",
@@ -314,10 +314,10 @@
         "-ferror-limit=1000",
         "-x",
         "c++",
-        "C:\\temp\\Tvt22kmo\\group_8\\frontend\\main.cpp"
+        "C:\\Users\\tpaak\\OneDrive\\Työpöytä\\OAMK\\Periodi 4\\group_8\\frontend\\main.cpp"
     ],
     "directory": "C:/temp/Tvt22kmo/group_8/build-frontend-Desktop_Qt_5_15_2_MinGW_32_bit-Debug/.qtc_clangd",
-    "file": "C:/temp/Tvt22kmo/group_8/frontend/main.cpp"
+    "file": "C:/Users/tpaak/OneDrive/Työpöytä/OAMK/Periodi 4/group_8/frontend/main.cpp"
 },
 {
     "arguments": [
@@ -356,7 +356,7 @@
         "-I",
         "C:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders\\QtCore",
         "-I",
-        "C:\\temp\\Tvt22kmo\\group_8\\frontend",
+        "C:\\Users\\tpaak\\OneDrive\\Työpöytä\\OAMK\\Periodi 4\\group_8\\frontend",
         "-I",
         "C:\\Qt\\5.15.2\\mingw81_32\\include",
         "-I",
@@ -394,10 +394,10 @@
         "-ferror-limit=1000",
         "-x",
         "c++",
-        "C:\\temp\\Tvt22kmo\\group_8\\frontend\\mainwindow.cpp"
+        "C:\\Users\\tpaak\\OneDrive\\Työpöytä\\OAMK\\Periodi 4\\group_8\\frontend\\mainwindow.cpp"
     ],
     "directory": "C:/temp/Tvt22kmo/group_8/build-frontend-Desktop_Qt_5_15_2_MinGW_32_bit-Debug/.qtc_clangd",
-    "file": "C:/temp/Tvt22kmo/group_8/frontend/mainwindow.cpp"
+    "file": "C:/Users/tpaak/OneDrive/Työpöytä/OAMK/Periodi 4/group_8/frontend/mainwindow.cpp"
 },
 {
     "arguments": [
@@ -436,7 +436,7 @@
         "-I",
         "C:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders\\QtCore",
         "-I",
-        "C:\\temp\\Tvt22kmo\\group_8\\frontend",
+        "C:\\Users\\tpaak\\OneDrive\\Työpöytä\\OAMK\\Periodi 4\\group_8\\frontend",
         "-I",
         "C:\\Qt\\5.15.2\\mingw81_32\\include",
         "-I",
@@ -474,10 +474,10 @@
         "-ferror-limit=1000",
         "-x",
         "c++",
-        "C:\\temp\\Tvt22kmo\\group_8\\frontend\\menuwindow.cpp"
+        "C:\\Users\\tpaak\\OneDrive\\Työpöytä\\OAMK\\Periodi 4\\group_8\\frontend\\menuwindow.cpp"
     ],
     "directory": "C:/temp/Tvt22kmo/group_8/build-frontend-Desktop_Qt_5_15_2_MinGW_32_bit-Debug/.qtc_clangd",
-    "file": "C:/temp/Tvt22kmo/group_8/frontend/menuwindow.cpp"
+    "file": "C:/Users/tpaak/OneDrive/Työpöytä/OAMK/Periodi 4/group_8/frontend/menuwindow.cpp"
 },
 {
     "arguments": [
@@ -516,7 +516,7 @@
         "-I",
         "C:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders\\QtCore",
         "-I",
-        "C:\\temp\\Tvt22kmo\\group_8\\frontend",
+        "C:\\Users\\tpaak\\OneDrive\\Työpöytä\\OAMK\\Periodi 4\\group_8\\frontend",
         "-I",
         "C:\\Qt\\5.15.2\\mingw81_32\\include",
         "-I",
@@ -554,10 +554,10 @@
         "-ferror-limit=1000",
         "-x",
         "c++",
-        "C:\\temp\\Tvt22kmo\\group_8\\frontend\\myurl.cpp"
+        "C:\\Users\\tpaak\\OneDrive\\Työpöytä\\OAMK\\Periodi 4\\group_8\\frontend\\myurl.cpp"
     ],
     "directory": "C:/temp/Tvt22kmo/group_8/build-frontend-Desktop_Qt_5_15_2_MinGW_32_bit-Debug/.qtc_clangd",
-    "file": "C:/temp/Tvt22kmo/group_8/frontend/myurl.cpp"
+    "file": "C:/Users/tpaak/OneDrive/Työpöytä/OAMK/Periodi 4/group_8/frontend/myurl.cpp"
 },
 {
     "arguments": [
@@ -596,7 +596,7 @@
         "-I",
         "C:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders\\QtCore",
         "-I",
-        "C:\\temp\\Tvt22kmo\\group_8\\frontend",
+        "C:\\Users\\tpaak\\OneDrive\\Työpöytä\\OAMK\\Periodi 4\\group_8\\frontend",
         "-I",
         "C:\\Qt\\5.15.2\\mingw81_32\\include",
         "-I",
@@ -634,10 +634,10 @@
         "-ferror-limit=1000",
         "-x",
         "c++",
-        "C:\\temp\\Tvt22kmo\\group_8\\frontend\\otto.cpp"
+        "C:\\Users\\tpaak\\OneDrive\\Työpöytä\\OAMK\\Periodi 4\\group_8\\frontend\\otto.cpp"
     ],
     "directory": "C:/temp/Tvt22kmo/group_8/build-frontend-Desktop_Qt_5_15_2_MinGW_32_bit-Debug/.qtc_clangd",
-    "file": "C:/temp/Tvt22kmo/group_8/frontend/otto.cpp"
+    "file": "C:/Users/tpaak/OneDrive/Työpöytä/OAMK/Periodi 4/group_8/frontend/otto.cpp"
 },
 {
     "arguments": [
@@ -676,7 +676,7 @@
         "-I",
         "C:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders\\QtCore",
         "-I",
-        "C:\\temp\\Tvt22kmo\\group_8\\frontend",
+        "C:\\Users\\tpaak\\OneDrive\\Työpöytä\\OAMK\\Periodi 4\\group_8\\frontend",
         "-I",
         "C:\\Qt\\5.15.2\\mingw81_32\\include",
         "-I",
@@ -714,10 +714,10 @@
         "-ferror-limit=1000",
         "-x",
         "c++",
-        "C:\\temp\\Tvt22kmo\\group_8\\frontend\\saldo.cpp"
+        "C:\\Users\\tpaak\\OneDrive\\Työpöytä\\OAMK\\Periodi 4\\group_8\\frontend\\saldo.cpp"
     ],
     "directory": "C:/temp/Tvt22kmo/group_8/build-frontend-Desktop_Qt_5_15_2_MinGW_32_bit-Debug/.qtc_clangd",
-    "file": "C:/temp/Tvt22kmo/group_8/frontend/saldo.cpp"
+    "file": "C:/Users/tpaak/OneDrive/Työpöytä/OAMK/Periodi 4/group_8/frontend/saldo.cpp"
 },
 {
     "arguments": [
@@ -756,7 +756,7 @@
         "-I",
         "C:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders\\QtCore",
         "-I",
-        "C:\\temp\\Tvt22kmo\\group_8\\frontend",
+        "C:\\Users\\tpaak\\OneDrive\\Työpöytä\\OAMK\\Periodi 4\\group_8\\frontend",
         "-I",
         "C:\\Qt\\5.15.2\\mingw81_32\\include",
         "-I",
@@ -794,10 +794,10 @@
         "-ferror-limit=1000",
         "-x",
         "c++",
-        "C:\\temp\\Tvt22kmo\\group_8\\frontend\\tilitapahtumat.cpp"
+        "C:\\Users\\tpaak\\OneDrive\\Työpöytä\\OAMK\\Periodi 4\\group_8\\frontend\\tilitapahtumat.cpp"
     ],
     "directory": "C:/temp/Tvt22kmo/group_8/build-frontend-Desktop_Qt_5_15_2_MinGW_32_bit-Debug/.qtc_clangd",
-    "file": "C:/temp/Tvt22kmo/group_8/frontend/tilitapahtumat.cpp"
+    "file": "C:/Users/tpaak/OneDrive/Työpöytä/OAMK/Periodi 4/group_8/frontend/tilitapahtumat.cpp"
 },
 {
     "arguments": [
@@ -836,7 +836,7 @@
         "-I",
         "C:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders\\QtCore",
         "-I",
-        "C:\\temp\\Tvt22kmo\\group_8\\frontend",
+        "C:\\Users\\tpaak\\OneDrive\\Työpöytä\\OAMK\\Periodi 4\\group_8\\frontend",
         "-I",
         "C:\\Qt\\5.15.2\\mingw81_32\\include",
         "-I",
@@ -874,10 +874,10 @@
         "-ferror-limit=1000",
         "-x",
         "c++-header",
-        "C:\\temp\\Tvt22kmo\\group_8\\frontend\\info.h"
+        "C:\\Users\\tpaak\\OneDrive\\Työpöytä\\OAMK\\Periodi 4\\group_8\\frontend\\info.h"
     ],
     "directory": "C:/temp/Tvt22kmo/group_8/build-frontend-Desktop_Qt_5_15_2_MinGW_32_bit-Debug/.qtc_clangd",
-    "file": "C:/temp/Tvt22kmo/group_8/frontend/info.h"
+    "file": "C:/Users/tpaak/OneDrive/Työpöytä/OAMK/Periodi 4/group_8/frontend/info.h"
 },
 {
     "arguments": [
@@ -916,7 +916,7 @@
         "-I",
         "C:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders\\QtCore",
         "-I",
-        "C:\\temp\\Tvt22kmo\\group_8\\frontend",
+        "C:\\Users\\tpaak\\OneDrive\\Työpöytä\\OAMK\\Periodi 4\\group_8\\frontend",
         "-I",
         "C:\\Qt\\5.15.2\\mingw81_32\\include",
         "-I",
@@ -954,10 +954,10 @@
         "-ferror-limit=1000",
         "-x",
         "c++-header",
-        "C:\\temp\\Tvt22kmo\\group_8\\frontend\\loginwindow.h"
+        "C:\\Users\\tpaak\\OneDrive\\Työpöytä\\OAMK\\Periodi 4\\group_8\\frontend\\loginwindow.h"
     ],
     "directory": "C:/temp/Tvt22kmo/group_8/build-frontend-Desktop_Qt_5_15_2_MinGW_32_bit-Debug/.qtc_clangd",
-    "file": "C:/temp/Tvt22kmo/group_8/frontend/loginwindow.h"
+    "file": "C:/Users/tpaak/OneDrive/Työpöytä/OAMK/Periodi 4/group_8/frontend/loginwindow.h"
 },
 {
     "arguments": [
@@ -996,7 +996,7 @@
         "-I",
         "C:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders\\QtCore",
         "-I",
-        "C:\\temp\\Tvt22kmo\\group_8\\frontend",
+        "C:\\Users\\tpaak\\OneDrive\\Työpöytä\\OAMK\\Periodi 4\\group_8\\frontend",
         "-I",
         "C:\\Qt\\5.15.2\\mingw81_32\\include",
         "-I",
@@ -1034,10 +1034,10 @@
         "-ferror-limit=1000",
         "-x",
         "c++-header",
-        "C:\\temp\\Tvt22kmo\\group_8\\frontend\\luottoraja.h"
+        "C:\\Users\\tpaak\\OneDrive\\Työpöytä\\OAMK\\Periodi 4\\group_8\\frontend\\luottoraja.h"
     ],
     "directory": "C:/temp/Tvt22kmo/group_8/build-frontend-Desktop_Qt_5_15_2_MinGW_32_bit-Debug/.qtc_clangd",
-    "file": "C:/temp/Tvt22kmo/group_8/frontend/luottoraja.h"
+    "file": "C:/Users/tpaak/OneDrive/Työpöytä/OAMK/Periodi 4/group_8/frontend/luottoraja.h"
 },
 {
     "arguments": [
@@ -1076,7 +1076,7 @@
         "-I",
         "C:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders\\QtCore",
         "-I",
-        "C:\\temp\\Tvt22kmo\\group_8\\frontend",
+        "C:\\Users\\tpaak\\OneDrive\\Työpöytä\\OAMK\\Periodi 4\\group_8\\frontend",
         "-I",
         "C:\\Qt\\5.15.2\\mingw81_32\\include",
         "-I",
@@ -1114,10 +1114,10 @@
         "-ferror-limit=1000",
         "-x",
         "c++-header",
-        "C:\\temp\\Tvt22kmo\\group_8\\frontend\\mainwindow.h"
+        "C:\\Users\\tpaak\\OneDrive\\Työpöytä\\OAMK\\Periodi 4\\group_8\\frontend\\mainwindow.h"
     ],
     "directory": "C:/temp/Tvt22kmo/group_8/build-frontend-Desktop_Qt_5_15_2_MinGW_32_bit-Debug/.qtc_clangd",
-    "file": "C:/temp/Tvt22kmo/group_8/frontend/mainwindow.h"
+    "file": "C:/Users/tpaak/OneDrive/Työpöytä/OAMK/Periodi 4/group_8/frontend/mainwindow.h"
 },
 {
     "arguments": [
@@ -1156,7 +1156,7 @@
         "-I",
         "C:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders\\QtCore",
         "-I",
-        "C:\\temp\\Tvt22kmo\\group_8\\frontend",
+        "C:\\Users\\tpaak\\OneDrive\\Työpöytä\\OAMK\\Periodi 4\\group_8\\frontend",
         "-I",
         "C:\\Qt\\5.15.2\\mingw81_32\\include",
         "-I",
@@ -1194,10 +1194,10 @@
         "-ferror-limit=1000",
         "-x",
         "c++-header",
-        "C:\\temp\\Tvt22kmo\\group_8\\frontend\\menuwindow.h"
+        "C:\\Users\\tpaak\\OneDrive\\Työpöytä\\OAMK\\Periodi 4\\group_8\\frontend\\menuwindow.h"
     ],
     "directory": "C:/temp/Tvt22kmo/group_8/build-frontend-Desktop_Qt_5_15_2_MinGW_32_bit-Debug/.qtc_clangd",
-    "file": "C:/temp/Tvt22kmo/group_8/frontend/menuwindow.h"
+    "file": "C:/Users/tpaak/OneDrive/Työpöytä/OAMK/Periodi 4/group_8/frontend/menuwindow.h"
 },
 {
     "arguments": [
@@ -1236,7 +1236,7 @@
         "-I",
         "C:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders\\QtCore",
         "-I",
-        "C:\\temp\\Tvt22kmo\\group_8\\frontend",
+        "C:\\Users\\tpaak\\OneDrive\\Työpöytä\\OAMK\\Periodi 4\\group_8\\frontend",
         "-I",
         "C:\\Qt\\5.15.2\\mingw81_32\\include",
         "-I",
@@ -1274,10 +1274,10 @@
         "-ferror-limit=1000",
         "-x",
         "c++-header",
-        "C:\\temp\\Tvt22kmo\\group_8\\frontend\\myurl.h"
+        "C:\\Users\\tpaak\\OneDrive\\Työpöytä\\OAMK\\Periodi 4\\group_8\\frontend\\myurl.h"
     ],
     "directory": "C:/temp/Tvt22kmo/group_8/build-frontend-Desktop_Qt_5_15_2_MinGW_32_bit-Debug/.qtc_clangd",
-    "file": "C:/temp/Tvt22kmo/group_8/frontend/myurl.h"
+    "file": "C:/Users/tpaak/OneDrive/Työpöytä/OAMK/Periodi 4/group_8/frontend/myurl.h"
 },
 {
     "arguments": [
@@ -1316,7 +1316,7 @@
         "-I",
         "C:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders\\QtCore",
         "-I",
-        "C:\\temp\\Tvt22kmo\\group_8\\frontend",
+        "C:\\Users\\tpaak\\OneDrive\\Työpöytä\\OAMK\\Periodi 4\\group_8\\frontend",
         "-I",
         "C:\\Qt\\5.15.2\\mingw81_32\\include",
         "-I",
@@ -1354,10 +1354,10 @@
         "-ferror-limit=1000",
         "-x",
         "c++-header",
-        "C:\\temp\\Tvt22kmo\\group_8\\frontend\\otto.h"
+        "C:\\Users\\tpaak\\OneDrive\\Työpöytä\\OAMK\\Periodi 4\\group_8\\frontend\\otto.h"
     ],
     "directory": "C:/temp/Tvt22kmo/group_8/build-frontend-Desktop_Qt_5_15_2_MinGW_32_bit-Debug/.qtc_clangd",
-    "file": "C:/temp/Tvt22kmo/group_8/frontend/otto.h"
+    "file": "C:/Users/tpaak/OneDrive/Työpöytä/OAMK/Periodi 4/group_8/frontend/otto.h"
 },
 {
     "arguments": [
@@ -1396,7 +1396,7 @@
         "-I",
         "C:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders\\QtCore",
         "-I",
-        "C:\\temp\\Tvt22kmo\\group_8\\frontend",
+        "C:\\Users\\tpaak\\OneDrive\\Työpöytä\\OAMK\\Periodi 4\\group_8\\frontend",
         "-I",
         "C:\\Qt\\5.15.2\\mingw81_32\\include",
         "-I",
@@ -1434,10 +1434,10 @@
         "-ferror-limit=1000",
         "-x",
         "c++-header",
-        "C:\\temp\\Tvt22kmo\\group_8\\frontend\\saldo.h"
+        "C:\\Users\\tpaak\\OneDrive\\Työpöytä\\OAMK\\Periodi 4\\group_8\\frontend\\saldo.h"
     ],
     "directory": "C:/temp/Tvt22kmo/group_8/build-frontend-Desktop_Qt_5_15_2_MinGW_32_bit-Debug/.qtc_clangd",
-    "file": "C:/temp/Tvt22kmo/group_8/frontend/saldo.h"
+    "file": "C:/Users/tpaak/OneDrive/Työpöytä/OAMK/Periodi 4/group_8/frontend/saldo.h"
 },
 {
     "arguments": [
@@ -1476,7 +1476,7 @@
         "-I",
         "C:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders\\QtCore",
         "-I",
-        "C:\\temp\\Tvt22kmo\\group_8\\frontend",
+        "C:\\Users\\tpaak\\OneDrive\\Työpöytä\\OAMK\\Periodi 4\\group_8\\frontend",
         "-I",
         "C:\\Qt\\5.15.2\\mingw81_32\\include",
         "-I",
@@ -1514,10 +1514,10 @@
         "-ferror-limit=1000",
         "-x",
         "c++-header",
-        "C:\\temp\\Tvt22kmo\\group_8\\frontend\\tilitapahtumat.h"
+        "C:\\Users\\tpaak\\OneDrive\\Työpöytä\\OAMK\\Periodi 4\\group_8\\frontend\\tilitapahtumat.h"
     ],
     "directory": "C:/temp/Tvt22kmo/group_8/build-frontend-Desktop_Qt_5_15_2_MinGW_32_bit-Debug/.qtc_clangd",
-    "file": "C:/temp/Tvt22kmo/group_8/frontend/tilitapahtumat.h"
+    "file": "C:/Users/tpaak/OneDrive/Työpöytä/OAMK/Periodi 4/group_8/frontend/tilitapahtumat.h"
 },
 {
     "arguments": [
@@ -1556,247 +1556,7 @@
         "-I",
         "C:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders\\QtCore",
         "-I",
-        "C:\\temp\\Tvt22kmo\\group_8\\frontend",
-        "-I",
-        "C:\\Qt\\5.15.2\\mingw81_32\\include",
-        "-I",
-        "C:\\Qt\\5.15.2\\mingw81_32\\include\\QtWidgets",
-        "-I",
-        "C:\\Qt\\5.15.2\\mingw81_32\\include\\QtGui",
-        "-I",
-        "C:\\Qt\\5.15.2\\mingw81_32\\include\\QtANGLE",
-        "-I",
-        "C:\\Qt\\5.15.2\\mingw81_32\\include\\QtNetwork",
-        "-I",
-        "C:\\Qt\\5.15.2\\mingw81_32\\include\\QtSql",
-        "-I",
-        "C:\\Qt\\5.15.2\\mingw81_32\\include\\QtCore",
-        "-I",
-        "C:\\temp\\Tvt22kmo\\group_8\\build-frontend-Desktop_Qt_5_15_2_MinGW_32_bit-Debug\\debug",
-        "-I",
-        "C:\\temp\\Tvt22kmo\\group_8\\build-frontend-Desktop_Qt_5_15_2_MinGW_32_bit-Debug",
-        "-I",
-        "C:\\Qt\\5.15.2\\mingw81_32\\mkspecs\\win32-g++",
-        "-isystem",
-        "C:\\Qt\\Tools\\mingw810_32\\lib\\gcc\\i686-w64-mingw32\\8.1.0\\include\\c++",
-        "-isystem",
-        "C:\\Qt\\Tools\\mingw810_32\\lib\\gcc\\i686-w64-mingw32\\8.1.0\\include\\c++\\i686-w64-mingw32",
-        "-isystem",
-        "C:\\Qt\\Tools\\mingw810_32\\lib\\gcc\\i686-w64-mingw32\\8.1.0\\include\\c++\\backward",
-        "-isystem",
-        "C:\\Qt\\Tools\\QtCreator\\bin\\clang\\lib\\clang\\14.0.3\\include",
-        "-isystem",
-        "C:\\Qt\\Tools\\mingw810_32\\i686-w64-mingw32\\include",
-        "-fmessage-length=0",
-        "-fdiagnostics-show-note-include-stack",
-        "-fretain-comments-from-system-headers",
-        "-fmacro-backtrace-limit=0",
-        "-ferror-limit=1000",
-        "-x",
-        "c++-header",
-        "C:\\temp\\Tvt22kmo\\group_8\\build-frontend-Desktop_Qt_5_15_2_MinGW_32_bit-Debug\\ui_mainwindow.h"
-    ],
-    "directory": "C:/temp/Tvt22kmo/group_8/build-frontend-Desktop_Qt_5_15_2_MinGW_32_bit-Debug/.qtc_clangd",
-    "file": "C:/temp/Tvt22kmo/group_8/build-frontend-Desktop_Qt_5_15_2_MinGW_32_bit-Debug/ui_mainwindow.h"
-},
-{
-    "arguments": [
-        "clang",
-        "-Wno-documentation-unknown-command",
-        "-Wno-unknown-warning-option",
-        "-Wno-unknown-pragmas",
-        "-nostdinc",
-        "-nostdinc++",
-        "-g",
-        "-std=gnu++11",
-        "-Wall",
-        "-Wextra",
-        "-Wextra",
-        "-fexceptions",
-        "-mthreads",
-        "-fsyntax-only",
-        "-m32",
-        "--target=i686-w64-mingw32",
-        "-DUNICODE",
-        "-D_UNICODE",
-        "-DWIN32",
-        "-DMINGW_HAS_SECURE_API",
-        "-DQT_QML_DEBUG",
-        "-DQT_WIDGETS_LIB",
-        "-DQT_GUI_LIB",
-        "-DQT_NETWORK_LIB",
-        "-DQT_SQL_LIB",
-        "-DQT_CORE_LIB",
-        "-DQT_NEEDS_QMAIN",
-        "-DQ_CREATOR_RUN",
-        "-I",
-        "C:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedMingwHeaders",
-        "-I",
-        "C:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders",
-        "-I",
-        "C:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders\\QtCore",
-        "-I",
-        "C:\\temp\\Tvt22kmo\\group_8\\frontend",
-        "-I",
-        "C:\\Qt\\5.15.2\\mingw81_32\\include",
-        "-I",
-        "C:\\Qt\\5.15.2\\mingw81_32\\include\\QtWidgets",
-        "-I",
-        "C:\\Qt\\5.15.2\\mingw81_32\\include\\QtGui",
-        "-I",
-        "C:\\Qt\\5.15.2\\mingw81_32\\include\\QtANGLE",
-        "-I",
-        "C:\\Qt\\5.15.2\\mingw81_32\\include\\QtNetwork",
-        "-I",
-        "C:\\Qt\\5.15.2\\mingw81_32\\include\\QtSql",
-        "-I",
-        "C:\\Qt\\5.15.2\\mingw81_32\\include\\QtCore",
-        "-I",
-        "C:\\temp\\Tvt22kmo\\group_8\\build-frontend-Desktop_Qt_5_15_2_MinGW_32_bit-Debug\\debug",
-        "-I",
-        "C:\\temp\\Tvt22kmo\\group_8\\build-frontend-Desktop_Qt_5_15_2_MinGW_32_bit-Debug",
-        "-I",
-        "C:\\Qt\\5.15.2\\mingw81_32\\mkspecs\\win32-g++",
-        "-isystem",
-        "C:\\Qt\\Tools\\mingw810_32\\lib\\gcc\\i686-w64-mingw32\\8.1.0\\include\\c++",
-        "-isystem",
-        "C:\\Qt\\Tools\\mingw810_32\\lib\\gcc\\i686-w64-mingw32\\8.1.0\\include\\c++\\i686-w64-mingw32",
-        "-isystem",
-        "C:\\Qt\\Tools\\mingw810_32\\lib\\gcc\\i686-w64-mingw32\\8.1.0\\include\\c++\\backward",
-        "-isystem",
-        "C:\\Qt\\Tools\\QtCreator\\bin\\clang\\lib\\clang\\14.0.3\\include",
-        "-isystem",
-        "C:\\Qt\\Tools\\mingw810_32\\i686-w64-mingw32\\include",
-        "-fmessage-length=0",
-        "-fdiagnostics-show-note-include-stack",
-        "-fretain-comments-from-system-headers",
-        "-fmacro-backtrace-limit=0",
-        "-ferror-limit=1000",
-        "-x",
-        "c++-header",
-        "C:\\temp\\Tvt22kmo\\group_8\\build-frontend-Desktop_Qt_5_15_2_MinGW_32_bit-Debug\\ui_saldo.h"
-    ],
-    "directory": "C:/temp/Tvt22kmo/group_8/build-frontend-Desktop_Qt_5_15_2_MinGW_32_bit-Debug/.qtc_clangd",
-    "file": "C:/temp/Tvt22kmo/group_8/build-frontend-Desktop_Qt_5_15_2_MinGW_32_bit-Debug/ui_saldo.h"
-},
-{
-    "arguments": [
-        "clang",
-        "-Wno-documentation-unknown-command",
-        "-Wno-unknown-warning-option",
-        "-Wno-unknown-pragmas",
-        "-nostdinc",
-        "-nostdinc++",
-        "-g",
-        "-std=gnu++11",
-        "-Wall",
-        "-Wextra",
-        "-Wextra",
-        "-fexceptions",
-        "-mthreads",
-        "-fsyntax-only",
-        "-m32",
-        "--target=i686-w64-mingw32",
-        "-DUNICODE",
-        "-D_UNICODE",
-        "-DWIN32",
-        "-DMINGW_HAS_SECURE_API",
-        "-DQT_QML_DEBUG",
-        "-DQT_WIDGETS_LIB",
-        "-DQT_GUI_LIB",
-        "-DQT_NETWORK_LIB",
-        "-DQT_SQL_LIB",
-        "-DQT_CORE_LIB",
-        "-DQT_NEEDS_QMAIN",
-        "-DQ_CREATOR_RUN",
-        "-I",
-        "C:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedMingwHeaders",
-        "-I",
-        "C:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders",
-        "-I",
-        "C:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders\\QtCore",
-        "-I",
-        "C:\\temp\\Tvt22kmo\\group_8\\frontend",
-        "-I",
-        "C:\\Qt\\5.15.2\\mingw81_32\\include",
-        "-I",
-        "C:\\Qt\\5.15.2\\mingw81_32\\include\\QtWidgets",
-        "-I",
-        "C:\\Qt\\5.15.2\\mingw81_32\\include\\QtGui",
-        "-I",
-        "C:\\Qt\\5.15.2\\mingw81_32\\include\\QtANGLE",
-        "-I",
-        "C:\\Qt\\5.15.2\\mingw81_32\\include\\QtNetwork",
-        "-I",
-        "C:\\Qt\\5.15.2\\mingw81_32\\include\\QtSql",
-        "-I",
-        "C:\\Qt\\5.15.2\\mingw81_32\\include\\QtCore",
-        "-I",
-        "C:\\temp\\Tvt22kmo\\group_8\\build-frontend-Desktop_Qt_5_15_2_MinGW_32_bit-Debug\\debug",
-        "-I",
-        "C:\\temp\\Tvt22kmo\\group_8\\build-frontend-Desktop_Qt_5_15_2_MinGW_32_bit-Debug",
-        "-I",
-        "C:\\Qt\\5.15.2\\mingw81_32\\mkspecs\\win32-g++",
-        "-isystem",
-        "C:\\Qt\\Tools\\mingw810_32\\lib\\gcc\\i686-w64-mingw32\\8.1.0\\include\\c++",
-        "-isystem",
-        "C:\\Qt\\Tools\\mingw810_32\\lib\\gcc\\i686-w64-mingw32\\8.1.0\\include\\c++\\i686-w64-mingw32",
-        "-isystem",
-        "C:\\Qt\\Tools\\mingw810_32\\lib\\gcc\\i686-w64-mingw32\\8.1.0\\include\\c++\\backward",
-        "-isystem",
-        "C:\\Qt\\Tools\\QtCreator\\bin\\clang\\lib\\clang\\14.0.3\\include",
-        "-isystem",
-        "C:\\Qt\\Tools\\mingw810_32\\i686-w64-mingw32\\include",
-        "-fmessage-length=0",
-        "-fdiagnostics-show-note-include-stack",
-        "-fretain-comments-from-system-headers",
-        "-fmacro-backtrace-limit=0",
-        "-ferror-limit=1000",
-        "-x",
-        "c++-header",
-        "C:\\temp\\Tvt22kmo\\group_8\\build-frontend-Desktop_Qt_5_15_2_MinGW_32_bit-Debug\\ui_luottoraja.h"
-    ],
-    "directory": "C:/temp/Tvt22kmo/group_8/build-frontend-Desktop_Qt_5_15_2_MinGW_32_bit-Debug/.qtc_clangd",
-    "file": "C:/temp/Tvt22kmo/group_8/build-frontend-Desktop_Qt_5_15_2_MinGW_32_bit-Debug/ui_luottoraja.h"
-},
-{
-    "arguments": [
-        "clang",
-        "-Wno-documentation-unknown-command",
-        "-Wno-unknown-warning-option",
-        "-Wno-unknown-pragmas",
-        "-nostdinc",
-        "-nostdinc++",
-        "-g",
-        "-std=gnu++11",
-        "-Wall",
-        "-Wextra",
-        "-Wextra",
-        "-fexceptions",
-        "-mthreads",
-        "-fsyntax-only",
-        "-m32",
-        "--target=i686-w64-mingw32",
-        "-DUNICODE",
-        "-D_UNICODE",
-        "-DWIN32",
-        "-DMINGW_HAS_SECURE_API",
-        "-DQT_QML_DEBUG",
-        "-DQT_WIDGETS_LIB",
-        "-DQT_GUI_LIB",
-        "-DQT_NETWORK_LIB",
-        "-DQT_SQL_LIB",
-        "-DQT_CORE_LIB",
-        "-DQT_NEEDS_QMAIN",
-        "-DQ_CREATOR_RUN",
-        "-I",
-        "C:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedMingwHeaders",
-        "-I",
-        "C:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders",
-        "-I",
-        "C:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders\\QtCore",
-        "-I",
-        "C:\\temp\\Tvt22kmo\\group_8\\frontend",
+        "C:\\Users\\tpaak\\OneDrive\\Työpöytä\\OAMK\\Periodi 4\\group_8\\frontend",
         "-I",
         "C:\\Qt\\5.15.2\\mingw81_32\\include",
         "-I",
@@ -1876,7 +1636,7 @@
         "-I",
         "C:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders\\QtCore",
         "-I",
-        "C:\\temp\\Tvt22kmo\\group_8\\frontend",
+        "C:\\Users\\tpaak\\OneDrive\\Työpöytä\\OAMK\\Periodi 4\\group_8\\frontend",
         "-I",
         "C:\\Qt\\5.15.2\\mingw81_32\\include",
         "-I",
@@ -1914,10 +1674,10 @@
         "-ferror-limit=1000",
         "-x",
         "c++-header",
-        "C:\\temp\\Tvt22kmo\\group_8\\build-frontend-Desktop_Qt_5_15_2_MinGW_32_bit-Debug\\ui_loginwindow.h"
+        "C:\\temp\\Tvt22kmo\\group_8\\build-frontend-Desktop_Qt_5_15_2_MinGW_32_bit-Debug\\ui_luottoraja.h"
     ],
     "directory": "C:/temp/Tvt22kmo/group_8/build-frontend-Desktop_Qt_5_15_2_MinGW_32_bit-Debug/.qtc_clangd",
-    "file": "C:/temp/Tvt22kmo/group_8/build-frontend-Desktop_Qt_5_15_2_MinGW_32_bit-Debug/ui_loginwindow.h"
+    "file": "C:/temp/Tvt22kmo/group_8/build-frontend-Desktop_Qt_5_15_2_MinGW_32_bit-Debug/ui_luottoraja.h"
 },
 {
     "arguments": [
@@ -1956,7 +1716,167 @@
         "-I",
         "C:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders\\QtCore",
         "-I",
-        "C:\\temp\\Tvt22kmo\\group_8\\frontend",
+        "C:\\Users\\tpaak\\OneDrive\\Työpöytä\\OAMK\\Periodi 4\\group_8\\frontend",
+        "-I",
+        "C:\\Qt\\5.15.2\\mingw81_32\\include",
+        "-I",
+        "C:\\Qt\\5.15.2\\mingw81_32\\include\\QtWidgets",
+        "-I",
+        "C:\\Qt\\5.15.2\\mingw81_32\\include\\QtGui",
+        "-I",
+        "C:\\Qt\\5.15.2\\mingw81_32\\include\\QtANGLE",
+        "-I",
+        "C:\\Qt\\5.15.2\\mingw81_32\\include\\QtNetwork",
+        "-I",
+        "C:\\Qt\\5.15.2\\mingw81_32\\include\\QtSql",
+        "-I",
+        "C:\\Qt\\5.15.2\\mingw81_32\\include\\QtCore",
+        "-I",
+        "C:\\temp\\Tvt22kmo\\group_8\\build-frontend-Desktop_Qt_5_15_2_MinGW_32_bit-Debug\\debug",
+        "-I",
+        "C:\\temp\\Tvt22kmo\\group_8\\build-frontend-Desktop_Qt_5_15_2_MinGW_32_bit-Debug",
+        "-I",
+        "C:\\Qt\\5.15.2\\mingw81_32\\mkspecs\\win32-g++",
+        "-isystem",
+        "C:\\Qt\\Tools\\mingw810_32\\lib\\gcc\\i686-w64-mingw32\\8.1.0\\include\\c++",
+        "-isystem",
+        "C:\\Qt\\Tools\\mingw810_32\\lib\\gcc\\i686-w64-mingw32\\8.1.0\\include\\c++\\i686-w64-mingw32",
+        "-isystem",
+        "C:\\Qt\\Tools\\mingw810_32\\lib\\gcc\\i686-w64-mingw32\\8.1.0\\include\\c++\\backward",
+        "-isystem",
+        "C:\\Qt\\Tools\\QtCreator\\bin\\clang\\lib\\clang\\14.0.3\\include",
+        "-isystem",
+        "C:\\Qt\\Tools\\mingw810_32\\i686-w64-mingw32\\include",
+        "-fmessage-length=0",
+        "-fdiagnostics-show-note-include-stack",
+        "-fretain-comments-from-system-headers",
+        "-fmacro-backtrace-limit=0",
+        "-ferror-limit=1000",
+        "-x",
+        "c++-header",
+        "C:\\temp\\Tvt22kmo\\group_8\\build-frontend-Desktop_Qt_5_15_2_MinGW_32_bit-Debug\\ui_otto.h"
+    ],
+    "directory": "C:/temp/Tvt22kmo/group_8/build-frontend-Desktop_Qt_5_15_2_MinGW_32_bit-Debug/.qtc_clangd",
+    "file": "C:/temp/Tvt22kmo/group_8/build-frontend-Desktop_Qt_5_15_2_MinGW_32_bit-Debug/ui_otto.h"
+},
+{
+    "arguments": [
+        "clang",
+        "-Wno-documentation-unknown-command",
+        "-Wno-unknown-warning-option",
+        "-Wno-unknown-pragmas",
+        "-nostdinc",
+        "-nostdinc++",
+        "-g",
+        "-std=gnu++11",
+        "-Wall",
+        "-Wextra",
+        "-Wextra",
+        "-fexceptions",
+        "-mthreads",
+        "-fsyntax-only",
+        "-m32",
+        "--target=i686-w64-mingw32",
+        "-DUNICODE",
+        "-D_UNICODE",
+        "-DWIN32",
+        "-DMINGW_HAS_SECURE_API",
+        "-DQT_QML_DEBUG",
+        "-DQT_WIDGETS_LIB",
+        "-DQT_GUI_LIB",
+        "-DQT_NETWORK_LIB",
+        "-DQT_SQL_LIB",
+        "-DQT_CORE_LIB",
+        "-DQT_NEEDS_QMAIN",
+        "-DQ_CREATOR_RUN",
+        "-I",
+        "C:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedMingwHeaders",
+        "-I",
+        "C:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders",
+        "-I",
+        "C:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders\\QtCore",
+        "-I",
+        "C:\\Users\\tpaak\\OneDrive\\Työpöytä\\OAMK\\Periodi 4\\group_8\\frontend",
+        "-I",
+        "C:\\Qt\\5.15.2\\mingw81_32\\include",
+        "-I",
+        "C:\\Qt\\5.15.2\\mingw81_32\\include\\QtWidgets",
+        "-I",
+        "C:\\Qt\\5.15.2\\mingw81_32\\include\\QtGui",
+        "-I",
+        "C:\\Qt\\5.15.2\\mingw81_32\\include\\QtANGLE",
+        "-I",
+        "C:\\Qt\\5.15.2\\mingw81_32\\include\\QtNetwork",
+        "-I",
+        "C:\\Qt\\5.15.2\\mingw81_32\\include\\QtSql",
+        "-I",
+        "C:\\Qt\\5.15.2\\mingw81_32\\include\\QtCore",
+        "-I",
+        "C:\\temp\\Tvt22kmo\\group_8\\build-frontend-Desktop_Qt_5_15_2_MinGW_32_bit-Debug\\debug",
+        "-I",
+        "C:\\temp\\Tvt22kmo\\group_8\\build-frontend-Desktop_Qt_5_15_2_MinGW_32_bit-Debug",
+        "-I",
+        "C:\\Qt\\5.15.2\\mingw81_32\\mkspecs\\win32-g++",
+        "-isystem",
+        "C:\\Qt\\Tools\\mingw810_32\\lib\\gcc\\i686-w64-mingw32\\8.1.0\\include\\c++",
+        "-isystem",
+        "C:\\Qt\\Tools\\mingw810_32\\lib\\gcc\\i686-w64-mingw32\\8.1.0\\include\\c++\\i686-w64-mingw32",
+        "-isystem",
+        "C:\\Qt\\Tools\\mingw810_32\\lib\\gcc\\i686-w64-mingw32\\8.1.0\\include\\c++\\backward",
+        "-isystem",
+        "C:\\Qt\\Tools\\QtCreator\\bin\\clang\\lib\\clang\\14.0.3\\include",
+        "-isystem",
+        "C:\\Qt\\Tools\\mingw810_32\\i686-w64-mingw32\\include",
+        "-fmessage-length=0",
+        "-fdiagnostics-show-note-include-stack",
+        "-fretain-comments-from-system-headers",
+        "-fmacro-backtrace-limit=0",
+        "-ferror-limit=1000",
+        "-x",
+        "c++-header",
+        "C:\\temp\\Tvt22kmo\\group_8\\build-frontend-Desktop_Qt_5_15_2_MinGW_32_bit-Debug\\ui_saldo.h"
+    ],
+    "directory": "C:/temp/Tvt22kmo/group_8/build-frontend-Desktop_Qt_5_15_2_MinGW_32_bit-Debug/.qtc_clangd",
+    "file": "C:/temp/Tvt22kmo/group_8/build-frontend-Desktop_Qt_5_15_2_MinGW_32_bit-Debug/ui_saldo.h"
+},
+{
+    "arguments": [
+        "clang",
+        "-Wno-documentation-unknown-command",
+        "-Wno-unknown-warning-option",
+        "-Wno-unknown-pragmas",
+        "-nostdinc",
+        "-nostdinc++",
+        "-g",
+        "-std=gnu++11",
+        "-Wall",
+        "-Wextra",
+        "-Wextra",
+        "-fexceptions",
+        "-mthreads",
+        "-fsyntax-only",
+        "-m32",
+        "--target=i686-w64-mingw32",
+        "-DUNICODE",
+        "-D_UNICODE",
+        "-DWIN32",
+        "-DMINGW_HAS_SECURE_API",
+        "-DQT_QML_DEBUG",
+        "-DQT_WIDGETS_LIB",
+        "-DQT_GUI_LIB",
+        "-DQT_NETWORK_LIB",
+        "-DQT_SQL_LIB",
+        "-DQT_CORE_LIB",
+        "-DQT_NEEDS_QMAIN",
+        "-DQ_CREATOR_RUN",
+        "-I",
+        "C:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedMingwHeaders",
+        "-I",
+        "C:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders",
+        "-I",
+        "C:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders\\QtCore",
+        "-I",
+        "C:\\Users\\tpaak\\OneDrive\\Työpöytä\\OAMK\\Periodi 4\\group_8\\frontend",
         "-I",
         "C:\\Qt\\5.15.2\\mingw81_32\\include",
         "-I",
@@ -2036,7 +1956,7 @@
         "-I",
         "C:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders\\QtCore",
         "-I",
-        "C:\\temp\\Tvt22kmo\\group_8\\frontend",
+        "C:\\Users\\tpaak\\OneDrive\\Työpöytä\\OAMK\\Periodi 4\\group_8\\frontend",
         "-I",
         "C:\\Qt\\5.15.2\\mingw81_32\\include",
         "-I",
@@ -2074,9 +1994,89 @@
         "-ferror-limit=1000",
         "-x",
         "c++-header",
-        "C:\\temp\\Tvt22kmo\\group_8\\build-frontend-Desktop_Qt_5_15_2_MinGW_32_bit-Debug\\ui_otto.h"
+        "C:\\temp\\Tvt22kmo\\group_8\\build-frontend-Desktop_Qt_5_15_2_MinGW_32_bit-Debug\\ui_loginwindow.h"
     ],
     "directory": "C:/temp/Tvt22kmo/group_8/build-frontend-Desktop_Qt_5_15_2_MinGW_32_bit-Debug/.qtc_clangd",
-    "file": "C:/temp/Tvt22kmo/group_8/build-frontend-Desktop_Qt_5_15_2_MinGW_32_bit-Debug/ui_otto.h"
+    "file": "C:/temp/Tvt22kmo/group_8/build-frontend-Desktop_Qt_5_15_2_MinGW_32_bit-Debug/ui_loginwindow.h"
+},
+{
+    "arguments": [
+        "clang",
+        "-Wno-documentation-unknown-command",
+        "-Wno-unknown-warning-option",
+        "-Wno-unknown-pragmas",
+        "-nostdinc",
+        "-nostdinc++",
+        "-g",
+        "-std=gnu++11",
+        "-Wall",
+        "-Wextra",
+        "-Wextra",
+        "-fexceptions",
+        "-mthreads",
+        "-fsyntax-only",
+        "-m32",
+        "--target=i686-w64-mingw32",
+        "-DUNICODE",
+        "-D_UNICODE",
+        "-DWIN32",
+        "-DMINGW_HAS_SECURE_API",
+        "-DQT_QML_DEBUG",
+        "-DQT_WIDGETS_LIB",
+        "-DQT_GUI_LIB",
+        "-DQT_NETWORK_LIB",
+        "-DQT_SQL_LIB",
+        "-DQT_CORE_LIB",
+        "-DQT_NEEDS_QMAIN",
+        "-DQ_CREATOR_RUN",
+        "-I",
+        "C:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedMingwHeaders",
+        "-I",
+        "C:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders",
+        "-I",
+        "C:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders\\QtCore",
+        "-I",
+        "C:\\Users\\tpaak\\OneDrive\\Työpöytä\\OAMK\\Periodi 4\\group_8\\frontend",
+        "-I",
+        "C:\\Qt\\5.15.2\\mingw81_32\\include",
+        "-I",
+        "C:\\Qt\\5.15.2\\mingw81_32\\include\\QtWidgets",
+        "-I",
+        "C:\\Qt\\5.15.2\\mingw81_32\\include\\QtGui",
+        "-I",
+        "C:\\Qt\\5.15.2\\mingw81_32\\include\\QtANGLE",
+        "-I",
+        "C:\\Qt\\5.15.2\\mingw81_32\\include\\QtNetwork",
+        "-I",
+        "C:\\Qt\\5.15.2\\mingw81_32\\include\\QtSql",
+        "-I",
+        "C:\\Qt\\5.15.2\\mingw81_32\\include\\QtCore",
+        "-I",
+        "C:\\temp\\Tvt22kmo\\group_8\\build-frontend-Desktop_Qt_5_15_2_MinGW_32_bit-Debug\\debug",
+        "-I",
+        "C:\\temp\\Tvt22kmo\\group_8\\build-frontend-Desktop_Qt_5_15_2_MinGW_32_bit-Debug",
+        "-I",
+        "C:\\Qt\\5.15.2\\mingw81_32\\mkspecs\\win32-g++",
+        "-isystem",
+        "C:\\Qt\\Tools\\mingw810_32\\lib\\gcc\\i686-w64-mingw32\\8.1.0\\include\\c++",
+        "-isystem",
+        "C:\\Qt\\Tools\\mingw810_32\\lib\\gcc\\i686-w64-mingw32\\8.1.0\\include\\c++\\i686-w64-mingw32",
+        "-isystem",
+        "C:\\Qt\\Tools\\mingw810_32\\lib\\gcc\\i686-w64-mingw32\\8.1.0\\include\\c++\\backward",
+        "-isystem",
+        "C:\\Qt\\Tools\\QtCreator\\bin\\clang\\lib\\clang\\14.0.3\\include",
+        "-isystem",
+        "C:\\Qt\\Tools\\mingw810_32\\i686-w64-mingw32\\include",
+        "-fmessage-length=0",
+        "-fdiagnostics-show-note-include-stack",
+        "-fretain-comments-from-system-headers",
+        "-fmacro-backtrace-limit=0",
+        "-ferror-limit=1000",
+        "-x",
+        "c++-header",
+        "C:\\temp\\Tvt22kmo\\group_8\\build-frontend-Desktop_Qt_5_15_2_MinGW_32_bit-Debug\\ui_mainwindow.h"
+    ],
+    "directory": "C:/temp/Tvt22kmo/group_8/build-frontend-Desktop_Qt_5_15_2_MinGW_32_bit-Debug/.qtc_clangd",
+    "file": "C:/temp/Tvt22kmo/group_8/build-frontend-Desktop_Qt_5_15_2_MinGW_32_bit-Debug/ui_mainwindow.h"
 }
 ]

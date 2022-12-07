@@ -40,21 +40,36 @@ public:
         QFont font;
         font.setPointSize(14);
         labelTilitapahtumat->setFont(font);
+        labelTilitapahtumat->setStyleSheet(QString::fromUtf8("background-color: rgb(112, 112, 112);\n"
+"color: rgb(255, 255, 255);"));
+        labelTilitapahtumat->setFrameShape(QFrame::WinPanel);
+        labelTilitapahtumat->setAlignment(Qt::AlignCenter);
         textTilitapahtumat = new QTextBrowser(tilitapahtumat);
         textTilitapahtumat->setObjectName(QString::fromUtf8("textTilitapahtumat"));
         textTilitapahtumat->setGeometry(QRect(30, 70, 251, 421));
+        textTilitapahtumat->setStyleSheet(QString::fromUtf8("background-color: rgb(112, 112, 112);\n"
+"color: rgb(255, 255, 255);"));
+        textTilitapahtumat->setFrameShape(QFrame::WinPanel);
         seuraavatBtn = new QPushButton(tilitapahtumat);
         seuraavatBtn->setObjectName(QString::fromUtf8("seuraavatBtn"));
-        seuraavatBtn->setGeometry(QRect(320, 460, 101, 41));
+        seuraavatBtn->setGeometry(QRect(320, 330, 121, 41));
+        seuraavatBtn->setStyleSheet(QString::fromUtf8("background-color: rgb(0, 255, 0);\n"
+"color: rgb(0, 0, 0);"));
         edellisetBtn = new QPushButton(tilitapahtumat);
         edellisetBtn->setObjectName(QString::fromUtf8("edellisetBtn"));
-        edellisetBtn->setGeometry(QRect(470, 460, 101, 41));
+        edellisetBtn->setGeometry(QRect(500, 330, 121, 41));
+        edellisetBtn->setStyleSheet(QString::fromUtf8("background-color: rgb(0, 255, 0);\n"
+"color: rgb(0, 0, 0);"));
         naytaTilitapahtumatBtn = new QPushButton(tilitapahtumat);
         naytaTilitapahtumatBtn->setObjectName(QString::fromUtf8("naytaTilitapahtumatBtn"));
-        naytaTilitapahtumatBtn->setGeometry(QRect(300, 80, 121, 41));
+        naytaTilitapahtumatBtn->setGeometry(QRect(320, 220, 121, 41));
+        naytaTilitapahtumatBtn->setStyleSheet(QString::fromUtf8("background-color: rgb(0, 255, 0);\n"
+"color: rgb(0, 0, 0);"));
         TakaisinBtn = new QPushButton(tilitapahtumat);
         TakaisinBtn->setObjectName(QString::fromUtf8("TakaisinBtn"));
-        TakaisinBtn->setGeometry(QRect(500, 30, 151, 61));
+        TakaisinBtn->setGeometry(QRect(500, 220, 121, 41));
+        TakaisinBtn->setStyleSheet(QString::fromUtf8("background-color: rgb(0, 255, 0);\n"
+"color: rgb(0, 0, 0);"));
 
         retranslateUi(tilitapahtumat);
 
