@@ -41,6 +41,7 @@ void luottoraja::timeoutSlot()
 
     if(time>10)
     {
+        timer->stop();
         luottoraja::close();
         menuWindow menu(myToken, id_account);
         menu.setModal(true);
@@ -115,6 +116,7 @@ void luottoraja::on_luotto10000_clicked()
 
 void luottoraja::on_uusi_luotto_clicked()
 {
+    time = 0;
     QJsonObject jsonObjUpdate;
     jsonObjUpdate.insert("credit_limit", credit_limit);
     QString site_url=MyURL::getBaseURL()+"/account/creditlimit/"+id_account;

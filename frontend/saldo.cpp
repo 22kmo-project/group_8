@@ -73,6 +73,10 @@ void saldo::getBalanceSlot(QNetworkReply *reply) //Pyydetään balance tietokann
         QJsonObject json_obj = value.toObject();
         account+=QString::number(json_obj["balance"].toInt())+"\n";
     }
+
+    balance=QString::number(json_obj["balance"].toInt())+"\n";;
+    qDebug()<<balance;
+    ui->labelNaytaSaldo->setText(balance);
 }
 
 void saldo::timeoutSlot() //Ajastin
