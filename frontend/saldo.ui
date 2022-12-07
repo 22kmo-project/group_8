@@ -106,7 +106,7 @@
     <string notr="true">background-color: rgb(72, 72, 72);</string>
    </property>
    <property name="text">
-    <string>Näytä Tilitapahtumat</string>
+    <string>Näytä tilitapahtumat</string>
    </property>
   </widget>
   <widget class="QPushButton" name="pushKayttajanTiedot">
@@ -122,16 +122,16 @@
     <string notr="true">background-color: rgb(65, 65, 65);</string>
    </property>
    <property name="text">
-    <string>Nayta käyttäjäntiedot</string>
+    <string>Näytä käyttäjäntiedot</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>120</y>
+     <y>180</y>
      <width>261</width>
-     <height>251</height>
+     <height>191</height>
     </rect>
    </property>
    <property name="font">

@@ -9,9 +9,8 @@
 #include "myurl.h"
 #include <QMainWindow>
 #include <QtNetwork>
-#include <QDialog>
 #include <QTimer>
-#include "info.h"
+
 
 
 
