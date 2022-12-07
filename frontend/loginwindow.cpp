@@ -17,7 +17,7 @@ loginWindow::loginWindow(QWidget *parent) :
 }
 
 loginWindow::~loginWindow()
-{
+{ //tarviiko delete timeria?
     delete timer;
     timer = nullptr;
     delete ui;
@@ -27,6 +27,7 @@ loginWindow::~loginWindow()
 
 void loginWindow::on_btnPoistu_clicked()
 {
+    timer->stop();
     loginWindow::close();
 }
 

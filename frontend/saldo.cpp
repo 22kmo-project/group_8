@@ -12,24 +12,20 @@ saldo::saldo(QByteArray bearerToken, QString idAccount,QWidget *parent) : //Väl
     ui->setupUi(this);
 
     myToken = bearerToken;
-    qDebug()<<myToken;
+    //qDebug()<<myToken;
     id_account = idAccount;
     qDebug()<<id_account;
-    id_account = idAccount;
-
-
 
     QString site_url=MyURL::getBaseURL()+"/account/"+idAccount;
-       QNetworkRequest request((site_url));
-       //WEBTOKEN ALKU
-       request.setRawHeader(QByteArray("Authorization"),(myToken));
-       //WEBTOKEN LOPPU
-       balanceManager = new QNetworkAccessManager(this);
+    QNetworkRequest request((site_url));
+    //WEBTOKEN ALKU
+    request.setRawHeader(QByteArray("Authorization"),(myToken));
+    //WEBTOKEN LOPPU
+    balanceManager = new QNetworkAccessManager(this);
 
-       connect(balanceManager, SIGNAL(finished (QNetworkReply*)), this, SLOT(getBalanceSlot(QNetworkReply*)));
+    connect(balanceManager, SIGNAL(finished (QNetworkReply*)), this, SLOT(getBalanceSlot(QNetworkReply*)));
 
-       reply = balanceManager->get(request);
-
+    reply = balanceManager->get(request);
 
     ui->labelNaytaSaldo->setText(balance);
 
@@ -38,9 +34,6 @@ saldo::saldo(QByteArray bearerToken, QString idAccount,QWidget *parent) : //Väl
             this, SLOT (timeoutSlot()));
     timer->start(1000);
     time = 0;
-
-
-
 }
 
 saldo::~saldo()
@@ -54,7 +47,6 @@ void saldo::setWebToken(const QByteArray &newWebToken)
 }
 
 
-
 void saldo::on_poistuSaldo_clicked() //Suljetaan saldo-ikkuna
 {
     timer->stop();
@@ -66,30 +58,25 @@ void saldo::on_poistuSaldo_clicked() //Suljetaan saldo-ikkuna
 
 void saldo::getBalanceSlot(QNetworkReply *reply) //Pyydetään balance tietokannasta
 {
-
-
     response_data = reply->readAll();
     QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
     QJsonObject json_obj = json_doc.object();
 
     qDebug()<<response_data;
 
-     response_data=reply->readAll();
-     qDebug()<<"DATA : "+response_data;
-     QJsonArray json_array = json_doc.array();
-     QString account ="";
-     id_user=QString::number(json_obj["id_user"].toInt());
-          qDebug()<<"käyttäjän id on: " +id_user;
-     foreach (const QJsonValue &value, json_array) {
+    QJsonArray json_array = json_doc.array();
+    QString account ="";
+    id_user=QString::number(json_obj["id_user"].toInt());
+    qDebug()<<"käyttäjän id on: " +id_user;
+    foreach (const QJsonValue &value, json_array)
+    {
         QJsonObject json_obj = value.toObject();
         account+=QString::number(json_obj["balance"].toInt())+"\n";
-}
-
+    }
 
     balance=QString::number(json_obj["balance"].toInt())+"\n";;
     qDebug()<<balance;
     ui->labelNaytaSaldo->setText(balance);
-
 }
 
 void saldo::timeoutSlot() //Ajastin
@@ -109,11 +96,12 @@ void saldo::getTransactionSlot(QNetworkReply *reply)
     QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
     QJsonArray json_array = json_doc.array();
     QString transaction;
-    foreach (const QJsonValue &value, json_array) {
+    foreach (const QJsonValue &value, json_array)
+    {
         QJsonObject json_obj = value.toObject();
              transaction+=json_obj["transaction_date"].toString()+"\r\n"+
                      json_obj["activity"].toString()+" , "+QString::number(json_obj["amount"].toInt())+"\r\n";
-}
+    }
     ui->label_2->setText(transaction);
 }
 
@@ -127,6 +115,7 @@ void saldo::setBalance(const QString &newBalance)
 
 void saldo::on_pushNaytaTapahtumat_clicked() // Haetaan tietokannasta tilitapahtumia
 {
+    time = 0;
     QString site_url=MyURL::getBaseURL()+"/transaction/"+id_account;
     QNetworkRequest request((site_url));
     //WEBTOKEN ALKU
@@ -143,8 +132,7 @@ void saldo::on_pushNaytaTapahtumat_clicked() // Haetaan tietokannasta tilitapaht
 
 void saldo::on_pushKayttajanTiedot_clicked() // Haetaan tietokannasta käyttäjän tiedot
 {
-
-
+    time = 0;
     QString site_url=MyURL::getBaseURL()+"/user/"+id_user;
     QNetworkRequest request((site_url));
     //WEBTOKEN ALKU
@@ -165,17 +153,12 @@ void saldo::getUserSlot(QNetworkReply *reply)
     QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
     QJsonArray json_array = json_doc.array();
     QString user;
-    foreach (const QJsonValue &value, json_array) {
+    foreach (const QJsonValue &value, json_array)
+    {
         QJsonObject json_obj = value.toObject();
-             user+=json_obj["fname"].toString()+" "+
+            user+=json_obj["fname"].toString()+" "+
                      json_obj["lname"].toString()+"\r\n"+json_obj["address"].toString()+" , "+"\r\n"
                      +(json_obj["phone"].toString())+"\r\n";
-}
+    }
     ui->label_3->setText(user);
 }
-
-
-
-
-
-

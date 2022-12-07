@@ -9,10 +9,9 @@ otto::otto(QByteArray bearerToken, QString idAccount, QWidget *parent) :
 {
     ui->setupUi(this);
     myToken = bearerToken;
-    qDebug()<<myToken;
+    //qDebug()<<myToken;
     id_account = idAccount;
     qDebug()<<id_account;
-    ui->label_eo->hide();
     ui->label_o->hide();
     timer = new QTimer(this);
 
@@ -20,7 +19,7 @@ otto::otto(QByteArray bearerToken, QString idAccount, QWidget *parent) :
     qDebug()<<site_url;
     QNetworkRequest request((site_url));
     request.setRawHeader(QByteArray("Authorization"),(myToken));
-    //request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+    //request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");  Onko tämä turha rivi? Jos on niin voi poistaa
 
     AccountTypeManager = new QNetworkAccessManager();
 
@@ -54,7 +53,7 @@ void otto::on_ottoPoistu_clicked()
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
     //WEBTOKEN ALKU
     request.setRawHeader(QByteArray("Authorization"),(myToken));
-    qDebug()<<myToken;
+    //qDebug()<<myToken;
     //WEBTOKEN LOPPU
 
     updateBalanceManager = new QNetworkAccessManager(this);
@@ -84,8 +83,7 @@ void otto::on_ottoPoistu_clicked()
             this, SLOT(transactionSlot(QNetworkReply*)));
 
      reply = transactionManager->post(requestPost, QJsonDocument(jsonObjPost).toJson());
-
-    }
+    }  
 }
 
 
@@ -95,7 +93,6 @@ void otto::on_Nosto20_clicked()
     maara=20;
     timer->stop();
     time = 0;
-
 }
 
 
@@ -147,13 +144,8 @@ void otto::timeoutSlot()
 {
     time ++;
     qDebug()<<time;
-    if(time>10 && ui->label_eo->isVisible())
-    {
-            ui->label_eo->hide();
-            timer->stop();
-            time = 0;
-    }
-    if(time>10)
+
+    if(time>10 && ui->lineEdit->text().isEmpty())
     {
         otto::close();
         menuWindow menu(myToken, id_account);
@@ -173,8 +165,8 @@ void otto::getAccountTypeSlot(QNetworkReply *reply)
     creditLimit=QString::number(json_obj["credit_limit"].toDouble());
     balanceValue=QString(balance).toDouble();
     creditValue=QString(creditLimit).toDouble();
-    qDebug()<<balance;
     ui->labelSaldo->setText("Tilisi saldo on " +balance);
+    qDebug()<<balance;
     qDebug()<<accountType;
     qDebug()<<creditLimit;
 
@@ -196,8 +188,8 @@ void otto::withdraw(double balanssi, double maara)
         }
         else
         {
-            ui->label_eo->setVisible(true);
-            ui->label_eo->setText("Tililläsi ei ole tarpeeksi rahaa. \nValitse uusi summa tai paina poistu-painiketta.");
+            ui->label_o->setVisible(true);
+            ui->label_o->setText("Tililläsi ei ole tarpeeksi rahaa. \nValitse uusi summa tai paina poistu-painiketta.");
             timer->start(1000);
             time = 0;
         }
@@ -215,8 +207,8 @@ void otto::withdraw(double balanssi, double maara)
         }
         else
         {
-            ui->label_eo->setVisible(true);
-            ui->label_eo->setText("Tililläsi ei ole tarpeeksi rahaa. Valitse uusi summa tai paina poistu-painiketta.");
+            ui->label_o->setVisible(true);
+            ui->label_o->setText("Tililläsi ei ole tarpeeksi rahaa. Valitse uusi summa tai paina poistu-painiketta.");
             timer->start(1000);
             time=0;
 
@@ -242,10 +234,6 @@ void otto::transactionSlot(QNetworkReply *reply)
     qDebug()<<response_data;
     reply->deleteLater();
     transactionManager->deleteLater();
-    otto::close();
-    menuWindow menu(myToken, id_account);
-    menu.setModal(true);
-    menu.exec();
 }
 
 

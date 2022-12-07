@@ -13,7 +13,7 @@ menuWindow::menuWindow(QByteArray bearerToken, QString idAccount, QWidget *paren
 {
     ui->setupUi(this);
     webToken = bearerToken;
-    qDebug()<<webToken;
+    //qDebug()<<webToken;
     id_account = idAccount;
 
 
@@ -22,16 +22,15 @@ menuWindow::menuWindow(QByteArray bearerToken, QString idAccount, QWidget *paren
     QNetworkRequest request((site_url));
     //WEBTOKEN ALKU
     QByteArray myToken=bearerToken;
-    qDebug()<<myToken;
+    //qDebug()<<myToken;
     request.setRawHeader(QByteArray("Authorization"),(myToken));
     //WEBTOKEN LOPPU
     ownerManager = new QNetworkAccessManager(this);
 
+    //Onko nämä alla olevat turhia? Jos on niin voi poistaa.
    // QJsonObject jsonObj;
     //jsonObj.insert("account_owner", owner);
     //request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
-
-    ownerManager = new QNetworkAccessManager(this);
 
     connect(ownerManager, SIGNAL(finished (QNetworkReply*)), this, SLOT(getOwnerSlot(QNetworkReply*)));
 

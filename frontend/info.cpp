@@ -13,10 +13,10 @@ void Info::getIdCard()
     jsonObj.insert("card_number", getCard_Number());
 
     QString wb = webToken;
-    qDebug()<<"Webtoken ="+wb;
-    qDebug()<<webToken;
+    //qDebug()<<"Webtoken ="+wb;
+    //qDebug()<<webToken;
     bearerToken = "Bearer "+wb.toUtf8();
-    qDebug()<<bearerToken;
+    //qDebug()<<bearerToken;
     QString site_url = MyURL::getBaseURL()+"/idcard/";
     qDebug()<<site_url;
     QNetworkRequest request((site_url));
@@ -36,10 +36,10 @@ void Info::getIdAccount()
     QJsonObject jsonObj;
     jsonObj.insert("id_card", getCardId());
     QString wb = webToken;
-    qDebug()<<"Webtoken ="+wb;
-    qDebug()<<webToken;
+    //qDebug()<<"Webtoken ="+wb;
+    //qDebug()<<webToken;
     bearerToken = "Bearer "+wb.toUtf8();
-    qDebug()<<bearerToken;
+    //qDebug()<<bearerToken;
     QString site_url = MyURL::getBaseURL()+"/idaccount";
     qDebug()<<site_url;
     QNetworkRequest request((site_url));
@@ -131,7 +131,6 @@ const QString &Info::getAccountId() const
 {
         return idAccount;
 }
-
 
 void Info::setAccountId(const QString &newIdAccount)
 {
