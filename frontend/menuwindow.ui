@@ -19,15 +19,14 @@
   <widget class="QPushButton" name="pushButton_Saldo">
    <property name="geometry">
     <rect>
-     <x>80</x>
-     <y>90</y>
+     <x>130</x>
+     <y>160</y>
      <width>121</width>
      <height>51</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <family>Arial</family>
      <pointsize>16</pointsize>
     </font>
    </property>
@@ -42,15 +41,14 @@ color: rgb(255, 255, 255);</string>
   <widget class="QPushButton" name="pushButton_Tilitapahtumat">
    <property name="geometry">
     <rect>
-     <x>400</x>
-     <y>90</y>
+     <x>420</x>
+     <y>160</y>
      <width>181</width>
      <height>51</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <family>Arial</family>
      <pointsize>16</pointsize>
     </font>
    </property>
@@ -65,15 +63,14 @@ color: rgb(255, 255, 255);</string>
   <widget class="QPushButton" name="pushButton_Otto">
    <property name="geometry">
     <rect>
-     <x>90</x>
-     <y>260</y>
+     <x>130</x>
+     <y>270</y>
      <width>121</width>
      <height>51</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <family>Arial</family>
      <pointsize>16</pointsize>
     </font>
    </property>
@@ -88,15 +85,14 @@ color: rgb(255, 255, 255);</string>
   <widget class="QPushButton" name="pushButton_LuottorajanNosto">
    <property name="geometry">
     <rect>
-     <x>370</x>
-     <y>260</y>
+     <x>390</x>
+     <y>270</y>
      <width>241</width>
      <height>51</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <family>Arial</family>
      <pointsize>16</pointsize>
     </font>
    </property>
@@ -111,15 +107,14 @@ color: rgb(255, 255, 255);</string>
   <widget class="QLabel" name="labelCardnumber">
    <property name="geometry">
     <rect>
-     <x>80</x>
-     <y>50</y>
+     <x>190</x>
+     <y>80</y>
      <width>361</width>
      <height>31</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <family>Arial</family>
      <pointsize>16</pointsize>
     </font>
    </property>
@@ -127,22 +122,27 @@ color: rgb(255, 255, 255);</string>
     <string notr="true">background-color: rgb(99, 99, 99);
 color: rgb(255, 255, 255);</string>
    </property>
+   <property name="frameShape">
+    <enum>QFrame::WinPanel</enum>
+   </property>
    <property name="text">
     <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButton_KirjauduUlos">
    <property name="geometry">
     <rect>
-     <x>230</x>
-     <y>380</y>
+     <x>270</x>
+     <y>390</y>
      <width>201</width>
      <height>51</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <family>Arial</family>
      <pointsize>16</pointsize>
     </font>
    </property>

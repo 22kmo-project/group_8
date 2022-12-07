@@ -25,10 +25,10 @@
   <widget class="QLabel" name="labelNaytaSaldo">
    <property name="geometry">
     <rect>
-     <x>130</x>
+     <x>150</x>
      <y>40</y>
-     <width>81</width>
-     <height>71</height>
+     <width>181</width>
+     <height>51</height>
     </rect>
    </property>
    <property name="font">
@@ -40,10 +40,17 @@
     <enum>Qt::NoFocus</enum>
    </property>
    <property name="styleSheet">
-    <string notr="true"/>
+    <string notr="true">background-color: rgb(0, 170, 0);
+color: rgb(255, 255, 255);</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::WinPanel</enum>
    </property>
    <property name="text">
     <string>saldo</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignHCenter|Qt::AlignTop</set>
    </property>
   </widget>
   <widget class="QPushButton" name="poistuSaldo">
@@ -61,7 +68,8 @@
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(67, 67, 67);</string>
+    <string notr="true">background-color: rgb(112, 112, 112);
+color: rgb(255, 255, 255);</string>
    </property>
    <property name="text">
     <string>Poistu</string>
@@ -82,17 +90,24 @@
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(70, 70, 70);</string>
+    <string notr="true">background-color: rgb(112, 112, 112);
+color: rgb(255, 255, 255);</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::WinPanel</enum>
    </property>
    <property name="text">
     <string>Saldo</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
   <widget class="QPushButton" name="pushNaytaTapahtumat">
    <property name="geometry">
     <rect>
      <x>450</x>
-     <y>120</y>
+     <y>180</y>
      <width>201</width>
      <height>51</height>
     </rect>
@@ -103,7 +118,8 @@
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(72, 72, 72);</string>
+    <string notr="true">background-color: rgb(112, 112, 112);
+color: rgb(255, 255, 255);</string>
    </property>
    <property name="text">
     <string>Näytä tilitapahtumat</string>
@@ -113,13 +129,14 @@
    <property name="geometry">
     <rect>
      <x>450</x>
-     <y>200</y>
+     <y>320</y>
      <width>201</width>
      <height>51</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(65, 65, 65);</string>
+    <string notr="true">background-color: rgb(112, 112, 112);
+color: rgb(255, 255, 255);</string>
    </property>
    <property name="text">
     <string>Näytä käyttäjäntiedot</string>
@@ -130,7 +147,7 @@
     <rect>
      <x>30</x>
      <y>180</y>
-     <width>261</width>
+     <width>301</width>
      <height>191</height>
     </rect>
    </property>
@@ -140,7 +157,11 @@
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(67, 67, 67);</string>
+    <string notr="true">background-color: rgb(112, 112, 112);
+color: rgb(255, 255, 255);</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::WinPanel</enum>
    </property>
    <property name="text">
     <string/>
@@ -151,7 +172,7 @@
     <rect>
      <x>30</x>
      <y>400</y>
-     <width>261</width>
+     <width>301</width>
      <height>111</height>
     </rect>
    </property>
@@ -161,7 +182,11 @@
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(74, 74, 74);</string>
+    <string notr="true">background-color: rgb(112, 112, 112);
+color: rgb(255, 255, 255);</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::WinPanel</enum>
    </property>
    <property name="text">
     <string/>
