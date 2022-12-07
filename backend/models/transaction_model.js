@@ -7,8 +7,8 @@ const transaction = {
   getAll: function (callback) {
     return db.query('select * from transaction', callback);
   },
-  getTransaction: function (id, callback) {
-    return db.query('select * from transaction where id_account=?', [id], callback);
+  getTransactions: function (id, callback) {
+    return db.query('select from transaction where id_account=?', [id], callback);
   },
   add: function (add_data, callback) {
     return db.query(
@@ -26,6 +26,10 @@ const transaction = {
       [update_data.transaction_date, update_data.activity, update_data.amount, id],
       callback
     );
+  },
+  getFiveTransactions:function (id, callback) {
+    return db.query('SELECT id_transaction, date_format(transaction_date, "%d.%m.%Y") as "transaction_date", activity, amount FROM transaction INNER JOIN account ON transaction.id_account=account.id_account WHERE account.id_account=? ORDER BY id_transaction DESC LIMIT 5', [id], callback);
+
   }
-};
+  };
 module.exports = transaction;

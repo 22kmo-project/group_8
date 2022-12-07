@@ -116,7 +116,7 @@ void saldo::setBalance(const QString &newBalance)
 void saldo::on_pushNaytaTapahtumat_clicked() // Haetaan tietokannasta tilitapahtumia
 {
     time = 0;
-    QString site_url=MyURL::getBaseURL()+"/transaction/"+id_account;
+    QString site_url=MyURL::getBaseURL()+"/getFiveTransactions/"+id_account;
     QNetworkRequest request((site_url));
     //WEBTOKEN ALKU
     request.setRawHeader(QByteArray("Authorization"),(myToken));
