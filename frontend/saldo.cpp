@@ -14,7 +14,7 @@ saldo::saldo(QByteArray bearerToken, QString idAccount,QWidget *parent) : //Väl
     myToken = bearerToken;
     //qDebug()<<myToken;
     id_account = idAccount;
-    qDebug()<<id_account;
+    qDebug()<<"Saldo ikkuna: account ID = "+id_account;
 
     QString site_url=MyURL::getBaseURL()+"/account/"+idAccount;
     QNetworkRequest request((site_url));
@@ -67,7 +67,7 @@ void saldo::getBalanceSlot(QNetworkReply *reply) //Pyydetään balance tietokann
     QJsonArray json_array = json_doc.array();
     QString account ="";
     id_user=QString::number(json_obj["id_user"].toInt());
-    qDebug()<<"käyttäjän id on: " +id_user;
+    qDebug()<<"Saldo ikkuna: user ID = " +id_user;
     foreach (const QJsonValue &value, json_array)
     {
         QJsonObject json_obj = value.toObject();
@@ -75,7 +75,7 @@ void saldo::getBalanceSlot(QNetworkReply *reply) //Pyydetään balance tietokann
     }
 
     balance=QString::number(json_obj["balance"].toInt())+"\n";;
-    qDebug()<<balance;
+    qDebug()<<"Saldo ikkuna: balance = "+balance;
     ui->labelNaytaSaldo->setText(balance);
 }
 

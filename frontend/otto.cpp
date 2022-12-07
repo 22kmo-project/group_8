@@ -11,7 +11,7 @@ otto::otto(QByteArray bearerToken, QString idAccount, QWidget *parent) :
     myToken = bearerToken;
     //qDebug()<<myToken;
     id_account = idAccount;
-    qDebug()<<id_account;
+    qDebug()<<"Otto ikkunan account ID = "+id_account;
     ui->label_o->hide();
     timer = new QTimer(this);
 
@@ -134,7 +134,7 @@ void otto::on_ok_clicked()
 {
 
     maara = ui->lineEdit->text().toDouble();
-    qDebug()<<maara;
+    qDebug()<<"Otto ikkuna: maara = " << maara;
     timer->stop();
     time = 0;
     withdraw(balanceValue,maara);
@@ -166,9 +166,8 @@ void otto::getAccountTypeSlot(QNetworkReply *reply)
     balanceValue=QString(balance).toDouble();
     creditValue=QString(creditLimit).toDouble();
     ui->labelSaldo->setText("Tilisi saldo on " +balance);
-    qDebug()<<balance;
-    qDebug()<<accountType;
-    qDebug()<<creditLimit;
+
+    qDebug()<<"Otto ikkuna: account balance = "+balance+" account type = "+accountType+" credit limit = "+creditLimit ;
 
     reply->deleteLater();
     AccountTypeManager->deleteLater();
@@ -235,10 +234,6 @@ void otto::transactionSlot(QNetworkReply *reply)
     reply->deleteLater();
     transactionManager->deleteLater();
 }
-
-
-
-
 
 
 
