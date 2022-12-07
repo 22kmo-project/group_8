@@ -105,8 +105,7 @@ void menuWindow::on_pushButton_Saldo_clicked()
 
 void menuWindow::on_pushButton_Otto_clicked()
 {
-    delete timer;
-    timer = nullptr;
+    timer->stop();
     menuWindow::close();
     otto nosto(webToken,id_account);
     nosto.setModal(true);
