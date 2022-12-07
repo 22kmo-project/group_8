@@ -27,8 +27,8 @@
    </property>
    <property name="font">
     <font>
-     <pointsize>16</pointsize>
-     <bold>true</bold>
+     <pointsize>12</pointsize>
+     <bold>false</bold>
     </font>
    </property>
    <property name="styleSheet">
@@ -153,20 +153,23 @@ color: rgb(255, 255, 255);</string>
   <widget class="QLabel" name="labelSaldo">
    <property name="geometry">
     <rect>
-     <x>100</x>
-     <y>120</y>
+     <x>70</x>
+     <y>100</y>
      <width>151</width>
      <height>41</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <pointsize>7</pointsize>
+     <pointsize>9</pointsize>
     </font>
    </property>
    <property name="styleSheet">
     <string notr="true">background-color: rgb(112, 112, 112);
 color: rgb(255, 255, 255);</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::WinPanel</enum>
    </property>
    <property name="text">
     <string/>
@@ -193,8 +196,14 @@ color: rgb(255, 255, 255);</string>
     <string notr="true">background-color: rgb(112, 112, 112);
 color: rgb(255, 255, 255);</string>
    </property>
+   <property name="frameShape">
+    <enum>QFrame::WinPanel</enum>
+   </property>
    <property name="text">
     <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit">
@@ -207,8 +216,8 @@ color: rgb(255, 255, 255);</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(112, 112, 112);
-color: rgb(255, 255, 255);</string>
+    <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);</string>
    </property>
   </widget>
   <widget class="QPushButton" name="ok">
@@ -219,6 +228,10 @@ color: rgb(255, 255, 255);</string>
      <width>171</width>
      <height>51</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(255, 0, 0);</string>
    </property>
    <property name="text">
     <string>OK</string>
