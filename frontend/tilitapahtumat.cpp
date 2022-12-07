@@ -12,7 +12,9 @@ tilitapahtumat::tilitapahtumat(QByteArray bearerToken, QString idAccount, QWidge
     myToken = bearerToken;
     //qDebug()<<myToken;
     id_account = idAccount;
-    qDebug()<<id_account;
+
+    qDebug()<<"Tilitapahtumat: account ID = "+id_account;
+
     timer = new QTimer(this);
     connect (timer, SIGNAL (timeout()),
                 this, SLOT (timeoutSlot()));

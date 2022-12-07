@@ -52,7 +52,7 @@ void menuWindow::getOwnerSlot(QNetworkReply *reply)
     QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
     QJsonObject json_obj = json_doc.object();
     owner=json_obj["account_owner"].toString();
-    qDebug()<<owner;
+    qDebug()<<"Menuwindow: tilin omistaja = "+owner;
 
    // reply->deleteLater();
     ui->labelCardnumber->setText("Tervetuloa "+owner+"!");
@@ -113,7 +113,6 @@ void menuWindow::on_pushButton_Otto_clicked()
     otto nosto(webToken,id_account);
     nosto.setModal(true);
     nosto.exec();
-    info->getIdAccount();
 }
 
 void menuWindow::on_pushButton_LuottorajanNosto_clicked()

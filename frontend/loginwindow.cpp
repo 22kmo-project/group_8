@@ -36,7 +36,9 @@ void loginWindow::on_btnKirjaudu_clicked()
 {
     card_number = ui->lineUsername->text();
     pin = ui->linePin->text();
-    qDebug()<<card_number;
+
+    qDebug()<<"LoginWindow: Card ID = "+card_number;
+
     QJsonObject jsonObj;
     jsonObj.insert("card_number", card_number);
     jsonObj.insert("pin", pin);

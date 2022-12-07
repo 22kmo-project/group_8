@@ -62,12 +62,11 @@ void Info::getIdSlot(QNetworkReply *reply)
 
     qDebug()<<response_data;
     setCardId(QString::number(json_obj["id_card"].toInt()));
-    qDebug()<<idCard;
+    qDebug()<<"Info.cpp: Card ID = "+idCard;
 
     reply->deleteLater();
 
     getIdAccount();
-
 }
 
 void Info::getAccountSlot(QNetworkReply *reply)
@@ -78,13 +77,12 @@ void Info::getAccountSlot(QNetworkReply *reply)
 
      qDebug()<<response_data;
      setAccountId(QString::number(json_obj["id_account"].toInt()));
-     qDebug()<<idAccount;
+
+     qDebug()<<"Info.cpp: Account ID = "+idAccount;
 
      reply->deleteLater();
 
-
      startMenuWindow();
-
 }
 
 
@@ -92,7 +90,7 @@ void Info::startMenuWindow()
 {
     menuWindow *objectmenuWindow;
     objectmenuWindow = new menuWindow(bearerToken, idAccount);
-    //objectmenuWindow->setWebToken(webToken);
+    //objectmenuWindow->setWebToken(webToken);  Onko tämä turha kommentti? Meneekö poistoon?
     objectmenuWindow->show();
 }
 

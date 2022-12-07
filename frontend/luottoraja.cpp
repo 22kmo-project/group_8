@@ -11,7 +11,7 @@ luottoraja::luottoraja(QByteArray bearerToken, QString idAccount, QWidget *paren
     myToken = bearerToken;
     //qDebug()<<myToken;
     id_account = idAccount;
-    qDebug()<<id_account;
+    qDebug()<<"Luottoraja ikkuna: account ID = "+id_account;
 
     timer = new QTimer(this);
 
@@ -186,8 +186,8 @@ void luottoraja::getAccountTypeSlot(QNetworkReply *reply)
     accountType=json_obj["account_type"].toString();
     credit_limit=QString::number(json_obj["credit_limit"].toDouble());
     creditValue=QString(credit_limit).toDouble();
-    qDebug()<<accountType;
-    qDebug()<<credit_limit;
+
+    qDebug()<<"Luottoraja ikkuna: account type = "+accountType+ " Credit limit = "+credit_limit;
 
     reply->deleteLater();
     AccountTypeManager->deleteLater();
