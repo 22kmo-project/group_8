@@ -16,6 +16,8 @@ menuWindow::menuWindow(QByteArray bearerToken, QString idAccount, QWidget *paren
     qDebug()<<webToken;
     id_account = idAccount;
 
+
+
     QString site_url=MyURL::getBaseURL()+"/account/"+idAccount;
     QNetworkRequest request((site_url));
     //WEBTOKEN ALKU
@@ -112,7 +114,7 @@ void menuWindow::on_pushButton_Otto_clicked()
     otto nosto(webToken,id_account);
     nosto.setModal(true);
     nosto.exec();
-
+    info->getIdAccount();
 }
 
 void menuWindow::on_pushButton_LuottorajanNosto_clicked()

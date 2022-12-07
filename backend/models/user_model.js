@@ -4,6 +4,7 @@ const user = {
   getById: function(id, callback) {
     return db.query('select * from user where id_user=?', [id], callback);
   },
+
   getAll: function(callback) {
     return db.query('select * from user', callback);
   },

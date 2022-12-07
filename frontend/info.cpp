@@ -54,7 +54,6 @@ void Info::getIdAccount()
     reply = idAccountManager->post(request, QJsonDocument(jsonObj).toJson());
 }
 
-
 void Info::getIdSlot(QNetworkReply *reply)
 {
     response_data = reply->readAll();
@@ -83,10 +82,10 @@ void Info::getAccountSlot(QNetworkReply *reply)
 
      reply->deleteLater();
 
+
      startMenuWindow();
 
 }
-
 
 
 void Info::startMenuWindow()
@@ -138,4 +137,5 @@ void Info::setAccountId(const QString &newIdAccount)
 {
     idAccount = newIdAccount;
 }
+
 

@@ -11,6 +11,7 @@
 #include <QtNetwork>
 #include <QDialog>
 #include <QTimer>
+#include "info.h"
 
 
 
@@ -29,11 +30,17 @@ public:
     void setWebToken(const QByteArray &newWebToken);
     void setBalance(const QString &newBalance);
 
+
 private slots:
 
     void on_poistuSaldo_clicked();
     void getBalanceSlot (QNetworkReply *reply);
     void timeoutSlot();
+    void getTransactionSlot (QNetworkReply *reply);
+    void on_pushNaytaTapahtumat_clicked();
+    void on_pushKayttajanTiedot_clicked();
+    void getUserSlot (QNetworkReply *reply);
+
 
 private:
     Ui::saldo *ui;
@@ -44,9 +51,15 @@ private:
     QByteArray myToken;
     QString id_account;
     QString balance;
+    QString transaction;
+    QString id_user;
     QNetworkAccessManager *balanceManager;
+    QNetworkAccessManager *transactionManager;
+    QNetworkAccessManager *tietoManager;
+
     int time;
     QTimer *timer;
+
 
 };
 

@@ -6,12 +6,18 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>558</width>
-    <height>426</height>
+    <width>663</width>
+    <height>532</height>
    </rect>
+  </property>
+  <property name="focusPolicy">
+   <enum>Qt::StrongFocus</enum>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
+  </property>
+  <property name="toolTipDuration">
+   <number>0</number>
   </property>
   <property name="styleSheet">
    <string notr="true">background-color: rgb(255, 85, 0);</string>
@@ -19,34 +25,43 @@
   <widget class="QLabel" name="labelNaytaSaldo">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>130</y>
-     <width>251</width>
-     <height>81</height>
+     <x>130</x>
+     <y>40</y>
+     <width>81</width>
+     <height>71</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <pointsize>20</pointsize>
+     <pointsize>18</pointsize>
     </font>
    </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
    <property name="text">
-    <string>TextLabel</string>
+    <string>saldo</string>
    </property>
   </widget>
   <widget class="QPushButton" name="poistuSaldo">
    <property name="geometry">
     <rect>
-     <x>380</x>
-     <y>350</y>
-     <width>101</width>
-     <height>51</height>
+     <x>480</x>
+     <y>430</y>
+     <width>141</width>
+     <height>61</height>
     </rect>
    </property>
    <property name="font">
     <font>
      <pointsize>20</pointsize>
     </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(67, 67, 67);</string>
    </property>
    <property name="text">
     <string>Poistu</string>
@@ -56,18 +71,100 @@
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>50</y>
+     <y>40</y>
      <width>101</width>
-     <height>41</height>
+     <height>51</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <pointsize>20</pointsize>
+     <pointsize>12</pointsize>
     </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(70, 70, 70);</string>
    </property>
    <property name="text">
     <string>Saldo</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushNaytaTapahtumat">
+   <property name="geometry">
+    <rect>
+     <x>450</x>
+     <y>120</y>
+     <width>201</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>9</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(72, 72, 72);</string>
+   </property>
+   <property name="text">
+    <string>Näytä Tilitapahtumat</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushKayttajanTiedot">
+   <property name="geometry">
+    <rect>
+     <x>450</x>
+     <y>200</y>
+     <width>201</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(65, 65, 65);</string>
+   </property>
+   <property name="text">
+    <string>Nayta käyttäjäntiedot</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>120</y>
+     <width>261</width>
+     <height>251</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>9</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(67, 67, 67);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>400</y>
+     <width>261</width>
+     <height>111</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(74, 74, 74);</string>
+   </property>
+   <property name="text">
+    <string/>
    </property>
   </widget>
  </widget>
