@@ -34,6 +34,9 @@ const account = {
       'update account set balance=? where id_account=?',
       [update_data.balance,id],callback);
   },
+  getIdUser: function (id, callback) {
+    return db.query('select id_user from account where id_account=?', [id], callback);
+  },
 
   creditlimit: function(id, update_data, callback) {
     return db.query(

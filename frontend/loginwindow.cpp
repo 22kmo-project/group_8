@@ -98,6 +98,7 @@ void loginWindow::loginSlot(QNetworkReply *reply)
                     info->setWebToken(response_data);
                     info->setCard_Number(card_number);
                     info->getIdCard();
+
                     timer->stop();
                     //info->getAccount_Type(account_Type);
                     loginWindow::close();
