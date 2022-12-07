@@ -10,14 +10,14 @@ tilitapahtumat::tilitapahtumat(QByteArray bearerToken, QString idAccount, QWidge
 {
     ui->setupUi(this);
     myToken = bearerToken;
-    qDebug()<<myToken;
+    //qDebug()<<myToken;
     id_account = idAccount;
     qDebug()<<id_account;
     timer = new QTimer(this);
     connect (timer, SIGNAL (timeout()),
                 this, SLOT (timeoutSlot()));
-        timer->start(1000);
-        time = 0;
+    timer->start(1000);
+    time = 0;
 }
 
 tilitapahtumat::~tilitapahtumat()
@@ -60,11 +60,12 @@ void tilitapahtumat::tilitapahtumatSlot(QNetworkReply *reply)
     QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
     QJsonArray json_array = json_doc.array();
     QString transaction;
-    foreach (const QJsonValue &value, json_array) {
+    foreach (const QJsonValue &value, json_array)
+    {
         QJsonObject json_obj = value.toObject();
-             transaction+=json_obj["transaction_date"].toString()+"\r\n"+
-                     json_obj["activity"].toString()+" , "+QString::number(json_obj["amount"].toInt())+"\r\n";
-}
+        transaction+=json_obj["transaction_date"].toString()+"\r\n"+
+            json_obj["activity"].toString()+" , "+QString::number(json_obj["amount"].toInt())+"\r\n";
+    }
     ui->textTilitapahtumat->setText(transaction);
 
 }

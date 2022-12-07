@@ -190,8 +190,8 @@ void otto::withdraw(double balanssi, double maara)
         {
             ui->label_o->setVisible(true);
             ui->label_o->setText("Tililläsi ei ole tarpeeksi rahaa. \nValitse uusi summa tai paina poistu-painiketta.");
-            //timer->start(1000);
-            //time = 0;
+            timer->start(1000);
+            time = 0;
         }
     }
     else
