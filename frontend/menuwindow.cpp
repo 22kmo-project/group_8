@@ -101,6 +101,7 @@ void menuWindow::on_pushButton_Saldo_clicked()
     class saldo nayta(webToken,id_account);
     nayta.setModal(true);
     nayta.exec();
+    menuWindow::close();
 
 }
 
@@ -109,6 +110,7 @@ void menuWindow::on_pushButton_Saldo_clicked()
 void menuWindow::on_pushButton_Otto_clicked()
 {
     timer->stop();
+    menuWindow::close();
     otto nosto(webToken,id_account);
     nosto.setModal(true);
     nosto.exec();
@@ -118,17 +120,21 @@ void menuWindow::on_pushButton_Otto_clicked()
 void menuWindow::on_pushButton_LuottorajanNosto_clicked()
 {
     timer->stop();
+    menuWindow::close();
     luottoraja luotto(webToken,id_account);
     luotto.setModal(true);
     luotto.exec();
+
 }
 
 
 void menuWindow::on_pushButton_Tilitapahtumat_clicked()
 {
     timer->stop();
+    menuWindow::close();
     tilitapahtumat tilitapahtumat(webToken,id_account);
     tilitapahtumat.setModal(true);
     tilitapahtumat.exec();
+
 }
 

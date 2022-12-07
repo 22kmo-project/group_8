@@ -1,27 +1,14 @@
 #ifndef OTTO_H
 #define OTTO_H
 
-#include "menuwindow.h"
 #include <QDialog>
-#include "mainwindow.h"
-#include <QString>
-#include <QtSql>
-#include <QMessageBox>
-#include <QApplication>
-#include <QSqlDatabase>
-#include <QSqlError>
-#include <QSqlQuery>
 #include <QDebug>
-#include <QSqlQueryModel>
-#include <QtWidgets>
-#include <QSqlTableModel>
-#include <QDateTime>
 #include <QTimer>
-#include <QJsonObject>
 #include <myurl.h>
 #include <QtNetwork>
 #include <QNetworkAccessManager>
 #include <QJsonDocument>
+#include <QTimer>
 
 
 namespace Ui {
@@ -36,11 +23,7 @@ public:
     explicit otto(QByteArray bearerToken, QString idAccount, QWidget *parent = nullptr);
     ~otto();
     void updateAccountData();
-    void addActivity(QString accountID, int amount);
-    void editSaldo(QString accountID, int amount); //QString account_type);
     QString getAccountData(QString accountId);
-    void withdraw(int amount);// QString account_type);
-    void resetTimer();
     const QString &getWebtoken() const;
     void setWebToken(const QByteArray &newWebToken);
 
@@ -48,37 +31,38 @@ private slots:
 
 
     void on_ottoPoistu_clicked();
-    //void on_ottoNosta_clicked();
-    void on_Nosto10_clicked();
     void on_Nosto20_clicked();
     void on_Nosto50_clicked();
     void on_Nosto100_clicked();
     void on_Nosto200_clicked();
-    void ottoSlot (QNetworkReply *reply);
+    void on_Nosto500_clicked();
     void getAccountTypeSlot (QNetworkReply *reply);
-    void checkMoney(double balance, double amount);
+    void withdraw(double balanssi, double maara);
     void updateBalanceSlot(QNetworkReply *reply);
+    void transactionSlot(QNetworkReply *reply);
 
+    void timeoutSlot();
+
+    void on_ok_clicked();
 
 private:
     Ui::otto *ui;
-    QSqlQuery *query;
-    QTimer *objectTimer;
     QString idAccount;
-    QNetworkAccessManager *ottoManager;
     QNetworkReply *reply;
     QByteArray response_data;
     QByteArray myToken;
-    QByteArray webToken;
     QString id_account;
-    QString account_type;
     QString accountType;
     QNetworkAccessManager *AccountTypeManager;
     QNetworkAccessManager *updateBalanceManager;
+    QNetworkAccessManager *transactionManager;
     QString balance;
-    QString amount;
+    double maara;
     double balanceValue;
-
+    QString creditLimit;
+    double creditValue;
+    QTimer *timer;
+    int time;
     //PopUpDialog *objectPopUpDialog;
 };
 
