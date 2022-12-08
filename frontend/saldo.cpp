@@ -12,21 +12,18 @@ saldo::saldo(QByteArray bearerToken, QString idAccount,QString idUser,QWidget *p
     ui->setupUi(this);
 
     myToken = bearerToken;
-    //qDebug()<<myToken;
+    qDebug()<<"Saldo Webtoken = "+myToken;
     id_account = idAccount;
-    qDebug()<<"Saldo ikkuna: account ID = "+id_account;
     id_user = idUser;
-    qDebug()<<"Saldo ikkuna: user ID = "+id_user;
+    qDebug()<<"Saldo ikkuna: user ID = "+id_user+" ja account ID = "+id_account;
 
     QString site_url=MyURL::getBaseURL()+"/account/"+idAccount;
     QNetworkRequest request((site_url));
-    //WEBTOKEN ALKU
-    request.setRawHeader(QByteArray("Authorization"),(myToken));
-    //WEBTOKEN LOPPU
+
+    request.setRawHeader(QByteArray("Authorization"),(myToken)); //WEBTOKEN
+
     balanceManager = new QNetworkAccessManager(this);
-
     connect(balanceManager, SIGNAL(finished (QNetworkReply*)), this, SLOT(getBalanceSlot(QNetworkReply*)));
-
     reply = balanceManager->get(request);
 
     ui->labelNaytaSaldo->setText(balance);
@@ -64,12 +61,15 @@ void saldo::getBalanceSlot(QNetworkReply *reply) //Pyydetään balance tietokann
     QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
     QJsonObject json_obj = json_doc.object();
 
-    qDebug()<<response_data;
+    qDebug()<<"Saldo getBalanceSlot response = "+response_data;
 
     QJsonArray json_array = json_doc.array();
     QString account ="";
+
+    //Onko nämä 2 riviä turhaa?
     //id_user=QString::number(json_obj["id_user"].toInt());
     //qDebug()<<"Saldo ikkuna: user ID = " +id_user;
+
     foreach (const QJsonValue &value, json_array)
     {
         QJsonObject json_obj = value.toObject();
@@ -77,7 +77,7 @@ void saldo::getBalanceSlot(QNetworkReply *reply) //Pyydetään balance tietokann
     }
 
     balance=QString::number(json_obj["balance"].toInt())+"\n";;
-    qDebug()<<"Saldo ikkuna: balance = "+balance;
+    qDebug()<<"Saldo: balance = "+balance;
     ui->labelNaytaSaldo->setText(balance);
 }
 
@@ -107,44 +107,34 @@ void saldo::getTransactionSlot(QNetworkReply *reply)
     ui->label_2->setText(transaction);
 }
 
-
 void saldo::setBalance(const QString &newBalance)
 {
     balance = newBalance;
 }
-
-
 
 void saldo::on_pushNaytaTapahtumat_clicked() // Haetaan tietokannasta tilitapahtumia
 {
     time = 0;
     QString site_url=MyURL::getBaseURL()+"/transaction/fivetransactions/"+id_account;
     QNetworkRequest request((site_url));
-    //WEBTOKEN ALKU
-    request.setRawHeader(QByteArray("Authorization"),(myToken));
-    //WEBTOKEN LOPPU
+
+    request.setRawHeader(QByteArray("Authorization"),(myToken)); //WEBTOKEN
 
     transactionManager = new QNetworkAccessManager(this);
-
     connect(transactionManager, SIGNAL(finished (QNetworkReply*)), this, SLOT(getTransactionSlot(QNetworkReply*)));
-
     reply = transactionManager->get(request);
 }
-
 
 void saldo::on_pushKayttajanTiedot_clicked() // Haetaan tietokannasta käyttäjän tiedot
 {
     time = 0;
     QString site_url=MyURL::getBaseURL()+"/user/"+id_user;
     QNetworkRequest request((site_url));
-    //WEBTOKEN ALKU
-    request.setRawHeader(QByteArray("Authorization"),(myToken));
-    //WEBTOKEN LOPPU
+
+    request.setRawHeader(QByteArray("Authorization"),(myToken)); //WEBTOKEN
 
     tietoManager = new QNetworkAccessManager(this);
-
     connect(tietoManager, SIGNAL(finished (QNetworkReply*)), this, SLOT(getUserSlot(QNetworkReply*)));
-
     reply = tietoManager->get(request);
 
 }
