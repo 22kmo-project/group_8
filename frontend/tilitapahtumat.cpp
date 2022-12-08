@@ -50,7 +50,7 @@ void tilitapahtumat::on_naytaTilitapahtumatBtn_clicked()
 void tilitapahtumat::timeoutSlot()
 {
     time ++;
-    qDebug()<<time;
+    //qDebug()<<time;
     if(time>30)
     {
         tilitapahtumat::close();
@@ -80,7 +80,7 @@ void tilitapahtumat::tilitapahtumatSlot(QNetworkReply *reply)
 void tilitapahtumat::edellisetTitatSlot(QNetworkReply *reply)
 {
     QByteArray response_data=reply->readAll();
-    qDebug()<<response_data;
+    //qDebug()<<response_data;
     QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
     QJsonArray json_array = json_doc.array();
     QString edellisetTitat;
@@ -90,8 +90,31 @@ void tilitapahtumat::edellisetTitatSlot(QNetworkReply *reply)
         edellisetTitat+=json_obj["transaction_date"].toString()+"\r\n"+
                 json_obj["activity"].toString()+" , "+QString::number(json_obj["amount"].toInt())+"\r\n";
     }
+    //jos ei tulostu mitään, piilotetaan edellisetBtn
+    if(response_data=="[]") {
+        ui->edellisetBtn->hide();
+    }
     ui->textTilitapahtumat->setText(edellisetTitat);
     ui->seuraavatBtn->show();
+    x = calc;
+    qDebug()<<x;
+}
+
+void tilitapahtumat::seuraavatTitatSlot(QNetworkReply *reply)
+{
+    QByteArray response_data=reply->readAll();
+    //qDebug()<<response_data;
+    QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
+    QJsonArray json_array = json_doc.array();
+    QString seuraavatTitat;
+    foreach (const QJsonValue &value, json_array)
+    {
+        QJsonObject json_obj = value.toObject();
+        seuraavatTitat+=json_obj["transaction_date"].toString()+"\r\n"+
+                json_obj["activity"].toString()+" , "+QString::number(json_obj["amount"].toInt())+"\r\n";
+    }
+    ui->textTilitapahtumat->setText(seuraavatTitat);
+    x = calc;
 }
 
 
@@ -111,12 +134,8 @@ void tilitapahtumat::setWebToken(const QByteArray &newWebToken)
 
 void tilitapahtumat::on_edellisetBtn_clicked()
 {
-    qDebug()<<calc;
-    qDebug()<<x;
     calc = x+10;
     QString pena = QString::number(calc);
-
-    qDebug()<<pena;
 
     QString site_url=MyURL::getBaseURL()+"/transaction/"+id_account+"/"+pena;
     QNetworkRequest request((site_url));
@@ -130,5 +149,32 @@ void tilitapahtumat::on_edellisetBtn_clicked()
     connect(edellisetTitatManager, SIGNAL(finished (QNetworkReply*)), this, SLOT(edellisetTitatSlot(QNetworkReply*)));
 
     reply = edellisetTitatManager->get(request);
+}
+
+
+void tilitapahtumat::on_seuraavatBtn_clicked()
+{
+    qDebug()<<calc;
+    if (calc >= 10){
+    calc = x-10;
+    } else {
+        calc = 0;
+        ui->seuraavatBtn->hide();
+    }
+
+    QString pena = QString::number(calc);
+
+    QString site_url=MyURL::getBaseURL()+"/transaction/"+id_account+"/"+pena;
+    QNetworkRequest request((site_url));
+    qDebug()<<site_url;
+    //WEBTOKEN ALKU
+    request.setRawHeader(QByteArray("Authorization"),(myToken));
+    //WEBTOKEN LOPPU
+
+    seuraavatTitatManager = new QNetworkAccessManager(this);
+
+    connect(seuraavatTitatManager, SIGNAL(finished (QNetworkReply*)), this, SLOT(seuraavatTitatSlot(QNetworkReply*)));
+
+    reply = seuraavatTitatManager->get(request);
 }
 
