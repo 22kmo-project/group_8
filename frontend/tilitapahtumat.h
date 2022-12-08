@@ -26,15 +26,19 @@ private slots:
 
     void tilitapahtumatSlot (QNetworkReply *reply);
     void on_naytaTilitapahtumatBtn_clicked();
+    void edellisetTitatSlot (QNetworkReply *reply);
 
     void on_TakaisinBtn_clicked();
     void timeoutSlot();
+
+    void on_edellisetBtn_clicked();
 
 private:
     Ui::tilitapahtumat *ui;
     menuWindow *objectMenuToTilitapahtumat;
 
     QNetworkAccessManager *tilitapahtumatManager;
+    QNetworkAccessManager *edellisetTitatManager;
     QNetworkReply *reply;
     QByteArray response_data;
 
@@ -42,8 +46,13 @@ private:
     QByteArray webToken;
     QString id_account;
     QString transaction;
+    QString edellisetTitat;
     QTimer *timer;
     int time;
+
+    int calc;
+    int x=0;
+    int y=0;
 
 };
 

@@ -31,6 +31,7 @@ var transactionRouter = require('./routes/transaction');
 var idcardRouter = require('./routes/idcard'); 
 var idaccountRouter = require ('./routes/idaccount');
 var getFiveTransactionsRouter = require('./routes/getFiveTransactions');
+var getTransactionsFromButtonRouter = require('./routes/getTransactionsFromButton');
 
 
 
@@ -59,6 +60,7 @@ app.use('/transaction', transactionRouter);
 app.use('/idcard',idcardRouter);
 app.use('/idaccount',idaccountRouter);
 app.use('/getFiveTransactions', getFiveTransactionsRouter);
+app.use('/transaction', getTransactionsFromButtonRouter);
 
 
 
