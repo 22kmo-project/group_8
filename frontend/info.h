@@ -14,11 +14,8 @@ class Info:public QWidget
 public:
     Info();
 
-    void getIdCard();
+    void getIdUser();
     void getIdAccount();
-
-
-
 
     const QString &getWebToken() const;
     void setWebToken(const QByteArray &newWebToken);
@@ -26,8 +23,8 @@ public:
     const QString &getCard_Number() const;
     void setCard_Number(const QString &newCardNumber);
 
-    const QString &getCardId() const;
-    void setCardId(const QString &newCardId);
+    const QString &getUserId() const;
+    void setUserId(const QString &newCardId);
 
     const QString &getAccountId() const;
     void setAccountId(const QString &newIdAccount);
@@ -36,19 +33,19 @@ public:
 
 private slots:
 
-    void getIdSlot(QNetworkReply *reply);
+    void getUserIdSlot(QNetworkReply *reply);
     void getAccountSlot (QNetworkReply *reply);
 
 
 
 
 private:
-    QString idCard;
+    QString idUser;
     QString idAccount;
     QString cardNumber;
     QString userID;
     QByteArray webToken;
-    QNetworkAccessManager *idCardManager;
+    QNetworkAccessManager *idUserManager;
     QNetworkAccessManager *idAccountManager;
 
     QNetworkReply *reply;

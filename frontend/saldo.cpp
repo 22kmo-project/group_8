@@ -5,7 +5,7 @@
 #include <QTimer>
 
 
-saldo::saldo(QByteArray bearerToken, QString idAccount,QWidget *parent) : //Välitetään bearerToken ja idAccount
+saldo::saldo(QByteArray bearerToken, QString idAccount,QString idUser,QWidget *parent) : //Välitetään bearerToken ja idAccount
     QDialog(parent),
     ui(new Ui::saldo)
 {
@@ -15,6 +15,8 @@ saldo::saldo(QByteArray bearerToken, QString idAccount,QWidget *parent) : //Väl
     //qDebug()<<myToken;
     id_account = idAccount;
     qDebug()<<"Saldo ikkuna: account ID = "+id_account;
+    id_user = idUser;
+    qDebug()<<"Saldo ikkuna: user ID = "+id_user;
 
     QString site_url=MyURL::getBaseURL()+"/account/"+idAccount;
     QNetworkRequest request((site_url));
@@ -51,7 +53,7 @@ void saldo::on_poistuSaldo_clicked() //Suljetaan saldo-ikkuna
 {
     timer->stop();
     saldo::close();
-    menuWindow menu(myToken, id_account);
+    menuWindow menu(myToken, id_account, id_user);
     menu.setModal(true);
     menu.exec();
 }
@@ -66,8 +68,8 @@ void saldo::getBalanceSlot(QNetworkReply *reply) //Pyydetään balance tietokann
 
     QJsonArray json_array = json_doc.array();
     QString account ="";
-    id_user=QString::number(json_obj["id_user"].toInt());
-    qDebug()<<"Saldo ikkuna: user ID = " +id_user;
+    //id_user=QString::number(json_obj["id_user"].toInt());
+    //qDebug()<<"Saldo ikkuna: user ID = " +id_user;
     foreach (const QJsonValue &value, json_array)
     {
         QJsonObject json_obj = value.toObject();
@@ -116,7 +118,7 @@ void saldo::setBalance(const QString &newBalance)
 void saldo::on_pushNaytaTapahtumat_clicked() // Haetaan tietokannasta tilitapahtumia
 {
     time = 0;
-    QString site_url=MyURL::getBaseURL()+"/getFiveTransactions/"+id_account;
+    QString site_url=MyURL::getBaseURL()+"/transaction/fivetransactions/"+id_account;
     QNetworkRequest request((site_url));
     //WEBTOKEN ALKU
     request.setRawHeader(QByteArray("Authorization"),(myToken));

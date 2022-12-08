@@ -3,7 +3,7 @@
 #include "ui_tilitapahtumat.h"
 
 
-tilitapahtumat::tilitapahtumat(QByteArray bearerToken, QString idAccount, QWidget *parent) :
+tilitapahtumat::tilitapahtumat(QByteArray bearerToken, QString idAccount, QString idUser, QWidget *parent) :
 
     QDialog(parent),
     ui(new Ui::tilitapahtumat)
@@ -12,9 +12,9 @@ tilitapahtumat::tilitapahtumat(QByteArray bearerToken, QString idAccount, QWidge
     myToken = bearerToken;
     //qDebug()<<myToken;
     id_account = idAccount;
-
     qDebug()<<"Tilitapahtumat: account ID = "+id_account;
-
+    id_user = idUser;
+    qDebug()<<"Tilitapahtumat: user ID = "+id_user;
     timer = new QTimer(this);
     connect (timer, SIGNAL (timeout()),
                 this, SLOT (timeoutSlot()));
@@ -50,7 +50,7 @@ void tilitapahtumat::timeoutSlot()
     if(time>30)
     {
         tilitapahtumat::close();
-        menuWindow menu(myToken, id_account);
+        menuWindow menu(myToken, id_account, id_user);
         menu.setModal(true);
         menu.exec();
     }
@@ -77,7 +77,7 @@ void tilitapahtumat::on_TakaisinBtn_clicked()
 {
     timer->stop();
     tilitapahtumat::close();
-    menuWindow menu(myToken, id_account);
+    menuWindow menu(myToken, id_account, id_user);
     menu.setModal(true);
     menu.exec();
 }

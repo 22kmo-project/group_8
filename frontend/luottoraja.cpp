@@ -3,7 +3,7 @@
 #include "myurl.h"
 #include "menuwindow.h"
 
-luottoraja::luottoraja(QByteArray bearerToken, QString idAccount, QWidget *parent) :
+luottoraja::luottoraja(QByteArray bearerToken, QString idAccount, QString idUser, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::luottoraja)
 {
@@ -12,6 +12,8 @@ luottoraja::luottoraja(QByteArray bearerToken, QString idAccount, QWidget *paren
     //qDebug()<<myToken;
     id_account = idAccount;
     qDebug()<<"Luottoraja ikkuna: account ID = "+id_account;
+    id_user = idUser;
+    qDebug()<<"Luottoraja ikkuna: user ID = "+id_user;
 
     timer = new QTimer(this);
 
@@ -43,7 +45,7 @@ void luottoraja::timeoutSlot()
     {
         timer->stop();
         luottoraja::close();
-        menuWindow menu(myToken, id_account);
+        menuWindow menu(myToken, id_account, id_user);
         menu.setModal(true);
         menu.exec();
     }
@@ -64,7 +66,7 @@ void luottoraja::on_luottoPoistu_clicked()
 {
     timer->stop();
     luottoraja::close();
-    menuWindow menu(myToken, id_account);
+    menuWindow menu(myToken, id_account,id_user);
     menu.setModal(true);
     menu.exec();
 }

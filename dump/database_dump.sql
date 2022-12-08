@@ -1,10 +1,8 @@
-CREATE DATABASE  IF NOT EXISTS `banksimul` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `banksimul`;
--- MySQL dump 10.13  Distrib 8.0.21, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.31, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: banksimul
 -- ------------------------------------------------------
--- Server version	8.0.29
+-- Server version	8.0.30
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -28,14 +26,10 @@ CREATE TABLE `account` (
   `id_account` int unsigned NOT NULL AUTO_INCREMENT,
   `account_type` varchar(10) NOT NULL,
   `balance` double NOT NULL,
-  `id_card` int unsigned NOT NULL,
-  `id_user` int unsigned NOT NULL,
-  PRIMARY KEY (`id_account`),
-  KEY `id_card_idx` (`id_card`),
-  KEY `id_user_idx` (`id_user`),
-  CONSTRAINT `account_card` FOREIGN KEY (`id_card`) REFERENCES `card` (`id_card`) ON DELETE RESTRICT ON UPDATE CASCADE,
-  CONSTRAINT `account_user` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`) ON DELETE RESTRICT ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `credit_limit` double NOT NULL,
+  `account_owner` varchar(45) NOT NULL,
+  PRIMARY KEY (`id_account`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -44,6 +38,7 @@ CREATE TABLE `account` (
 
 LOCK TABLES `account` WRITE;
 /*!40000 ALTER TABLE `account` DISABLE KEYS */;
+INSERT INTO `account` VALUES (1,'credit',4958,600,'Aino Virtanen'),(2,'debit',4000,0,'Juhani Virtanen'),(3,'credit',5000,5000,'Maija Virta'),(4,'debit',4000,0,'Eino Koski');
 /*!40000 ALTER TABLE `account` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -63,7 +58,7 @@ CREATE TABLE `card` (
   UNIQUE KEY `card_number_UNIQUE` (`card_number`),
   KEY `id_user_idx` (`id_user`),
   CONSTRAINT `card_user` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`) ON DELETE RESTRICT ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -72,6 +67,7 @@ CREATE TABLE `card` (
 
 LOCK TABLES `card` WRITE;
 /*!40000 ALTER TABLE `card` DISABLE KEYS */;
+INSERT INTO `card` VALUES (1,'123456','$2a$10$6xBNVX01jrzWvbZcKe5ysOO7.Kr2zv4QCI6GInuAeSoSdC77I0.j6',1),(2,'654321','$2a$10$rHGz3BoTX8llZFFhXKFcQe5iv/66Km0uE7hBb2nN69Zz/dYIeRzsS',2),(3,'112233','$2a$10$2S57S89UowUXuxn/GBVP0uwqlXJHjxyq0N4ozjXZKL0DUIfbiSQKW',3),(4,'332211','$2a$10$Q8CN9RCKJUPMruHys1Qk0.TQs.lHecXwa0bkLj5mOcsfaGHyMB2Ti',4);
 /*!40000 ALTER TABLE `card` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -91,7 +87,7 @@ CREATE TABLE `transaction` (
   PRIMARY KEY (`id_transaction`),
   KEY `id_account_idx` (`id_account`),
   CONSTRAINT `transaction_account` FOREIGN KEY (`id_account`) REFERENCES `account` (`id_account`) ON DELETE RESTRICT ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -100,6 +96,7 @@ CREATE TABLE `transaction` (
 
 LOCK TABLES `transaction` WRITE;
 /*!40000 ALTER TABLE `transaction` DISABLE KEYS */;
+INSERT INTO `transaction` VALUES (1,'2022-12-04 22:00:00','nosto',10,1),(2,'2022-12-04 22:00:00','nosto',10,1),(3,'2022-12-04 22:00:00','nosto',20,1),(4,'2022-12-04 22:00:00','nosto',20,1),(5,'2022-12-04 22:00:00','nosto',20,1),(6,'2022-12-04 22:00:00','nosto',2.9350482956806208e-300,1),(7,'2022-12-04 22:00:00','nosto',20,1),(8,'2022-12-04 22:00:00','nosto',5.8700965913612416e-300,1),(10,'2022-12-04 22:00:00','nosto',20,1),(11,'2022-12-04 22:00:00','nosto',500,1),(12,'2022-12-04 22:00:00','nosto',500,1),(13,'2022-12-04 22:00:00','nosto',500,1),(14,'2022-12-04 22:00:00','nosto',500,1),(15,'2022-12-04 22:00:00','nosto',500,1),(16,'2022-12-04 22:00:00','nosto',500,1),(17,'2022-12-04 22:00:00','nosto',500,1),(18,'2022-12-04 22:00:00','nosto',500,1),(19,'2022-12-04 22:00:00','nosto',500,1),(20,'2022-12-04 22:00:00','nosto',500,1),(21,'2022-12-04 22:00:00','nosto',500,1),(22,'2022-12-04 22:00:00','nosto',500,1),(23,'2022-12-04 22:00:00','nosto',500,1),(24,'2022-12-04 22:00:00','nosto',500,1),(25,'2022-12-04 22:00:00','nosto',500,1),(26,'2022-12-04 22:00:00','nosto',50,1),(27,'2022-12-04 22:00:00','nosto',0,1),(28,'2022-12-04 22:00:00','nosto',0,1),(29,'2022-12-04 22:00:00','nosto',20,1),(30,'2022-12-04 22:00:00','nosto',20,1),(31,'2022-12-04 22:00:00','nosto',20,1),(32,'2022-12-04 22:00:00','nosto',0,1),(33,'2022-12-04 22:00:00','nosto',1,1),(34,'2022-12-04 22:00:00','nosto',2,1),(35,'2022-12-04 22:00:00','nosto',1,1),(36,'2022-12-04 22:00:00','nosto',5,1),(37,'2022-12-04 22:00:00','nosto',5,1),(38,'2022-12-04 22:00:00','nosto',1,1),(39,'2022-12-05 22:00:00','luottoraja',500,1),(40,'2022-12-05 22:00:00','luottoraja',500,1),(41,'2022-12-05 22:00:00','luottoraja',500,1),(42,'2022-12-05 22:00:00','luottoraja',500,1),(43,'2022-12-05 22:00:00','luottorajan korotus',500,1),(44,'2022-12-05 22:00:00','luottorajan korotus',1000,1),(45,'2022-12-05 22:00:00','luottorajan korotus',500,1),(46,'2022-12-06 22:00:00','nosto',1,1),(47,'2022-12-07 22:00:00','nosto',20,1),(48,'2022-12-07 22:00:00','nosto',2,1),(49,'2022-12-07 22:00:00','luottorajan korotus',500,1),(50,'2022-12-07 22:00:00','nosto',20,1);
 /*!40000 ALTER TABLE `transaction` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -117,7 +114,7 @@ CREATE TABLE `user` (
   `address` varchar(45) NOT NULL,
   `phone` varchar(45) NOT NULL,
   PRIMARY KEY (`id_user`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -126,40 +123,36 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES (1,'Aino','Virtanen','Pakkahuoneenkatu 7','+35844558812'),(2,'Juhani','Virtanen','Uusikatu 5','+358986655429'),(3,'Maija','Virta','Viestikatu 2','+358004455771'),(4,'Eino','Koski','Vetoporontie 1','+35855778890'),(5,'Liisa','Koski','Vetoporontie 1','+35855346790');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Dumping routines for database 'banksimul'
+-- Table structure for table `user_account`
 --
-/*!50003 DROP PROCEDURE IF EXISTS `debit_transfer` */;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb4 */ ;
-/*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `debit_transfer`(IN debit_account_id INT, IN user_id INT, IN amount DOUBLE )
-BEGIN
-  DECLARE u_account INT DEFAULT 0;
-  START TRANSACTION;
-  UPDATE account SET balance=balance-amount WHERE id_account=debit_account_id and balance-amount >= 0;
-  SET u_account=ROW_COUNT();
-    IF (u_account > 0) THEN
-      COMMIT;
-      INSERT INTO transaction(id_account,id_user,activity,amount,transaction_date) VALUES(debit_account_id,user_id,'withdrawal',amount,now());
-    ELSE
-      ROLLBACK;
-  END IF;
-  END ;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
+
+DROP TABLE IF EXISTS `user_account`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `user_account` (
+  `id_user` int unsigned NOT NULL,
+  `id_account` int unsigned NOT NULL,
+  PRIMARY KEY (`id_user`,`id_account`),
+  KEY `user_account_account_idx` (`id_account`),
+  CONSTRAINT `user_account_account` FOREIGN KEY (`id_account`) REFERENCES `account` (`id_account`) ON DELETE RESTRICT ON UPDATE CASCADE,
+  CONSTRAINT `user_accout_user` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`) ON DELETE RESTRICT ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user_account`
+--
+
+LOCK TABLES `user_account` WRITE;
+/*!40000 ALTER TABLE `user_account` DISABLE KEYS */;
+INSERT INTO `user_account` VALUES (1,1),(2,2),(3,3),(4,4);
+/*!40000 ALTER TABLE `user_account` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -170,4 +163,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-12-02 10:23:28
+-- Dump completed on 2022-12-08 16:56:38

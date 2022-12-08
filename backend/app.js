@@ -28,10 +28,7 @@ var accountRouter = require('./routes/account');
 var loginRouter = require('./routes/login');
 var cardRouter = require('./routes/card');
 var transactionRouter = require('./routes/transaction');
-var idcardRouter = require('./routes/idcard'); 
-var idaccountRouter = require ('./routes/idaccount');
-var getFiveTransactionsRouter = require('./routes/getFiveTransactions');
-
+var useraccountRouter = require ('./routes/useraccount');
 
 
 
@@ -56,9 +53,7 @@ app.use('/user', userRouter);
 app.use('/card',cardRouter);
 app.use('/account', accountRouter);
 app.use('/transaction', transactionRouter);
-app.use('/idcard',idcardRouter);
-app.use('/idaccount',idaccountRouter);
-app.use('/getFiveTransactions', getFiveTransactionsRouter);
+app.use('/useraccount', useraccountRouter);
 
 
 

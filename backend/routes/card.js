@@ -35,6 +35,17 @@ function(request, response) {
   });
 });
 
+router.post('/iduser/:card_number',
+    function (request, response) {
+        card.getIdUser(request.body.card_number, function (err, dbResult) {
+            if (err) {
+                response.json(err);
+            } else {
+                response.json(dbResult[0]);
+            }
+        })
+    });
+
 
 router.delete('/:id', 
 function(request, response) {

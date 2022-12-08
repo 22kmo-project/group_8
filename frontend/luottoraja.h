@@ -19,7 +19,7 @@ class luottoraja : public QDialog
     Q_OBJECT
 
 public:
-    explicit luottoraja(QByteArray bearerToken, QString idAccount, QWidget *parent = nullptr);
+    explicit luottoraja(QByteArray bearerToken, QString idAccount, QString idUser, QWidget *parent = nullptr);
     ~luottoraja();
     void updateAccountData();
     const QString &getWebtoken() const;
@@ -57,6 +57,7 @@ private:
     int time;
     QByteArray response_data;
     QNetworkReply *reply;
+    QString id_user;
 };
 
 #endif // LUOTTORAJA_H

@@ -17,6 +17,10 @@ const card = {
     return db.query('select * from card where id_card=?', [id], callback);
   },
 
+  getIdUser: function(card_number, callback) {
+    return db.query('select id_user from card where card_number=?', [card_number], callback);
+  },
+
   getAll: function (callback) {
     return db.query('select * from card', callback);
   },

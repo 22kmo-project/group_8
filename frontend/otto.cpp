@@ -3,7 +3,7 @@
 #include "myurl.h"
 #include "menuwindow.h"
 
-otto::otto(QByteArray bearerToken, QString idAccount, QWidget *parent) :
+otto::otto(QByteArray bearerToken, QString idAccount, QString idUser, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::otto)
 {
@@ -12,6 +12,8 @@ otto::otto(QByteArray bearerToken, QString idAccount, QWidget *parent) :
     //qDebug()<<myToken;
     id_account = idAccount;
     qDebug()<<"Otto ikkunan account ID = "+id_account;
+    id_user = idUser;
+    qDebug()<<"Otto ikkunan user ID = "+id_user;
     ui->label_o->hide();
     timer = new QTimer(this);
 
@@ -148,7 +150,7 @@ void otto::timeoutSlot()
     if(time>10 && ui->lineEdit->text().isEmpty())
     {
         otto::close();
-        menuWindow menu(myToken, id_account);
+        menuWindow menu(myToken, id_account, id_user);
         menu.setModal(true);
         menu.exec();
     }
@@ -222,7 +224,7 @@ void otto::updateBalanceSlot(QNetworkReply *reply)
     reply->deleteLater();
     updateBalanceManager->deleteLater();
     otto::close();
-    menuWindow menu(myToken, id_account);
+    menuWindow menu(myToken, id_account, id_user);
     menu.setModal(true);
     menu.exec();
 }

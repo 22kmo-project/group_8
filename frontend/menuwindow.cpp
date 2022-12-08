@@ -7,7 +7,7 @@
 
 
 
-menuWindow::menuWindow(QByteArray bearerToken, QString idAccount, QWidget *parent) :
+menuWindow::menuWindow(QByteArray bearerToken, QString idAccount, QString idUser, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::menuWindow)
 {
@@ -15,6 +15,7 @@ menuWindow::menuWindow(QByteArray bearerToken, QString idAccount, QWidget *paren
     webToken = bearerToken;
     //qDebug()<<webToken;
     id_account = idAccount;
+    id_user = idUser;
 
 
 
@@ -97,7 +98,7 @@ void menuWindow::on_pushButton_KirjauduUlos_clicked()
 void menuWindow::on_pushButton_Saldo_clicked()
 {
     timer->stop();
-    class saldo nayta(webToken,id_account);
+    class saldo nayta(webToken,id_account,id_user);
     nayta.setModal(true);
     nayta.exec();
     menuWindow::close();
@@ -110,7 +111,7 @@ void menuWindow::on_pushButton_Otto_clicked()
 {
     timer->stop();
     menuWindow::close();
-    otto nosto(webToken,id_account);
+    otto nosto(webToken,id_account, id_user);
     nosto.setModal(true);
     nosto.exec();
 }
@@ -119,7 +120,7 @@ void menuWindow::on_pushButton_LuottorajanNosto_clicked()
 {
     timer->stop();
     menuWindow::close();
-    luottoraja luotto(webToken,id_account);
+    luottoraja luotto(webToken,id_account, id_user);
     luotto.setModal(true);
     luotto.exec();
 
@@ -130,7 +131,7 @@ void menuWindow::on_pushButton_Tilitapahtumat_clicked()
 {
     timer->stop();
     menuWindow::close();
-    tilitapahtumat tilitapahtumat(webToken,id_account);
+    tilitapahtumat tilitapahtumat(webToken,id_account, id_user);
     tilitapahtumat.setModal(true);
     tilitapahtumat.exec();
 
