@@ -10,11 +10,10 @@ tilitapahtumat::tilitapahtumat(QByteArray bearerToken, QString idAccount, QStrin
 {
     ui->setupUi(this);
     myToken = bearerToken;
-    //qDebug()<<myToken;
+    qDebug()<<"Tilitapahtumat Token = "+myToken;
     id_account = idAccount;
-    qDebug()<<"Tilitapahtumat: account ID = "+id_account;
     id_user = idUser;
-    qDebug()<<"Tilitapahtumat: user ID = "+id_user;
+    qDebug()<<"Tilitapahtumat: user ID = "+id_user+ " ja Account = "+id_account;
     timer = new QTimer(this);
     connect (timer, SIGNAL (timeout()),
                 this, SLOT (timeoutSlot()));
@@ -32,14 +31,11 @@ void tilitapahtumat::on_naytaTilitapahtumatBtn_clicked()
     time = 0;
     QString site_url=MyURL::getBaseURL()+"/transaction/"+id_account;
     QNetworkRequest request((site_url));
-    //WEBTOKEN ALKU
-    request.setRawHeader(QByteArray("Authorization"),(myToken));
-    //WEBTOKEN LOPPU
+
+    request.setRawHeader(QByteArray("Authorization"),(myToken)); //WEBTOKEN
 
     tilitapahtumatManager = new QNetworkAccessManager(this);
-
     connect(tilitapahtumatManager, SIGNAL(finished (QNetworkReply*)), this, SLOT(tilitapahtumatSlot(QNetworkReply*)));
-
     reply = tilitapahtumatManager->get(request);
 }
 

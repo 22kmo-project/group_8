@@ -14,11 +14,9 @@ void Info::getIdUser()
 
     QString wb = webToken;
     //qDebug()<<"Webtoken ="+wb;
-    //qDebug()<<webToken;
     bearerToken = "Bearer "+wb.toUtf8();
-    //qDebug()<<bearerToken;
     QString site_url = MyURL::getBaseURL()+"/card/iduser/"+cardNumber;
-    qDebug()<<site_url;
+    qDebug()<<"Info: osoite = "+site_url;
     QNetworkRequest request((site_url));
     request.setRawHeader(QByteArray("Authorization"),(bearerToken));
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
@@ -35,12 +33,11 @@ void Info::getIdAccount()
     QJsonObject jsonObj;
     jsonObj.insert("id_user", getUserId());
     QString wb = webToken;
-    //qDebug()<<"Webtoken ="+wb;
-    //qDebug()<<webToken;
     bearerToken = "Bearer "+wb.toUtf8();
     //qDebug()<<bearerToken;
+
     QString site_url = MyURL::getBaseURL()+"/useraccount";
-    qDebug()<<site_url;
+    qDebug()<<"Info getIdAccount osoite = "+site_url;
     QNetworkRequest request((site_url));
     request.setRawHeader(QByteArray("Authorization"),(bearerToken));
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
@@ -59,7 +56,7 @@ void Info::getUserIdSlot(QNetworkReply *reply)
     QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
     QJsonObject json_obj = json_doc.object();
 
-    qDebug()<<response_data;
+    qDebug()<<"Info getUserIdSlot response = "+response_data;
     setUserId(QString::number(json_obj["id_user"].toInt()));
     qDebug()<<"Info.cpp: User ID = "+idUser;
 

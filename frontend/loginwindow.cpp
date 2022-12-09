@@ -17,9 +17,7 @@ loginWindow::loginWindow(QWidget *parent) :
 }
 
 loginWindow::~loginWindow()
-{ //tarviiko delete timeria?
-    delete timer;
-    timer = nullptr;
+{
     delete ui;
 
 }
@@ -57,7 +55,7 @@ void loginWindow::on_btnKirjaudu_clicked()
 void loginWindow::loginSlot(QNetworkReply *reply)
 {
     response_data=reply->readAll();
-    qDebug()<<response_data;
+    qDebug()<<"Info loginSlot response = "+response_data;
     int test=QString::compare(response_data,"false");
     qDebug()<<test;
 

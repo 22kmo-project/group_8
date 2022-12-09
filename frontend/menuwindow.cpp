@@ -13,23 +13,19 @@ menuWindow::menuWindow(QByteArray bearerToken, QString idAccount, QString idUser
 {
     ui->setupUi(this);
     webToken = bearerToken;
-    //qDebug()<<webToken;
     id_account = idAccount;
     id_user = idUser;
 
-
-
     QString site_url=MyURL::getBaseURL()+"/account/"+idAccount;
     QNetworkRequest request((site_url));
-    //WEBTOKEN ALKU
-    QByteArray myToken=bearerToken;
-    //qDebug()<<myToken;
-    request.setRawHeader(QByteArray("Authorization"),(myToken));
-    //WEBTOKEN LOPPU
+
+    request.setRawHeader(QByteArray("Authorization"),(webToken)); // WEBTOKEN
+
     ownerManager = new QNetworkAccessManager(this);
+    qDebug()<<"MenuWindow: TOKENI = "+webToken;
 
     //Onko nämä alla olevat turhia? Jos on niin voi poistaa.
-   // QJsonObject jsonObj;
+    // QJsonObject jsonObj;
     //jsonObj.insert("account_owner", owner);
     //request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
 
@@ -49,13 +45,14 @@ menuWindow::menuWindow(QByteArray bearerToken, QString idAccount, QString idUser
 void menuWindow::getOwnerSlot(QNetworkReply *reply)
 {
     response_data = reply->readAll();
-    qDebug()<<response_data;
+    qDebug()<<"MenuWindow getOwnerSlot response = "+response_data;
     QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
     QJsonObject json_obj = json_doc.object();
     owner=json_obj["account_owner"].toString();
+
     qDebug()<<"Menuwindow: tilin omistaja = "+owner;
 
-   // reply->deleteLater();
+   // reply->deleteLater();  Tarviiko tätä?
     ui->labelCardnumber->setText("Tervetuloa "+owner+"!");
 }
 

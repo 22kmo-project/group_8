@@ -9,26 +9,24 @@ otto::otto(QByteArray bearerToken, QString idAccount, QString idUser, QWidget *p
 {
     ui->setupUi(this);
     myToken = bearerToken;
-    //qDebug()<<myToken;
+    qDebug()<<"Otto: Token = "+myToken;
     id_account = idAccount;
-    qDebug()<<"Otto ikkunan account ID = "+id_account;
     id_user = idUser;
-    qDebug()<<"Otto ikkunan user ID = "+id_user;
+    qDebug()<<"Otto: user ID = "+id_user+" ja account ID = "+id_account;
     ui->label_o->hide();
-    timer = new QTimer(this);
 
     QString site_url = MyURL::getBaseURL()+"/account/"+idAccount;
-    qDebug()<<site_url;
+    qDebug()<<"Otto osoite = "+site_url;
     QNetworkRequest request((site_url));
     request.setRawHeader(QByteArray("Authorization"),(myToken));
     //request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");  Onko tämä turha rivi? Jos on niin voi poistaa
 
     AccountTypeManager = new QNetworkAccessManager();
-
     connect(AccountTypeManager, SIGNAL(finished(QNetworkReply*)),
             this, SLOT(getAccountTypeSlot(QNetworkReply*)));
     reply = AccountTypeManager->get(request);
 
+    timer = new QTimer(this);
     connect (timer, SIGNAL (timeout()),
             this, SLOT (timeoutSlot()));
     timer->start(1000);
@@ -38,9 +36,7 @@ otto::otto(QByteArray bearerToken, QString idAccount, QString idUser, QWidget *p
 otto::~otto()
 {
     delete ui;
-
 }
-
 
 void otto::on_ottoPoistu_clicked()
 {
@@ -50,18 +46,16 @@ void otto::on_ottoPoistu_clicked()
     QJsonObject jsonObjUpdate;
     jsonObjUpdate.insert("balance", balance);
     QString site_url=MyURL::getBaseURL()+"/account/balance/"+id_account;
-    qDebug()<<site_url;
+    qDebug()<<"Otto: "+site_url;
     QNetworkRequest request((site_url));
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
-    //WEBTOKEN ALKU
-    request.setRawHeader(QByteArray("Authorization"),(myToken));
-    //qDebug()<<myToken;
-    //WEBTOKEN LOPPU
+
+    request.setRawHeader(QByteArray("Authorization"),(myToken)); //WEBTOKEN
+    //qDebug()<<"Otto: poistu´BTN Token = "+myToken;
 
     updateBalanceManager = new QNetworkAccessManager(this);
     connect(updateBalanceManager, SIGNAL(finished(QNetworkReply*)),
             this, SLOT(updateBalanceSlot(QNetworkReply*)));
-
     reply = updateBalanceManager->put(request, QJsonDocument(jsonObjUpdate).toJson());
 
     if(maara>0)
@@ -76,15 +70,12 @@ void otto::on_ottoPoistu_clicked()
     QNetworkRequest requestPost((site_urlPost));
     requestPost.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
 
-    //WEBTOKEN ALKU
-    requestPost.setRawHeader(QByteArray("Authorization"),(myToken));
-    //WEBTOKEN LOPPU
+    requestPost.setRawHeader(QByteArray("Authorization"),(myToken)); //Hae WEBTOKEN
 
     transactionManager=new QNetworkAccessManager(this);
     connect(transactionManager, SIGNAL(finished(QNetworkReply*)),
             this, SLOT(transactionSlot(QNetworkReply*)));
-
-     reply = transactionManager->post(requestPost, QJsonDocument(jsonObjPost).toJson());
+    reply = transactionManager->post(requestPost, QJsonDocument(jsonObjPost).toJson());
     }  
 }
 
@@ -136,7 +127,7 @@ void otto::on_ok_clicked()
 {
 
     maara = ui->lineEdit->text().toDouble();
-    qDebug()<<"Otto ikkuna: maara = " << maara;
+    qDebug()<<"Otto: ok_BTN maara = " << maara;
     timer->stop();
     time = 0;
     withdraw(balanceValue,maara);
@@ -159,7 +150,7 @@ void otto::timeoutSlot()
 void otto::getAccountTypeSlot(QNetworkReply *reply)
 {
     response_data = reply->readAll();
-    qDebug()<<response_data;
+    qDebug()<<"Otto getAccountTypeSlot response = "+response_data;
     QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
     QJsonObject json_obj = json_doc.object();
     accountType=json_obj["account_type"].toString();
@@ -169,7 +160,7 @@ void otto::getAccountTypeSlot(QNetworkReply *reply)
     creditValue=QString(creditLimit).toDouble();
     ui->labelSaldo->setText("Tilisi saldo on " +balance);
 
-    qDebug()<<"Otto ikkuna: account balance = "+balance+" account type = "+accountType+" credit limit = "+creditLimit ;
+    qDebug()<<"Otto: account balance = "+balance+", account type = "+accountType+", credit limit = "+creditLimit ;
 
     reply->deleteLater();
     AccountTypeManager->deleteLater();
@@ -179,7 +170,7 @@ void otto::withdraw(double balanssi, double maara)
 {
     if(accountType == "credit")
     {
-        qDebug()<<"luotto";
+        qDebug()<<"Otto luottotili";
         if(maara - balanssi <= creditValue)
         {
             balanssi = balanssi-maara;
@@ -197,10 +188,10 @@ void otto::withdraw(double balanssi, double maara)
     }
     else
     {
-        qDebug()<<"pankki";
+        qDebug()<<"Otto pankkitili";
         if(balanssi - maara >= 0)
         {
-            qDebug()<<"onnistui";
+            qDebug()<<"Nosto onnistui";
             balanssi = balanssi-maara;
             balance=QString::number(balanssi);
             ui->label_o->setVisible(true);
@@ -220,7 +211,7 @@ void otto::withdraw(double balanssi, double maara)
 void otto::updateBalanceSlot(QNetworkReply *reply)
 {
     response_data=reply->readAll();
-    qDebug()<<response_data;
+    qDebug()<<"Otto updateBalanceSlot response = "+response_data;
     reply->deleteLater();
     updateBalanceManager->deleteLater();
     otto::close();
@@ -232,7 +223,7 @@ void otto::updateBalanceSlot(QNetworkReply *reply)
 void otto::transactionSlot(QNetworkReply *reply)
 {
     response_data=reply->readAll();
-    qDebug()<<response_data;
+    qDebug()<<"Otto transaction response = "+response_data;
     reply->deleteLater();
     transactionManager->deleteLater();
 }
