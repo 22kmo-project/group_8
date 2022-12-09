@@ -20,7 +20,7 @@ class otto : public QDialog
     Q_OBJECT
 
 public:
-    explicit otto(QByteArray bearerToken, QString idAccount, QWidget *parent = nullptr);
+    explicit otto(QByteArray bearerToken, QString idAccount, QString idUser, QWidget *parent = nullptr);
     ~otto();
     void updateAccountData();
     QString getAccountData(QString accountId);
@@ -63,6 +63,7 @@ private:
     double creditValue;
     QTimer *timer;
     int time;
+    QString id_user;
     //PopUpDialog *objectPopUpDialog;
 };
 

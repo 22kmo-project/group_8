@@ -7,41 +7,37 @@ Info::Info()
 
 }
 
-void Info::getIdCard()
+void Info::getIdUser()
 {
     QJsonObject jsonObj;
     jsonObj.insert("card_number", getCard_Number());
 
     QString wb = webToken;
     //qDebug()<<"Webtoken ="+wb;
-    //qDebug()<<webToken;
     bearerToken = "Bearer "+wb.toUtf8();
-    //qDebug()<<bearerToken;
-    QString site_url = MyURL::getBaseURL()+"/idcard/";
-    qDebug()<<site_url;
+    QString site_url = MyURL::getBaseURL()+"/card/iduser/"+cardNumber;
+    qDebug()<<"Info: osoite = "+site_url;
     QNetworkRequest request((site_url));
     request.setRawHeader(QByteArray("Authorization"),(bearerToken));
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
 
-    idCardManager = new QNetworkAccessManager();
-
-    connect(idCardManager, SIGNAL(finished(QNetworkReply*)),
-            this, SLOT(getIdSlot(QNetworkReply*)));
+    idUserManager = new QNetworkAccessManager();
+            connect(idUserManager, SIGNAL(finished(QNetworkReply*)),
+            this, SLOT(getUserIdSlot(QNetworkReply*)));
     qDebug()<<jsonObj;
-    reply = idCardManager->post(request, QJsonDocument(jsonObj).toJson());
+    reply = idUserManager->post(request, QJsonDocument(jsonObj).toJson());
 }
 
 void Info::getIdAccount()
 {
     QJsonObject jsonObj;
-    jsonObj.insert("id_card", getCardId());
+    jsonObj.insert("id_user", getUserId());
     QString wb = webToken;
-    //qDebug()<<"Webtoken ="+wb;
-    //qDebug()<<webToken;
     bearerToken = "Bearer "+wb.toUtf8();
     //qDebug()<<bearerToken;
-    QString site_url = MyURL::getBaseURL()+"/idaccount";
-    qDebug()<<site_url;
+
+    QString site_url = MyURL::getBaseURL()+"/useraccount";
+    qDebug()<<"Info getIdAccount osoite = "+site_url;
     QNetworkRequest request((site_url));
     request.setRawHeader(QByteArray("Authorization"),(bearerToken));
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
@@ -54,15 +50,15 @@ void Info::getIdAccount()
     reply = idAccountManager->post(request, QJsonDocument(jsonObj).toJson());
 }
 
-void Info::getIdSlot(QNetworkReply *reply)
+void Info::getUserIdSlot(QNetworkReply *reply)
 {
     response_data = reply->readAll();
     QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
     QJsonObject json_obj = json_doc.object();
 
-    qDebug()<<response_data;
-    setCardId(QString::number(json_obj["id_card"].toInt()));
-    qDebug()<<"Info.cpp: Card ID = "+idCard;
+    qDebug()<<"Info getUserIdSlot response = "+response_data;
+    setUserId(QString::number(json_obj["id_user"].toInt()));
+    qDebug()<<"Info.cpp: User ID = "+idUser;
 
     reply->deleteLater();
 
@@ -89,8 +85,7 @@ void Info::getAccountSlot(QNetworkReply *reply)
 void Info::startMenuWindow()
 {
     menuWindow *objectmenuWindow;
-    objectmenuWindow = new menuWindow(bearerToken, idAccount);
-    //objectmenuWindow->setWebToken(webToken);  Onko tämä turha kommentti? Meneekö poistoon?
+    objectmenuWindow = new menuWindow(bearerToken, idAccount, idUser);
     objectmenuWindow->show();
 }
 
@@ -115,14 +110,15 @@ void Info::setCard_Number(const QString &newCardNumber)
     cardNumber = newCardNumber;
 }
 
-const QString &Info::getCardId() const
+
+const QString &Info::getUserId() const
 {
-    return idCard;
+    return idUser;
 }
 
-void Info::setCardId(const QString &newIdCard)
+void Info::setUserId(const QString &newIdUser)
 {
-    idCard = newIdCard;
+    idUser = newIdUser;
 }
 
 const QString &Info::getAccountId() const

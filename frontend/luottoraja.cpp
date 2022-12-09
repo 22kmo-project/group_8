@@ -3,26 +3,26 @@
 #include "myurl.h"
 #include "menuwindow.h"
 
-luottoraja::luottoraja(QByteArray bearerToken, QString idAccount, QWidget *parent) :
+luottoraja::luottoraja(QByteArray bearerToken, QString idAccount, QString idUser, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::luottoraja)
 {
     ui->setupUi(this);
     myToken = bearerToken;
-    //qDebug()<<myToken;
+    qDebug()<<"Luottoraha: Token = "+myToken;
     id_account = idAccount;
-    qDebug()<<"Luottoraja ikkuna: account ID = "+id_account;
+    id_user = idUser;
+    qDebug()<<"Luottoraja ikkuna: user ID = "+id_user+" Luottoraja ikkuna: account ID = "+id_account;
 
     timer = new QTimer(this);
 
     QString site_url = MyURL::getBaseURL()+"/account/"+idAccount;
-    qDebug()<<site_url;
+    qDebug()<<"Luottoraja: Osoite = "+site_url;
     QNetworkRequest request((site_url));
     request.setRawHeader(QByteArray("Authorization"),(myToken));
     //request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");  Onko tällä mitään tarkoitusta vai miksi kommenttina? Jos ei niin voi poistaa
 
     AccountTypeManager = new QNetworkAccessManager();
-
     connect(AccountTypeManager, SIGNAL(finished(QNetworkReply*)),
             this, SLOT(getAccountTypeSlot(QNetworkReply*)));
     reply = AccountTypeManager->get(request);
@@ -43,7 +43,7 @@ void luottoraja::timeoutSlot()
     {
         timer->stop();
         luottoraja::close();
-        menuWindow menu(myToken, id_account);
+        menuWindow menu(myToken, id_account,id_user);
         menu.setModal(true);
         menu.exec();
     }
@@ -64,7 +64,7 @@ void luottoraja::on_luottoPoistu_clicked()
 {
     timer->stop();
     luottoraja::close();
-    menuWindow menu(myToken, id_account);
+    menuWindow menu(myToken, id_account,id_user);
     menu.setModal(true);
     menu.exec();
 }
@@ -120,18 +120,15 @@ void luottoraja::on_uusi_luotto_clicked()
     QJsonObject jsonObjUpdate;
     jsonObjUpdate.insert("credit_limit", credit_limit);
     QString site_url=MyURL::getBaseURL()+"/account/creditlimit/"+id_account;
-    qDebug()<<site_url;
+    qDebug()<<"Luottoraja uusi luottoBTN osoite= "+site_url;
     QNetworkRequest request((site_url));
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
-    //WEBTOKEN ALKU
-    request.setRawHeader(QByteArray("Authorization"),(myToken));
-    //qDebug()<<myToken;
-    //WEBTOKEN LOPPU
+
+    request.setRawHeader(QByteArray("Authorization"),(myToken)); //WEBTOKEN
 
     updateCreditManager = new QNetworkAccessManager(this);
     connect(updateCreditManager, SIGNAL(finished(QNetworkReply*)),
             this, SLOT(updateCreditSlot(QNetworkReply*)));
-
     reply = updateCreditManager->put(request, QJsonDocument(jsonObjUpdate).toJson());
 
     if(maara>0)
@@ -146,15 +143,12 @@ void luottoraja::on_uusi_luotto_clicked()
     QNetworkRequest requestPost((site_urlPost));
     requestPost.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
 
-    //WEBTOKEN ALKU
-    requestPost.setRawHeader(QByteArray("Authorization"),(myToken));
-    //WEBTOKEN LOPPU
+    requestPost.setRawHeader(QByteArray("Authorization"),(myToken)); //WEBTOKEN
 
     transactionManager=new QNetworkAccessManager(this);
     connect(transactionManager, SIGNAL(finished(QNetworkReply*)),
             this, SLOT(transactionSlot(QNetworkReply*)));
-
-     reply = transactionManager->post(requestPost, QJsonDocument(jsonObjPost).toJson());
+    reply = transactionManager->post(requestPost, QJsonDocument(jsonObjPost).toJson());
     }
 }
 
@@ -180,7 +174,7 @@ void luottoraja::setlimit(double luottoraja, double maara)
 void luottoraja::getAccountTypeSlot(QNetworkReply *reply)
 {
     response_data = reply->readAll();
-    qDebug()<<response_data;
+    qDebug()<<"Luottoraja getAccountTypeSlot response = "+response_data;
     QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
     QJsonObject json_obj = json_doc.object();
     accountType=json_obj["account_type"].toString();
@@ -196,7 +190,7 @@ void luottoraja::getAccountTypeSlot(QNetworkReply *reply)
 void luottoraja::transactionSlot(QNetworkReply *reply)
 {
     response_data=reply->readAll();
-    qDebug()<<response_data;
+    qDebug()<<"Luottoraja transactionSlot response = "+response_data;
     reply->deleteLater();
     transactionManager->deleteLater();
 }
@@ -204,7 +198,7 @@ void luottoraja::transactionSlot(QNetworkReply *reply)
 void luottoraja::updateCreditSlot(QNetworkReply *reply)
 {
     response_data=reply->readAll();
-    qDebug()<<response_data;
+    qDebug()<<"Luottoraja updateCreditSlot response = "+response_data;
     reply->deleteLater();
     updateCreditManager->deleteLater();
 }

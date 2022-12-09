@@ -14,7 +14,7 @@ class menuWindow : public QDialog
     Q_OBJECT
 
 public:
-    explicit menuWindow(QByteArray bearerToken, QString idAccount,  QWidget *parent = nullptr);
+    explicit menuWindow(QByteArray bearerToken, QString idAccount,QString idUser,  QWidget *parent = nullptr);
     ~menuWindow();
 
     const QString &getWebtoken() const;
@@ -47,6 +47,7 @@ private:
     QString owner;
     int time;
     QTimer *timer;
+    QString id_user;
 };
 
 #endif // MENUWINDOW_H

@@ -6,6 +6,7 @@
 #include <QNetworkAccessManager>
 #include <QJsonDocument>
 #include <qbytearray.h>
+#include "info.h"
 #include "myurl.h"
 #include <QMainWindow>
 #include <QtNetwork>
@@ -23,7 +24,7 @@ class saldo : public QDialog
     Q_OBJECT
 
 public:
-    explicit saldo(QByteArray bearerToken, QString idAccount, QWidget *parent = nullptr);
+    explicit saldo(QByteArray bearerToken, QString idAccount, QString idUser, QWidget *parent = nullptr);
     ~saldo();
     const QString &getWebtoken() const;
     void setWebToken(const QByteArray &newWebToken);
@@ -58,6 +59,8 @@ private:
 
     int time;
     QTimer *timer;
+
+    Info *info;
 
 
 };
