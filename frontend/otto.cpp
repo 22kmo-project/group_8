@@ -15,7 +15,7 @@ otto::otto(QByteArray bearerToken, QString idAccount, QString idUser, QWidget *p
     qDebug()<<"Otto: user ID = "+id_user+" ja account ID = "+id_account;
     ui->label_o->hide();
 
-    QString site_url = MyURL::getBaseURL()+"/account/"+idAccount;
+    QString site_url = MyURL::getBaseURL()+"/account/"+id_account;
     qDebug()<<"Otto osoite = "+site_url;
     QNetworkRequest request((site_url));
     request.setRawHeader(QByteArray("Authorization"),(myToken));

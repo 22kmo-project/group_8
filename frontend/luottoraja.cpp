@@ -22,10 +22,10 @@ luottoraja::luottoraja(QByteArray bearerToken, QString idAccount, QString idUser
     request.setRawHeader(QByteArray("Authorization"),(myToken));
     //request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");  Onko tällä mitään tarkoitusta vai miksi kommenttina? Jos ei niin voi poistaa
 
-    AccountTypeManager = new QNetworkAccessManager();
-    connect(AccountTypeManager, SIGNAL(finished(QNetworkReply*)),
+    accountTypeManager = new QNetworkAccessManager();
+    connect(accountTypeManager, SIGNAL(finished(QNetworkReply*)),
             this, SLOT(getAccountTypeSlot(QNetworkReply*)));
-    reply = AccountTypeManager->get(request);
+    reply = accountTypeManager->get(request);
 
     connect (timer, SIGNAL (timeout()),
             this, SLOT (timeoutSlot()));
@@ -52,11 +52,6 @@ void luottoraja::timeoutSlot()
 luottoraja::~luottoraja()
 {
     delete ui;
-}
-
-void luottoraja::setWebToken(const QByteArray &newWebToken)
-{
-    webToken = newWebToken;
 }
 
 
@@ -184,7 +179,7 @@ void luottoraja::getAccountTypeSlot(QNetworkReply *reply)
     qDebug()<<"Luottoraja ikkuna: account type = "+accountType+ " Credit limit = "+credit_limit;
 
     reply->deleteLater();
-    AccountTypeManager->deleteLater();
+    accountTypeManager->deleteLater();
 }
 
 void luottoraja::transactionSlot(QNetworkReply *reply)

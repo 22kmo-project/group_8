@@ -40,12 +40,6 @@ saldo::~saldo()
     delete ui;
 }
 
-void saldo::setWebToken(const QByteArray &newWebToken)
-{
-    webToken = newWebToken;
-}
-
-
 void saldo::on_poistuSaldo_clicked() //Suljetaan saldo-ikkuna
 {
     timer->stop();
@@ -66,9 +60,6 @@ void saldo::getBalanceSlot(QNetworkReply *reply) //Pyydetään balance tietokann
     QJsonArray json_array = json_doc.array();
     QString account ="";
 
-    //Onko nämä 2 riviä turhaa?
-    //id_user=QString::number(json_obj["id_user"].toInt());
-    //qDebug()<<"Saldo ikkuna: user ID = " +id_user;
 
     foreach (const QJsonValue &value, json_array)
     {

@@ -24,11 +24,6 @@ menuWindow::menuWindow(QByteArray bearerToken, QString idAccount, QString idUser
     ownerManager = new QNetworkAccessManager(this);
     qDebug()<<"MenuWindow: TOKENI = "+webToken;
 
-    //Onko nämä alla olevat turhia? Jos on niin voi poistaa.
-    // QJsonObject jsonObj;
-    //jsonObj.insert("account_owner", owner);
-    //request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
-
     connect(ownerManager, SIGNAL(finished (QNetworkReply*)), this, SLOT(getOwnerSlot(QNetworkReply*)));
 
     reply = ownerManager->get(request);
@@ -52,7 +47,7 @@ void menuWindow::getOwnerSlot(QNetworkReply *reply)
 
     qDebug()<<"Menuwindow: tilin omistaja = "+owner;
 
-   // reply->deleteLater();  Tarviiko tätä?
+    reply->deleteLater();
     ui->labelCardnumber->setText("Tervetuloa "+owner+"!");
 }
 
@@ -72,18 +67,6 @@ menuWindow::~menuWindow()
 {
     delete ui;
 }
-
-const QString &menuWindow::getWebtoken() const
-{
-    return webToken;
-}
-
-
-void menuWindow::setWebToken(const QByteArray &newWebToken)
-{
- webToken = newWebToken;
-}
-
 
 void menuWindow::on_pushButton_KirjauduUlos_clicked()
 {

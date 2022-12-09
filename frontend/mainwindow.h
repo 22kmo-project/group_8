@@ -3,19 +3,6 @@
 
 #include "loginwindow.h"
 #include <QMainWindow>
-#include <QTimer>
-#include <QSql>
-#include <QSqlDatabase>
-#include <QSqlQuery>
-#include <QSqlTableModel>
-//#include "../group_8/backend/database"
-
-/*enum SearchMode
-{
-    name,
-    saldo,
-    activity
-}; voiko poistaa? */
 
 
 QT_BEGIN_NAMESPACE
@@ -32,12 +19,10 @@ public:
 
 private slots:
     void on_btnSisaan_clicked();
-    //QTimer *objectTimer;
 
 private:
     Ui::MainWindow *ui;
     loginWindow *objectloginWindow;
-    //QTimer *objectTimer;
-    //DLLMySQL *objectMySQL;
+
 };
 #endif // MAINWINDOW_H
