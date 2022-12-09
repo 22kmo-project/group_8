@@ -16,6 +16,16 @@ tilitapahtumat::tilitapahtumat(QByteArray bearerToken, QString idAccount, QStrin
     id_account = idAccount;
     id_user = idUser;
     qDebug()<<"Tilitapahtumat: user ID = "+id_user+ " ja Account = "+id_account;
+
+    QString site_url=MyURL::getBaseURL()+"/account/"+idAccount;
+    QNetworkRequest request((site_url));
+
+    request.setRawHeader(QByteArray("Authorization"),(myToken)); //WEBTOKEN
+
+    balanceManager = new QNetworkAccessManager(this);
+    connect(balanceManager, SIGNAL(finished (QNetworkReply*)), this, SLOT(getBalanceSlot(QNetworkReply*)));
+    reply = balanceManager->get(request);
+
     timer = new QTimer(this);
     connect (timer, SIGNAL (timeout()),
                 this, SLOT (timeoutSlot()));
@@ -43,10 +53,33 @@ void tilitapahtumat::on_naytaTilitapahtumatBtn_clicked()
     ui->edellisetBtn->show();
 }
 
+void tilitapahtumat::getBalanceSlot(QNetworkReply *reply)
+{
+    response_data = reply->readAll();
+    QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
+    QJsonObject json_obj = json_doc.object();
+
+    qDebug()<<"Tilitapahtumat getBalanceSlot response = "+response_data;
+
+    QJsonArray json_array = json_doc.array();
+    QString account ="";
+
+
+    foreach (const QJsonValue &value, json_array)
+    {
+        QJsonObject json_obj = value.toObject();
+        account+=QString::number(json_obj["balance"].toInt())+"\n";
+    }
+
+    balance=QString::number(json_obj["balance"].toInt())+"\n";;
+    qDebug()<<"Saldo: balance = "+balance;
+    ui->labelSaldo->setText("Saldosi on "+balance);
+}
+
 void tilitapahtumat::timeoutSlot()
 {
     time ++;
-    //qDebug()<<time;
+    qDebug()<<time;
     if(time>30)
     {
         tilitapahtumat::close();
@@ -123,13 +156,10 @@ void tilitapahtumat::on_TakaisinBtn_clicked()
     menu.exec();
 }
 
-void tilitapahtumat::setWebToken(const QByteArray &newWebToken)
-{
-    webToken = newWebToken;
-}
 
 void tilitapahtumat::on_edellisetBtn_clicked()
 {
+    time = 0;
     calc = x+10;
     QString pena = QString::number(calc);
 
@@ -150,6 +180,7 @@ void tilitapahtumat::on_edellisetBtn_clicked()
 
 void tilitapahtumat::on_seuraavatBtn_clicked()
 {
+    time = 0;
     qDebug()<<calc;
     if (calc >= 10){
     calc = x-10;

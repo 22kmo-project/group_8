@@ -7,8 +7,6 @@
 #include "info.h"
 #include <QTimer>
 
-//#include <QSqlQuery>
-
 namespace Ui {
 class loginWindow;
 }
@@ -21,24 +19,29 @@ public:
     explicit loginWindow(QWidget *parent = nullptr);
     ~loginWindow();
 
-
 private slots:
+
     void on_btnPoistu_clicked();
     void on_btnKirjaudu_clicked();
     void loginSlot (QNetworkReply *reply);
     void timeoutSlot();
 
 private:
+
     Ui::loginWindow *ui;
-    QNetworkAccessManager *loginManager;
-    QNetworkReply *reply;
     Info *info;
-    QByteArray response_data;
-    QString card_number;
-    QString pin;
     int attempts;
     int time;
+    QByteArray response_data;
+    QNetworkAccessManager *loginManager;
+    QNetworkReply *reply;
+    QString cardNumber;
+    QString card_number;
+    QString idUser;
+    QString idAccount;
+    QString pin;
     QTimer *timer;
+
 };
 
 

@@ -28,15 +28,7 @@ var accountRouter = require('./routes/account');
 var loginRouter = require('./routes/login');
 var cardRouter = require('./routes/card');
 var transactionRouter = require('./routes/transaction');
-
 var useraccountRouter = require ('./routes/useraccount');
-
-var idcardRouter = require('./routes/idcard'); 
-var idaccountRouter = require ('./routes/idaccount');
-var getFiveTransactionsRouter = require('./routes/getFiveTransactions');
-var getTransactionsFromButtonRouter = require('./routes/getTransactionsFromButton');
-
-
 
 
 var app = express();
@@ -59,16 +51,6 @@ app.use('/user', userRouter);
 app.use('/card',cardRouter);
 app.use('/account', accountRouter);
 app.use('/transaction', transactionRouter);
-
 app.use('/useraccount', useraccountRouter);
-
-app.use('/idcard',idcardRouter);
-app.use('/idaccount',idaccountRouter);
-app.use('/getFiveTransactions', getFiveTransactionsRouter);
-app.use('/transaction', getTransactionsFromButtonRouter);
-
-
-
-
 
 module.exports = app;

@@ -29,30 +29,22 @@ public:
     const QString &getAccountId() const;
     void setAccountId(const QString &newIdAccount);
 
-
-
 private slots:
 
     void getUserIdSlot(QNetworkReply *reply);
     void getAccountSlot (QNetworkReply *reply);
 
-
-
-
 private:
+    QByteArray webToken;
+    QByteArray bearerToken;
+    QByteArray response_data;
+    QNetworkAccessManager *idUserManager;
+    QNetworkAccessManager *idAccountManager;
+    QNetworkReply *reply;
     QString idUser;
     QString idAccount;
     QString cardNumber;
-    QString userID;
-    QByteArray webToken;
-    QNetworkAccessManager *idUserManager;
-    QNetworkAccessManager *idAccountManager;
-
-    QNetworkReply *reply;
-    QByteArray response_data;
     void startMenuWindow();
-    QByteArray bearerToken;
-
 };
 
 

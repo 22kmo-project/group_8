@@ -17,8 +17,6 @@ public:
     explicit menuWindow(QByteArray bearerToken, QString idAccount,QString idUser,  QWidget *parent = nullptr);
     ~menuWindow();
 
-    const QString &getWebtoken() const;
-    void setWebToken(const QByteArray &newWebToken);
 
 private slots:
     void on_pushButton_KirjauduUlos_clicked();
@@ -32,22 +30,20 @@ private slots:
     void timeoutSlot();
 
 private:
+
     Ui::menuWindow *ui;
+    int time;
     QByteArray webToken;
-    bool isCredit;
-    QString id_card;
+    QByteArray response_data;
     QString id_account;
+    QString id_card;
+    QString id_user;
+    QString owner;
     QNetworkAccessManager *idCardManager;
     QNetworkAccessManager *ownerManager;
     QNetworkReply *reply;
-    QString cardNumber;
-    QByteArray token;
-    Info *info;
-    QByteArray response_data;
-    QString owner;
-    int time;
     QTimer *timer;
-    QString id_user;
+
 };
 
 #endif // MENUWINDOW_H

@@ -17,44 +17,42 @@ class tilitapahtumat : public QDialog
     Q_OBJECT
 
 public:
+
     explicit tilitapahtumat(QByteArray bearerToken, QString idAccount, QString idUser, QWidget *parent = nullptr);
     ~tilitapahtumat();
-    const QString &getWebtoken() const;
-    void setWebToken(const QByteArray &newWebToken);
 
 private slots:
 
-    void tilitapahtumatSlot (QNetworkReply *reply);
     void on_naytaTilitapahtumatBtn_clicked();
+    void on_edellisetBtn_clicked();
+    void on_seuraavatBtn_clicked();
+    void on_TakaisinBtn_clicked();
+    void tilitapahtumatSlot (QNetworkReply *reply);
+    void getBalanceSlot (QNetworkReply *reply);
     void edellisetTitatSlot (QNetworkReply *reply);
     void seuraavatTitatSlot (QNetworkReply *reply);
-
-    void on_TakaisinBtn_clicked();
     void timeoutSlot();
 
-    void on_edellisetBtn_clicked();
 
-    void on_seuraavatBtn_clicked();
 
 private:
     Ui::tilitapahtumat *ui;
-    menuWindow *objectMenuToTilitapahtumat;
-
+    int time;
+    QByteArray myToken;
+    QByteArray response_data;
+    QNetworkAccessManager *balanceManager;
     QNetworkAccessManager *tilitapahtumatManager;
     QNetworkAccessManager *edellisetTitatManager;
     QNetworkAccessManager *seuraavatTitatManager;
     QNetworkReply *reply;
-    QByteArray response_data;
-
-    QByteArray myToken;
-    QByteArray webToken;
-    QString id_account;
-    QString transaction;
+    QString balance;
     QString edellisetTitat;
-    QString seuraavatTitat;
-    QTimer *timer;
-    int time;
+    QString id_account;
     QString id_user;
+    QString seuraavatTitat;
+    QString transaction;
+    QTimer *timer;
+
 
     int calc;
     int x=0;

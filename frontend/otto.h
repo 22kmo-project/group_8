@@ -20,15 +20,12 @@ class otto : public QDialog
     Q_OBJECT
 
 public:
+
     explicit otto(QByteArray bearerToken, QString idAccount, QString idUser, QWidget *parent = nullptr);
     ~otto();
     void updateAccountData();
-    QString getAccountData(QString accountId);
-    const QString &getWebtoken() const;
-    void setWebToken(const QByteArray &newWebToken);
 
 private slots:
-
 
     void on_ottoPoistu_clicked();
     void on_Nosto20_clicked();
@@ -36,35 +33,33 @@ private slots:
     void on_Nosto100_clicked();
     void on_Nosto200_clicked();
     void on_Nosto500_clicked();
-    void getAccountTypeSlot (QNetworkReply *reply);
+    void on_ok_clicked();
     void withdraw(double balanssi, double maara);
+    void getAccountTypeSlot (QNetworkReply *reply);
     void updateBalanceSlot(QNetworkReply *reply);
     void transactionSlot(QNetworkReply *reply);
-
     void timeoutSlot();
 
-    void on_ok_clicked();
-
 private:
+
     Ui::otto *ui;
-    QString idAccount;
-    QNetworkReply *reply;
-    QByteArray response_data;
+    double balanceValue;
+    double creditValue;
+    double maara;
+    int time;
     QByteArray myToken;
-    QString id_account;
+    QByteArray response_data;
+    QNetworkReply *reply;
     QString accountType;
+    QString balance;
+    QString creditLimit;
+    QString id_account;
+    QString id_user;
     QNetworkAccessManager *AccountTypeManager;
     QNetworkAccessManager *updateBalanceManager;
     QNetworkAccessManager *transactionManager;
-    QString balance;
-    double maara;
-    double balanceValue;
-    QString creditLimit;
-    double creditValue;
     QTimer *timer;
-    int time;
-    QString id_user;
-    //PopUpDialog *objectPopUpDialog;
+
 };
 
 #endif // OTTO_H

@@ -34,20 +34,19 @@ transaction.getFiveTransactions(id, function (err, dbResult) {
   }
 })
 
+});
 
-
-
-router.post('/', 
-function(request, response) {
-  transaction.add(request.body, function(err, dbResult) {
+router.get('/:id/:idTrans',
+ function(request, response) {
+  const idTrans = Number(request.params.idTrans);
+  transaction.getTransactionsFromButton(request.params.id, idTrans, function(err, dbResult) {
     if (err) {
       response.json(err);
     } else {
-      response.json(request.body);
+      response.json(dbResult);
     }
-  });
-
-});
+  })
+ });
 
 
 router.post('/',
