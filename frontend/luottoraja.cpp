@@ -43,7 +43,7 @@ void luottoraja::timeoutSlot()
     {
         timer->stop();
         luottoraja::close();
-        menuWindow menu(myToken, id_account, id_user);
+        menuWindow menu(myToken, id_account,id_user);
         menu.setModal(true);
         menu.exec();
     }

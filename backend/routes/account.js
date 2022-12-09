@@ -28,7 +28,7 @@ router.get('/:id?',
     account.getAccountID(request.params.id, function (err, dbResult) {
       if (err) {
         response.json(err);
-      } else {z
+      } else {
         response.json(dbResult[0]);
       }
     });
