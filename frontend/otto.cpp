@@ -14,6 +14,7 @@ otto::otto(QByteArray bearerToken, QString idAccount, QString idUser, QWidget *p
     id_user = idUser;
     qDebug()<<"Otto: user ID = "+id_user+" ja account ID = "+id_account;
     ui->label_o->hide();
+    amount = 0;
 
     QString site_url = MyURL::getBaseURL()+"/account/"+id_account;
     qDebug()<<"Otto osoite = "+site_url;
@@ -33,14 +34,15 @@ otto::otto(QByteArray bearerToken, QString idAccount, QString idUser, QWidget *p
     time = 0;
 }
 
+
 otto::~otto()
 {
     delete ui;
 }
 
+
 void otto::on_ottoPoistu_clicked()
 {
-
     timer->stop();
     time=0;
     QJsonObject jsonObjUpdate;
@@ -58,18 +60,17 @@ void otto::on_ottoPoistu_clicked()
             this, SLOT(updateBalanceSlot(QNetworkReply*)));
     reply = updateBalanceManager->put(request, QJsonDocument(jsonObjUpdate).toJson());
 
-    if(maara>0)
+    if(amount>0)
     {//päivitetään transaction-tauluun
     QJsonObject jsonObjPost;
     jsonObjPost.insert("transaction_date",QDate::currentDate().toString((Qt::ISODate)));
     jsonObjPost.insert("activity", "nosto");
-    jsonObjPost.insert("amount", maara);
+    jsonObjPost.insert("amount", amount);
     jsonObjPost.insert("id_account",id_account);
 
     QString site_urlPost=MyURL::getBaseURL()+"/transaction/";
     QNetworkRequest requestPost((site_urlPost));
     requestPost.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
-
     requestPost.setRawHeader(QByteArray("Authorization"),(myToken)); //Hae WEBTOKEN
 
     transactionManager=new QNetworkAccessManager(this);
@@ -83,7 +84,7 @@ void otto::on_ottoPoistu_clicked()
 void otto::on_Nosto20_clicked()
 {
     withdraw(balanceValue,20);
-    maara=20;
+    amount=20;
     timer->stop();
     time = 0;
 }
@@ -92,7 +93,7 @@ void otto::on_Nosto20_clicked()
 void otto::on_Nosto50_clicked()
 {
     withdraw(balanceValue,50);
-    maara=50;
+    amount=50;
     timer->stop();
     time = 0;
 }
@@ -101,7 +102,7 @@ void otto::on_Nosto50_clicked()
 void otto::on_Nosto100_clicked()
 {
     withdraw(balanceValue,100);
-    maara=100;
+    amount=100;
     timer->stop();
     time = 0;
 }
@@ -110,28 +111,30 @@ void otto::on_Nosto100_clicked()
 void otto::on_Nosto200_clicked()
 {
     withdraw(balanceValue,200);
-    maara=200;
+    amount=200;
     timer->stop();
     time = 0;
 }
+
 
 void otto::on_Nosto500_clicked()
 {
     withdraw(balanceValue,500);
-    maara=500;
+    amount=500;
     timer->stop();
     time = 0;
 }
+
 
 void otto::on_ok_clicked()
 {
-
-    maara = ui->lineEdit->text().toDouble();
-    qDebug()<<"Otto: ok_BTN maara = " << maara;
+    amount = ui->lineEdit->text().toDouble();
+    qDebug()<<"Otto: ok_BTN amount = " << amount;
     timer->stop();
     time = 0;
-    withdraw(balanceValue,maara);
+    withdraw(balanceValue,amount);
 }
+
 
 void otto::timeoutSlot()
 {
@@ -146,6 +149,7 @@ void otto::timeoutSlot()
         menu.exec();
     }
 }
+
 
 void otto::getAccountTypeSlot(QNetworkReply *reply)
 {
@@ -166,15 +170,16 @@ void otto::getAccountTypeSlot(QNetworkReply *reply)
     AccountTypeManager->deleteLater();
 }
 
-void otto::withdraw(double balanssi, double maara)
+
+void otto::withdraw(double currentBalance, double amount)
 {
     if(accountType == "credit")
     {
         qDebug()<<"Otto luottotili";
-        if(maara - balanssi <= creditValue)
+        if(amount - currentBalance <= creditValue && amount > 0)
         {
-            balanssi = balanssi-maara;
-            balance=QString::number(balanssi);
+            currentBalance = currentBalance-amount;
+            balance=QString::number(currentBalance);
             ui->label_o->setVisible(true);
             ui->label_o->setText("Varmista nosto painamalla poistu-painiketta.");
         }
@@ -189,11 +194,11 @@ void otto::withdraw(double balanssi, double maara)
     else
     {
         qDebug()<<"Otto pankkitili";
-        if(balanssi - maara >= 0)
+        if(currentBalance - amount >= 0 && amount > 0)
         {
             qDebug()<<"Nosto onnistui";
-            balanssi = balanssi-maara;
-            balance=QString::number(balanssi);
+            currentBalance = currentBalance-amount;
+            balance=QString::number(currentBalance);
             ui->label_o->setVisible(true);
             ui->label_o->setText("Varmista nosto painamalla poistu-painiketta.");
         }
@@ -203,10 +208,10 @@ void otto::withdraw(double balanssi, double maara)
             ui->label_o->setText("Tililläsi ei ole tarpeeksi rahaa. Valitse uusi summa tai paina poistu-painiketta.");
             timer->start(1000);
             time=0;
-
         }
     }
 }
+
 
 void otto::updateBalanceSlot(QNetworkReply *reply)
 {
@@ -219,6 +224,7 @@ void otto::updateBalanceSlot(QNetworkReply *reply)
     menu.setModal(true);
     menu.exec();
 }
+
 
 void otto::transactionSlot(QNetworkReply *reply)
 {

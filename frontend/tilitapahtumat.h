@@ -29,34 +29,30 @@ private slots:
     void on_TakaisinBtn_clicked();
     void tilitapahtumatSlot (QNetworkReply *reply);
     void getBalanceSlot (QNetworkReply *reply);
-    void edellisetTitatSlot (QNetworkReply *reply);
-    void seuraavatTitatSlot (QNetworkReply *reply);
+    void edellisetTilitapahtumatSlot (QNetworkReply *reply);
+    void seuraavatTilitapahtumatSlot (QNetworkReply *reply);
     void timeoutSlot();
 
-
-
 private:
+
     Ui::tilitapahtumat *ui;
-    int time;
     QByteArray myToken;
     QByteArray response_data;
     QNetworkAccessManager *balanceManager;
     QNetworkAccessManager *tilitapahtumatManager;
-    QNetworkAccessManager *edellisetTitatManager;
-    QNetworkAccessManager *seuraavatTitatManager;
+    QNetworkAccessManager *edellisetTilitapahtumatManager;
+    QNetworkAccessManager *seuraavatTilitapahtumatManager;
     QNetworkReply *reply;
     QString balance;
-    QString edellisetTitat;
+    QString edellisetTilitapahtumat;
     QString id_account;
     QString id_user;
-    QString seuraavatTitat;
+    QString seuraavatTilitapahtumat;
     QString transaction;
     QTimer *timer;
-
-
-    int calc;
-    int x=0;
-    int y=0;
+    int time;
+    int nextPage;
+    int currentPage=0;
 
 };
 

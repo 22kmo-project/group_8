@@ -7,17 +7,10 @@ const useraccount = {
   },
   getByUserAccountId: function (uid, aid, callback) {
     return db.query('select * from user_account where id_user=? AND id_account=?', [uid, aid], callback);
-  }/*,
-getByUserId: function(uid, callback) {
-return db.query('select * from user_account where id_user=?', [uid], callback);
-},
-getByAccountId: function(aid, callback) {
-return db.query('select * from user_account where id_account=?', [aid], callback);
-}*/,
+  },
   getAll: function (callback) {
     return db.query('select * from user_account', callback);
   },
-
 
   add: function (add_data, callback) {
     return db.query(

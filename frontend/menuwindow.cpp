@@ -25,17 +25,16 @@ menuWindow::menuWindow(QByteArray bearerToken, QString idAccount, QString idUser
     qDebug()<<"MenuWindow: TOKENI = "+webToken;
 
     connect(ownerManager, SIGNAL(finished (QNetworkReply*)), this, SLOT(getOwnerSlot(QNetworkReply*)));
-
     reply = ownerManager->get(request);
-    ui->labelCardnumber->setText(owner);
+    ui->labelCardnumber->setText(accountOwner);
 
     timer = new QTimer(this);
     connect (timer, SIGNAL (timeout()),
             this, SLOT (timeoutSlot()));
     timer->start(1000);
     time = 0;
-
 }
+
 
 void menuWindow::getOwnerSlot(QNetworkReply *reply)
 {
@@ -43,13 +42,14 @@ void menuWindow::getOwnerSlot(QNetworkReply *reply)
     qDebug()<<"MenuWindow getOwnerSlot response = "+response_data;
     QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
     QJsonObject json_obj = json_doc.object();
-    owner=json_obj["account_owner"].toString();
+    accountOwner=json_obj["account_owner"].toString();
 
-    qDebug()<<"Menuwindow: tilin omistaja = "+owner;
+    qDebug()<<"Menuwindow: tilin omistaja = "+accountOwner;
 
     reply->deleteLater();
-    ui->labelCardnumber->setText("Tervetuloa "+owner+"!");
+    ui->labelCardnumber->setText("Tervetuloa "+accountOwner+"!");
 }
+
 
 void menuWindow::timeoutSlot()
 {
@@ -68,6 +68,7 @@ menuWindow::~menuWindow()
     delete ui;
 }
 
+
 void menuWindow::on_pushButton_KirjauduUlos_clicked()
 {
     timer->stop();
@@ -82,9 +83,7 @@ void menuWindow::on_pushButton_Saldo_clicked()
     nayta.setModal(true);
     nayta.exec();
     menuWindow::close();
-
 }
-
 
 
 void menuWindow::on_pushButton_Otto_clicked()
@@ -96,6 +95,7 @@ void menuWindow::on_pushButton_Otto_clicked()
     nosto.exec();
 }
 
+
 void menuWindow::on_pushButton_LuottorajanNosto_clicked()
 {
     timer->stop();
@@ -103,7 +103,6 @@ void menuWindow::on_pushButton_LuottorajanNosto_clicked()
     luottoraja luotto(webToken,id_account, id_user);
     luotto.setModal(true);
     luotto.exec();
-
 }
 
 
@@ -114,6 +113,5 @@ void menuWindow::on_pushButton_Tilitapahtumat_clicked()
     tilitapahtumat tilitapahtumat(webToken,id_account, id_user);
     tilitapahtumat.setModal(true);
     tilitapahtumat.exec();
-
 }
 

@@ -35,10 +35,12 @@ saldo::saldo(QByteArray bearerToken, QString idAccount,QString idUser,QWidget *p
     time = 0;
 }
 
+
 saldo::~saldo()
 {
     delete ui;
 }
+
 
 void saldo::on_poistuSaldo_clicked() //Suljetaan saldo-ikkuna
 {
@@ -48,6 +50,7 @@ void saldo::on_poistuSaldo_clicked() //Suljetaan saldo-ikkuna
     menu.setModal(true);
     menu.exec();
 }
+
 
 void saldo::getBalanceSlot(QNetworkReply *reply) //Pyydetään balance tietokannasta
 {
@@ -60,7 +63,6 @@ void saldo::getBalanceSlot(QNetworkReply *reply) //Pyydetään balance tietokann
     QJsonArray json_array = json_doc.array();
     QString account ="";
 
-
     foreach (const QJsonValue &value, json_array)
     {
         QJsonObject json_obj = value.toObject();
@@ -72,6 +74,7 @@ void saldo::getBalanceSlot(QNetworkReply *reply) //Pyydetään balance tietokann
     ui->labelNaytaSaldo->setText(balance);
 }
 
+
 void saldo::timeoutSlot() //Ajastin
 {
     time ++;
@@ -82,6 +85,7 @@ void saldo::timeoutSlot() //Ajastin
         timer->stop();
     }
 }
+
 
 void saldo::getTransactionSlot(QNetworkReply *reply)
 {
@@ -98,10 +102,12 @@ void saldo::getTransactionSlot(QNetworkReply *reply)
     ui->label_2->setText(transaction);
 }
 
+
 void saldo::setBalance(const QString &newBalance)
 {
     balance = newBalance;
 }
+
 
 void saldo::on_pushNaytaTapahtumat_clicked() // Haetaan tietokannasta tilitapahtumia
 {
@@ -116,6 +122,7 @@ void saldo::on_pushNaytaTapahtumat_clicked() // Haetaan tietokannasta tilitapaht
     reply = transactionManager->get(request);
 }
 
+
 void saldo::on_pushKayttajanTiedot_clicked() // Haetaan tietokannasta käyttäjän tiedot
 {
     time = 0;
@@ -127,8 +134,8 @@ void saldo::on_pushKayttajanTiedot_clicked() // Haetaan tietokannasta käyttäj�
     tietoManager = new QNetworkAccessManager(this);
     connect(tietoManager, SIGNAL(finished (QNetworkReply*)), this, SLOT(getUserSlot(QNetworkReply*)));
     reply = tietoManager->get(request);
-
 }
+
 
 void saldo::getUserSlot(QNetworkReply *reply)
 {

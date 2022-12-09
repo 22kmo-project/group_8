@@ -28,13 +28,13 @@ void Info::getIdUser()
     reply = idUserManager->post(request, QJsonDocument(jsonObj).toJson());
 }
 
+
 void Info::getIdAccount()
 {
     QJsonObject jsonObj;
     jsonObj.insert("id_user", getUserId());
     QString wb = webToken;
     bearerToken = "Bearer "+wb.toUtf8();
-    //qDebug()<<bearerToken;
 
     QString site_url = MyURL::getBaseURL()+"/useraccount";
     qDebug()<<"Info getIdAccount osoite = "+site_url;
@@ -50,6 +50,7 @@ void Info::getIdAccount()
     reply = idAccountManager->post(request, QJsonDocument(jsonObj).toJson());
 }
 
+
 void Info::getUserIdSlot(QNetworkReply *reply)
 {
     response_data = reply->readAll();
@@ -61,9 +62,9 @@ void Info::getUserIdSlot(QNetworkReply *reply)
     qDebug()<<"Info.cpp: User ID = "+idUser;
 
     reply->deleteLater();
-
     getIdAccount();
 }
+
 
 void Info::getAccountSlot(QNetworkReply *reply)
 {
@@ -89,6 +90,7 @@ void Info::startMenuWindow()
     objectmenuWindow->show();
 }
 
+
 const QString &Info::getWebToken() const
 {
     return webToken;
@@ -100,10 +102,12 @@ void Info::setWebToken(const QByteArray &newWebToken)
     webToken = newWebToken;
 }
 
+
 const QString &Info::getCard_Number() const
 {
     return cardNumber;
 }
+
 
 void Info::setCard_Number(const QString &newCardNumber)
 {
@@ -116,15 +120,18 @@ const QString &Info::getUserId() const
     return idUser;
 }
 
+
 void Info::setUserId(const QString &newIdUser)
 {
     idUser = newIdUser;
 }
 
+
 const QString &Info::getAccountId() const
 {
-        return idAccount;
+    return idAccount;
 }
+
 
 void Info::setAccountId(const QString &newIdAccount)
 {

@@ -13,13 +13,12 @@ loginWindow::loginWindow(QWidget *parent) :
             this, SLOT (timeoutSlot()));
     timer->start(1000);
     time = 0;
-
 }
+
 
 loginWindow::~loginWindow()
 {
     delete ui;
-
 }
 
 
@@ -49,15 +48,15 @@ void loginWindow::on_btnKirjaudu_clicked()
     connect(loginManager, SIGNAL(finished (QNetworkReply*)),
             this, SLOT(loginSlot(QNetworkReply*)));
     reply = loginManager->post(request, QJsonDocument(jsonObj).toJson());
-
 }
+
 
 void loginWindow::loginSlot(QNetworkReply *reply)
 {
     response_data=reply->readAll();
     qDebug()<<"Info loginSlot response = "+response_data;
-    int test=QString::compare(response_data,"false");
-    qDebug()<<test;
+    int testPin=QString::compare(response_data,"false");
+    qDebug()<<testPin;
 
     QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
     QJsonObject json_obj = json_doc.object();
@@ -74,7 +73,7 @@ void loginWindow::loginSlot(QNetworkReply *reply)
         }
         else
         {
-            if(test==0){
+            if(testPin==0){
                 ui->lineUsername->clear();
                 ui->linePin->clear();
                 ui->labelInfo->setText("Tunnus ja salasana eivät täsmää");
@@ -92,7 +91,8 @@ void loginWindow::loginSlot(QNetworkReply *reply)
 
                 }
             }
-            else { //jos kirjautuminen onnistuu luodaan olio info-luokasta. välitetään luokalle kortin numero, sekä responsedata
+            else
+            { //jos kirjautuminen onnistuu luodaan olio info-luokasta. välitetään luokalle kortin numero, sekä responsedata
                     info = new Info();
                     info->setWebToken(response_data);
                     info->setCard_Number(card_number);
@@ -101,13 +101,13 @@ void loginWindow::loginSlot(QNetworkReply *reply)
                     timer->stop();
                     //info->getAccount_Type(account_Type);
                     loginWindow::close();
-                }
+            }
         }
     }
     reply->deleteLater();
     loginManager->deleteLater();
-
 }
+
 
 void loginWindow::timeoutSlot()
 {

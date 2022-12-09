@@ -33,7 +33,7 @@ private slots:
     void on_luotto5000_clicked();
     void on_luotto10000_clicked();
     void on_uusi_luotto_clicked();
-    void setlimit(double luottoraja, double maara);
+    void setCreditLimit(double currentCreditLimit, double amount);
     void timeoutSlot();
     void getAccountTypeSlot (QNetworkReply *reply);
     void transactionSlot(QNetworkReply *reply);
@@ -43,7 +43,7 @@ private:
 
     Ui::luottoraja *ui;
     double creditValue;
-    double maara;
+    double amount;
     int time;
     QByteArray myToken;
     QByteArray response_data;
