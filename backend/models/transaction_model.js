@@ -10,6 +10,9 @@ const transaction = {
   getTransactions: function (id, callback) {
     return db.query('select from transaction where id_account=?', [id], callback);
   },
+  getTransactionsFromButton: function (id, idTrans, callback) {
+    return db.query('SELECT id_transaction, date_format(transaction_date, "%d.%m.%Y") as "transaction_date", activity, amount FROM transaction INNER JOIN account ON transaction.id_account=account.id_account WHERE account.id_account=? ORDER BY id_transaction ASC LIMIT ?, 10', [id, idTrans], callback);
+  },
   add: function (add_data, callback) {
     return db.query(
       'insert into transaction (transaction_date,activity,amount,id_account) values(?,?,?,?)',
