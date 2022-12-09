@@ -34,6 +34,19 @@ transaction.getFiveTransactions(id, function (err, dbResult) {
   }
 })
 
+
+
+
+router.post('/', 
+function(request, response) {
+  transaction.add(request.body, function(err, dbResult) {
+    if (err) {
+      response.json(err);
+    } else {
+      response.json(request.body);
+    }
+  });
+
 });
 
 
