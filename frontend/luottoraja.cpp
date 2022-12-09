@@ -9,12 +9,10 @@ luottoraja::luottoraja(QByteArray bearerToken, QString idAccount, QString idUser
 {
     ui->setupUi(this);
     myToken = bearerToken;
-    qDebug()<<"Luottoraha: Token = "+myToken;
+    qDebug()<<"Luottoraja: Token = "+myToken;
     id_account = idAccount;
     id_user = idUser;
     qDebug()<<"Luottoraja ikkuna: user ID = "+id_user+" Luottoraja ikkuna: account ID = "+id_account;
-
-    timer = new QTimer(this);
 
     QString site_url = MyURL::getBaseURL()+"/account/"+idAccount;
     qDebug()<<"Luottoraja: Osoite = "+site_url;
@@ -27,12 +25,13 @@ luottoraja::luottoraja(QByteArray bearerToken, QString idAccount, QString idUser
             this, SLOT(getAccountTypeSlot(QNetworkReply*)));
     reply = accountTypeManager->get(request);
 
+    timer = new QTimer(this);
     connect (timer, SIGNAL (timeout()),
             this, SLOT (timeoutSlot()));
     timer->start(1000);
     time = 0;
-
 }
+
 
 void luottoraja::timeoutSlot()
 {
@@ -48,6 +47,7 @@ void luottoraja::timeoutSlot()
         menu.exec();
     }
 }
+
 
 luottoraja::~luottoraja()
 {
@@ -67,8 +67,8 @@ void luottoraja::on_luottoPoistu_clicked()
 
 void luottoraja::on_luotto500_clicked()
 {
-    setlimit(creditValue,500);
-    maara=500;
+    setCreditLimit(creditValue,500);
+    amount=500;
     timer->stop();
     time = 0;
 }
@@ -76,8 +76,8 @@ void luottoraja::on_luotto500_clicked()
 
 void luottoraja::on_luotto1000_clicked()
 {
-    setlimit(creditValue,1000);
-    maara=1000;
+    setCreditLimit(creditValue,1000);
+    amount=1000;
     timer->stop();
     time = 0;
 }
@@ -85,8 +85,8 @@ void luottoraja::on_luotto1000_clicked()
 
 void luottoraja::on_luotto2000_clicked()
 {
-    setlimit(creditValue,2000);
-    maara=2000;
+    setCreditLimit(creditValue,2000);
+    amount=2000;
     timer->stop();
     time = 0;
 }
@@ -94,8 +94,8 @@ void luottoraja::on_luotto2000_clicked()
 
 void luottoraja::on_luotto5000_clicked()
 {
-    setlimit(creditValue,5000);
-    maara=5000;
+    setCreditLimit(creditValue,5000);
+    amount=5000;
     timer->stop();
     time = 0;
 }
@@ -103,11 +103,12 @@ void luottoraja::on_luotto5000_clicked()
 
 void luottoraja::on_luotto10000_clicked()
 {
-    setlimit(creditValue,10000);
-    maara=10000;
+    setCreditLimit(creditValue,10000);
+    amount=10000;
     timer->stop();
     time = 0;
 }
+
 
 void luottoraja::on_uusi_luotto_clicked()
 {
@@ -118,7 +119,6 @@ void luottoraja::on_uusi_luotto_clicked()
     qDebug()<<"Luottoraja uusi luottoBTN osoite= "+site_url;
     QNetworkRequest request((site_url));
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
-
     request.setRawHeader(QByteArray("Authorization"),(myToken)); //WEBTOKEN
 
     updateCreditManager = new QNetworkAccessManager(this);
@@ -126,18 +126,17 @@ void luottoraja::on_uusi_luotto_clicked()
             this, SLOT(updateCreditSlot(QNetworkReply*)));
     reply = updateCreditManager->put(request, QJsonDocument(jsonObjUpdate).toJson());
 
-    if(maara>0)
+    if(amount>0)
     {//päivitetään transaction-tauluun
     QJsonObject jsonObjPost;
     jsonObjPost.insert("transaction_date",QDate::currentDate().toString((Qt::ISODate)));
     jsonObjPost.insert("activity", "luottorajan korotus");
-    jsonObjPost.insert("amount", maara);
+    jsonObjPost.insert("amount", amount);
     jsonObjPost.insert("id_account",id_account);
 
     QString site_urlPost=MyURL::getBaseURL()+"/transaction/";
     QNetworkRequest requestPost((site_urlPost));
     requestPost.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
-
     requestPost.setRawHeader(QByteArray("Authorization"),(myToken)); //WEBTOKEN
 
     transactionManager=new QNetworkAccessManager(this);
@@ -147,13 +146,14 @@ void luottoraja::on_uusi_luotto_clicked()
     }
 }
 
-void luottoraja::setlimit(double luottoraja, double maara)
+
+void luottoraja::setCreditLimit(double currentCreditLimit, double amount)
 {
     if(accountType == "credit")
     {
         qDebug()<<"luotto";
-        luottoraja = luottoraja + maara;
-        credit_limit=QString::number(luottoraja);
+        currentCreditLimit = currentCreditLimit + amount;
+        credit_limit=QString::number(currentCreditLimit);
         ui->uusi_luotto->setVisible(true);
         ui->label_luotto->setText("Varmista korottaminen painamalla Tallenna uusi luottoraja-painiketta.");
         }
@@ -165,6 +165,7 @@ void luottoraja::setlimit(double luottoraja, double maara)
             time = 0;
         }
 }
+
 
 void luottoraja::getAccountTypeSlot(QNetworkReply *reply)
 {
@@ -182,6 +183,7 @@ void luottoraja::getAccountTypeSlot(QNetworkReply *reply)
     accountTypeManager->deleteLater();
 }
 
+
 void luottoraja::transactionSlot(QNetworkReply *reply)
 {
     response_data=reply->readAll();
@@ -189,6 +191,7 @@ void luottoraja::transactionSlot(QNetworkReply *reply)
     reply->deleteLater();
     transactionManager->deleteLater();
 }
+
 
 void luottoraja::updateCreditSlot(QNetworkReply *reply)
 {

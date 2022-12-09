@@ -24,23 +24,7 @@ router.get('/:uid?,:aid?',
         response.json(dbResult[0]);
       }
     });
-  }/* else if (request.params.uid){
-	useraccount.getByUserId(request.params.uid, function(err, dbResult) {
-      if (err) {
-        response.json(err);
-      } else {
-        response.json(dbResult[0]);
-      }
-    });
-  } else if (request.params.aid){
-	useraccount.getByAccountId(request.params.aid, function(err, dbResult) {
-      if (err) {
-        response.json(err);
-      } else {
-        response.json(dbResult[0]);
-      }
-    });
-}*/ 
+  }
   else {
     useraccount.getAll(function(err, dbResult) {
       if (err) {

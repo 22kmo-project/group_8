@@ -23,7 +23,7 @@ tilitapahtumat::tilitapahtumat(QByteArray bearerToken, QString idAccount, QStrin
     request.setRawHeader(QByteArray("Authorization"),(myToken)); //WEBTOKEN
 
     balanceManager = new QNetworkAccessManager(this);
-    connect(balanceManager, SIGNAL(finished (QNetworkReply*)), this, SLOT(getBalanceSlot(QNetworkReply*)));
+    connect(balanceManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(getBalanceSlot(QNetworkReply*)));
     reply = balanceManager->get(request);
 
     timer = new QTimer(this);
@@ -33,13 +33,16 @@ tilitapahtumat::tilitapahtumat(QByteArray bearerToken, QString idAccount, QStrin
     time = 0;
 }
 
+
 tilitapahtumat::~tilitapahtumat()
 {
     delete ui;
 }
 
+
 void tilitapahtumat::on_naytaTilitapahtumatBtn_clicked()
-{
+{   
+    currentPage = 0;
     time = 0;
     QString site_url=MyURL::getBaseURL()+"/transaction/"+id_account;
     QNetworkRequest request((site_url));
@@ -47,11 +50,13 @@ void tilitapahtumat::on_naytaTilitapahtumatBtn_clicked()
     request.setRawHeader(QByteArray("Authorization"),(myToken)); //WEBTOKEN
 
     tilitapahtumatManager = new QNetworkAccessManager(this);
-    connect(tilitapahtumatManager, SIGNAL(finished (QNetworkReply*)), this, SLOT(tilitapahtumatSlot(QNetworkReply*)));
+    connect(tilitapahtumatManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(tilitapahtumatSlot(QNetworkReply*)));
     reply = tilitapahtumatManager->get(request);
 
     ui->edellisetBtn->show();
+    ui->seuraavatBtn->hide();
 }
+
 
 void tilitapahtumat::getBalanceSlot(QNetworkReply *reply)
 {
@@ -76,6 +81,7 @@ void tilitapahtumat::getBalanceSlot(QNetworkReply *reply)
     ui->labelSaldo->setText("Saldosi on "+balance);
 }
 
+
 void tilitapahtumat::timeoutSlot()
 {
     time ++;
@@ -88,6 +94,7 @@ void tilitapahtumat::timeoutSlot()
         menu.exec();
     }
 }
+
 
 void tilitapahtumat::tilitapahtumatSlot(QNetworkReply *reply)
 {
@@ -102,48 +109,48 @@ void tilitapahtumat::tilitapahtumatSlot(QNetworkReply *reply)
             json_obj["activity"].toString()+" , "+QString::number(json_obj["amount"].toInt())+"\r\n";
     }
     ui->textTilitapahtumat->setText(transaction);
-    //x=calc;
-
 }
 
-void tilitapahtumat::edellisetTitatSlot(QNetworkReply *reply)
+
+void tilitapahtumat::edellisetTilitapahtumatSlot(QNetworkReply *reply)
 {
     QByteArray response_data=reply->readAll();
     //qDebug()<<response_data;
     QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
     QJsonArray json_array = json_doc.array();
-    QString edellisetTitat;
+    QString edellisetTilitapahtumat;
     foreach (const QJsonValue &value, json_array)
     {
         QJsonObject json_obj = value.toObject();
-        edellisetTitat+=json_obj["transaction_date"].toString()+"\r\n"+
+        edellisetTilitapahtumat+=json_obj["transaction_date"].toString()+"\r\n"+
                 json_obj["activity"].toString()+" , "+QString::number(json_obj["amount"].toInt())+"\r\n";
     }
+
+    ui->seuraavatBtn->show();
     //jos ei tulostu mitään, piilotetaan edellisetBtn
     if(response_data=="[]") {
         ui->edellisetBtn->hide();
     }
-    ui->textTilitapahtumat->setText(edellisetTitat);
-    ui->seuraavatBtn->show();
-    x = calc;
-    qDebug()<<x;
+    ui->textTilitapahtumat->setText(edellisetTilitapahtumat);
+    qDebug()<<currentPage;
 }
 
-void tilitapahtumat::seuraavatTitatSlot(QNetworkReply *reply)
+
+void tilitapahtumat::seuraavatTilitapahtumatSlot(QNetworkReply *reply)
 {
     QByteArray response_data=reply->readAll();
     //qDebug()<<response_data;
     QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
     QJsonArray json_array = json_doc.array();
-    QString seuraavatTitat;
+    QString seuraavatTilitapahtumat;
     foreach (const QJsonValue &value, json_array)
     {
         QJsonObject json_obj = value.toObject();
-        seuraavatTitat+=json_obj["transaction_date"].toString()+"\r\n"+
+        seuraavatTilitapahtumat+=json_obj["transaction_date"].toString()+"\r\n"+
                 json_obj["activity"].toString()+" , "+QString::number(json_obj["amount"].toInt())+"\r\n";
     }
-    ui->textTilitapahtumat->setText(seuraavatTitat);
-    x = calc;
+    ui->edellisetBtn->show();
+    ui->textTilitapahtumat->setText(seuraavatTilitapahtumat);
 }
 
 
@@ -160,48 +167,48 @@ void tilitapahtumat::on_TakaisinBtn_clicked()
 void tilitapahtumat::on_edellisetBtn_clicked()
 {
     time = 0;
-    calc = x+10;
-    QString pena = QString::number(calc);
 
-    QString site_url=MyURL::getBaseURL()+"/transaction/"+id_account+"/"+pena;
+    currentPage = currentPage+10;
+    QString page = QString::number(currentPage);
+
+    QString site_url=MyURL::getBaseURL()+"/transaction/"+id_account+"/"+page;
     QNetworkRequest request((site_url));
     qDebug()<<site_url;
-    //WEBTOKEN ALKU
-    request.setRawHeader(QByteArray("Authorization"),(myToken));
-    //WEBTOKEN LOPPU
 
-    edellisetTitatManager = new QNetworkAccessManager(this);
+    request.setRawHeader(QByteArray("Authorization"),(myToken)); //WEBTOKEN
 
-    connect(edellisetTitatManager, SIGNAL(finished (QNetworkReply*)), this, SLOT(edellisetTitatSlot(QNetworkReply*)));
-
-    reply = edellisetTitatManager->get(request);
+    edellisetTilitapahtumatManager = new QNetworkAccessManager(this);
+    connect(edellisetTilitapahtumatManager, SIGNAL(finished(QNetworkReply*)),
+            this, SLOT(edellisetTilitapahtumatSlot(QNetworkReply*)));
+    reply = edellisetTilitapahtumatManager->get(request);
 }
 
 
 void tilitapahtumat::on_seuraavatBtn_clicked()
 {
     time = 0;
-    qDebug()<<calc;
-    if (calc >= 10){
-    calc = x-10;
-    } else {
-        calc = 0;
+    qDebug()<<currentPage;
+    currentPage = currentPage-10;
+
+    if(currentPage < 10)
+    {
         ui->seuraavatBtn->hide();
     }
+    else
+    {
+        ui->seuraavatBtn->show();
+    }
 
-    QString pena = QString::number(calc);
+    QString page = QString::number(currentPage);
 
-    QString site_url=MyURL::getBaseURL()+"/transaction/"+id_account+"/"+pena;
+    QString site_url=MyURL::getBaseURL()+"/transaction/"+id_account+"/"+page;
     QNetworkRequest request((site_url));
     qDebug()<<site_url;
-    //WEBTOKEN ALKU
-    request.setRawHeader(QByteArray("Authorization"),(myToken));
-    //WEBTOKEN LOPPU
 
-    seuraavatTitatManager = new QNetworkAccessManager(this);
+    request.setRawHeader(QByteArray("Authorization"),(myToken)); //WEBTOKEN
 
-    connect(seuraavatTitatManager, SIGNAL(finished (QNetworkReply*)), this, SLOT(seuraavatTitatSlot(QNetworkReply*)));
-
-    reply = seuraavatTitatManager->get(request);
+    seuraavatTilitapahtumatManager = new QNetworkAccessManager(this);
+    connect(seuraavatTilitapahtumatManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(seuraavatTilitapahtumatSlot(QNetworkReply*)));
+    reply = seuraavatTilitapahtumatManager->get(request);
 }
 

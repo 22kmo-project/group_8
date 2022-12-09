@@ -38,7 +38,7 @@ private:
     QString id_account;
     QString id_card;
     QString id_user;
-    QString owner;
+    QString accountOwner;
     QNetworkAccessManager *idCardManager;
     QNetworkAccessManager *ownerManager;
     QNetworkReply *reply;

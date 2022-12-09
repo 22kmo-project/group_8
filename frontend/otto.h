@@ -34,7 +34,7 @@ private slots:
     void on_Nosto200_clicked();
     void on_Nosto500_clicked();
     void on_ok_clicked();
-    void withdraw(double balanssi, double maara);
+    void withdraw(double currentBalance, double maara);
     void getAccountTypeSlot (QNetworkReply *reply);
     void updateBalanceSlot(QNetworkReply *reply);
     void transactionSlot(QNetworkReply *reply);
@@ -45,7 +45,7 @@ private:
     Ui::otto *ui;
     double balanceValue;
     double creditValue;
-    double maara;
+    double amount;
     int time;
     QByteArray myToken;
     QByteArray response_data;

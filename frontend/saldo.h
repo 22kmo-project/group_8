@@ -6,7 +6,6 @@
 #include <QNetworkAccessManager>
 #include <QJsonDocument>
 #include <qbytearray.h>
-#include "info.h"
 #include <QMainWindow>
 #include <QtNetwork>
 #include <QTimer>
@@ -28,7 +27,6 @@ public:
     ~saldo();
     void setBalance(const QString &newBalance);
 
-
 private slots:
 
     void on_poistuSaldo_clicked();
@@ -38,7 +36,6 @@ private slots:
     void timeoutSlot();
     void getTransactionSlot (QNetworkReply *reply);
     void getUserSlot (QNetworkReply *reply);
-
 
 private:
 
@@ -55,7 +52,6 @@ private:
     QNetworkAccessManager *balanceManager;
     QNetworkAccessManager *tietoManager;
     QNetworkAccessManager *transactionManager;
-
     QTimer *timer;
 
 };
